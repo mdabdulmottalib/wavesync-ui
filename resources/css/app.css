@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import url('https://cdn-uicons.flaticon.com/4.0.0/uicons-regular-rounded/css/uicons-regular-rounded.css');
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@font-face {
+    font-family: 'Agency';
+    src: url('/public/fonts/agency.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@theme {
+    --font-sans:
+        'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-agency: 'Agency', sans-serif;
+
+    /* 14s was tuned for 3 logos; keeping the same pace-per-logo across the
+       current 18 requires roughly 6x the duration. */
+    --animate-scroll: scroll 60s linear infinite;
+
+    --color-forest: #2a4c3a;
+    --color-forest-deep: #16322f;
+    --color-cream: #ffffe7;
+    --color-lime: #e8ff49;
+    --color-mist: #f4f9f8;
+    --color-ink: #0a0a0a;
+}
+
+@layer base {
+    html {
+        /* @apply scroll-smooth; */
+        /* Safety net for full-bleed breakout sections (100vw children can be a
+           hair wider than the viewport on some browsers because of scrollbar
+           width), so they never introduce a page-wide horizontal scrollbar. */
+        overflow-x: hidden;
+    }
+
+    body {
+        /* background: #f1f1f1; */
+    }
+
+    ::-webkit-scrollbar {
+        @apply w-1.5 bg-transparent;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-forest;
+    }
+    ::selection {
+        @apply bg-lime text-forest-deep;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+@utility container {
+    @apply mx-auto flex max-w-screen-2xl flex-col px-4 sm:px-6 md:px-8;
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}

@@ -1,0 +1,103 @@
+{{-- resources/views/partials/footer.blade.php --}}
+
+<footer class="bg-ink w-full text-cream pt-8 lg:pt-24 px-4 sm:px-8 md:px-16 lg:px-28 overflow-hidden">
+    <div class="grid grid-cols-1 lg:grid-cols-6 gap-8 md:gap-12">
+        {{-- Brand --}}
+        <div class="lg:col-span-3 flex flex-col gap-5 sm:gap-6">
+            <a href="{{ route('home') }}">
+                <h6 class="font-agency text-5xl font-extrabold">wavesync</h6>
+            </a>
+
+            <p class="text-lg text-cream/80 max-w-96 font-medium leading-relaxed">Full-service digital agency for web development, branding, SEO, digital marketing, and AI-powered business automation. {{ config('wavesync.founded_summary') }}.</p>
+
+            {{-- TODO(content): confirm each social handle is real before launch — see config/wavesync.php --}}
+            <div class="flex flex-wrap gap-4 sm:gap-5">
+                @foreach (config('wavesync.social_links') as $social)
+                    <a
+                        href="{{ $social['href'] }}"
+                        aria-label="{{ $social['label'] }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="text-cream/60 hover:text-cream transition-colors duration-300"
+                    >
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="size-3.5 sm:size-4">
+                            <path d="{{ $social['path'] }}" />
+                        </svg>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+
+        {{-- Nav columns --}}
+        <div class="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16 items-start">
+            {{-- Ecosystem --}}
+            <div>
+                <p class="text-base font-bold uppercase text-cream mb-4 sm:mb-5 font-agency">Ecosystem</p>
+                <ul class="space-y-3 text-lg font-semibold text-cream/70">
+                    <li>
+                        <a href="/#services" class="hover:text-cream transition-colors duration-300">Services</a>
+                    </li>
+                    <li>
+                        <a href="/#work" class="hover:text-cream transition-colors duration-300">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="/#process" class="hover:text-cream transition-colors duration-300">Process</a>
+                    </li>
+                    <li><a href="/#faq" class="hover:text-cream transition-colors duration-300">FAQ</a></li>
+                </ul>
+            </div>
+
+            {{-- Legal --}}
+            <div>
+                <p class="text-base font-bold uppercase text-cream mb-4 sm:mb-5 font-agency">Legal</p>
+                <ul class="space-y-3 text-lg font-semibold text-cream/70">
+                    <li>
+                        <a href="#" class="hover:text-cream transition-colors duration-300">Privacy Policy</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-cream transition-colors duration-300">Terms of Service</a>
+                    </li>
+                    <li>
+                        <a href="#" class="hover:text-cream transition-colors duration-300">Cookie Settings</a>
+                    </li>
+                    <li>
+                        <a href="/#contact" class="hover:text-cream transition-colors duration-300">Contact Support</a>
+                    </li>
+                </ul>
+            </div>
+
+            {{-- Company --}}
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-base font-bold uppercase text-cream mb-4 sm:mb-5 font-agency">Company</p>
+                <ul class="space-y-3 text-lg font-semibold text-cream/70">
+                    <li><a href="/#about" class="hover:text-cream transition-colors duration-300">About</a></li>
+                    <li>
+                        <a href="#" class="hover:text-cream transition-colors duration-300">Careers</a>
+                    </li>
+                    <li>
+                        <a href="/#contact" class="hover:text-cream transition-colors duration-300">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    {{-- Bottom bar --}}
+    <div
+        class="mt-10 sm:mt-12 pt-4 border-t border-cream/10 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0"
+    >
+        <p class="text-cream/60 text-xs sm:text-sm">© {{ date('Y') }} Wavesync Agency</p>
+        <p class="text-xs sm:text-sm text-cream/60">All rights reserved.</p>
+    </div>
+
+    {{-- Watermark (motion removed, plain div) --}}
+    <div class="relative -bottom-16 pt-8">
+        <div class="w-full flex items-center justify-center text-cream">
+            <h6
+                class="font-agency font-extrabold text-[clamp(5rem,16vw,12rem)] leading-none whitespace-nowrap uppercase"
+            >
+                wavesync
+            </h6>
+        </div>
+    </div>
+</footer>
