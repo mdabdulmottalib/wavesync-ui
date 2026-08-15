@@ -1,4 +1,3 @@
-{{-- TODO(content): reserved for a real Wavesync showreel/brand video. Do not re-enable with third-party stock footage. --}}
 <div class="w-full">
-    <video class="aspect-video" src="" autoplay muted loop></video>
+    <video class="aspect-video" src="https://html.aqlova.com/videos/liko/liko.mp4" autoplay muted loop></video>
 </div>

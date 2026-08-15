@@ -1,5 +1,5 @@
-@php
-    $faqs = [
+@props([
+    'faqs' => [
         [
             'question' => 'What services does Wavesync Agency offer?',
             'answer' => 'We work across four areas: web & digital experiences (UI/UX design, WordPress, Laravel, digital product design), brand & creative (graphic design), SEO & digital growth (search visibility, digital marketing), and AI & business automation (workflow automation, integrations). Most client work draws on more than one of these at once.',
@@ -16,8 +16,8 @@
             'question' => 'How long does a typical project take?',
             'answer' => 'It depends on scope — a focused website or landing page moves faster than a custom application or a multi-service engagement. Once we understand what you need, we give you a realistic timeline as part of the proposal, not a generic estimate.',
         ],
-    ];
-@endphp
+    ],
+])
 
 <div class="w-11/12 mx-auto 2xl:w-10/12 flex my-16 sm:my-20 md:my-28 lg:my-36">
     <div class="w-full flex flex-col gap-6 sm:gap-8 md:gap-10">

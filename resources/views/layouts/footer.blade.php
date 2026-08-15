@@ -8,7 +8,7 @@
                 <h6 class="font-agency text-5xl font-extrabold">wavesync</h6>
             </a>
 
-            <p class="text-lg text-cream/80 max-w-96 font-medium leading-relaxed">Full-service digital agency for web development, branding, SEO, digital marketing, and AI-powered business automation. {{ config('wavesync.founded_summary') }}.</p>
+            <p class="text-lg text-cream/80 max-w-96 font-medium leading-relaxed">We build the websites, search visibility, and automation that turn searches into customers. {{ config('wavesync.founded_summary') }}.</p>
 
             {{-- TODO(content): confirm each social handle is real before launch — see config/wavesync.php --}}
             <div class="flex flex-wrap gap-4 sm:gap-5">
@@ -38,7 +38,7 @@
                         <a href="/#services" class="hover:text-cream transition-colors duration-300">Services</a>
                     </li>
                     <li>
-                        <a href="/#work" class="hover:text-cream transition-colors duration-300">Portfolio</a>
+                        <a href="{{ route('portfolio') }}" class="hover:text-cream transition-colors duration-300">Portfolio</a>
                     </li>
                     <li>
                         <a href="/#process" class="hover:text-cream transition-colors duration-300">Process</a>
@@ -70,7 +70,7 @@
             <div class="col-span-2 md:col-span-1">
                 <p class="text-base font-bold uppercase text-cream mb-4 sm:mb-5 font-agency">Company</p>
                 <ul class="space-y-3 text-lg font-semibold text-cream/70">
-                    <li><a href="/#about" class="hover:text-cream transition-colors duration-300">About</a></li>
+                    <li><a href="{{ route('about') }}" class="hover:text-cream transition-colors duration-300">About</a></li>
                     <li>
                         <a href="#" class="hover:text-cream transition-colors duration-300">Careers</a>
                     </li>

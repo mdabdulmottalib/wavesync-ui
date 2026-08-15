@@ -174,6 +174,7 @@
                                         class="absolute z-20 left-0 right-0 mt-2 max-h-64 overflow-y-auto rounded-xl border-2 border-forest/80 bg-cream shadow-lg hidden"
                                         role="listbox"
                                         data-dropdown-panel
+                                        data-lenis-prevent
                                     >
                                         <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="under_1000">Under $1,000</li>
                                         <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="1000_5000">$1,000 – $5,000</li>
@@ -206,6 +207,7 @@
                                         class="absolute z-20 left-0 right-0 mt-2 max-h-64 overflow-y-auto rounded-xl border-2 border-forest/80 bg-cream shadow-lg hidden"
                                         role="listbox"
                                         data-dropdown-panel
+                                        data-lenis-prevent
                                     >
                                         <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="google_search">Google Search</li>
                                         <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="social_media">Social Media</li>

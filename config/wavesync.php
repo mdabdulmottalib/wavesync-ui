@@ -31,7 +31,7 @@ return [
 
     'founder_name' => 'Md Abdul Mottalib',
 
-    'founded_summary' => '5+ years in business',
+    'founded_summary' => '6+ years in business',
 
     /*
     |--------------------------------------------------------------------

@@ -20,8 +20,6 @@
 <body class="font-sans antialiased">
     @yield ('content')
 
-    <x-faq-section />
-
     @include ('layouts.footer')
 
     <x-whatsapp-button />

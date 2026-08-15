@@ -1,131 +1,33 @@
-<div class="bg w-full flex flex-col py-6">
-    <header
-        class="p-2.5 mx-auto w-full max-w-5xl z-50 bg-green-50/5 rounded-full backdrop-blur-3xl left-0 right-0 top-0 border-2 border-amber-50/5 sticky"
+<div
+    class="hero-media-bg w-full flex flex-col py-6 min-h-[50vh] sm:min-h-[60vh] md:min-h-[80vh] lg:min-h-[88vh]"
+    style="background-image: url('/images/wavesync_hero_bg.png')"
+>
+    <x-site-header />
+
+    <div
+        class="text-cream flex flex-col items-start justify-center gap-5 sm:gap-6 md:gap-8 w-11/12 mx-auto flex-1"
+        data-reveal
     >
-        <div class="flex items-center w-full justify-between">
-            <div class="pl-2">
-                <a href="/">
-                    {{-- <x-icons.wavesync-logo class="text-cream w-40 flex" /> --}}
-                    <span class="text-3xl text-cream font-agency font-extrabold">wavesync</span>
-                </a>
-            </div>
-
-            <div class="text-cream text-sm hidden md:flex items-center gap-px">
-                <a
-                    href="#services"
-                    class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
-                    >Services</a
-                >
-
-                <a
-                    href="#work"
-                    class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
-                    >Work</a
-                >
-
-                <a
-                    href="#process"
-                    class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
-                    >Process</a
-                >
-
-                <a
-                    href="#about"
-                    class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
-                    >About</a
-                >
-
-                <a
-                    href="#contact"
-                    class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
-                    >Contact</a
-                >
-            </div>
-
-            <div>
-                <a
-                    href="#contact"
-                    class="group inline-flex items-center rounded-full bg-lime px-6 py-3 font-bold text-forest-deep"
-                >
-                    <span class="relative overflow-hidden h-5 leading-5">
-                        <span
-                            class="block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-5"
-                        >
-                            Get a Quote
-                        </span>
-
-                        <span
-                            class="absolute left-0 top-5 block transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-5"
-                        >
-                            Get a Quote
-                        </span>
-                    </span>
-                </a>
-            </div>
+        <div
+            class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"
+        >
+            <div class="size-2.5 sm:size-3 rounded-full bg-lime"></div>
+            Boutique Digital Studio
         </div>
-    </header>
 
-    <div class="text-cream flex flex-col items-start justify-center gap-8 w-11/12 mx-auto h-full" data-reveal>
         <h1
             class="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-extrabold font-agency flex flex-col leading-10 sm:leading-12.5 md:leading-16.5 lg:leading-26"
         >
-            <span>Websites, brands</span>
-            <span>and <span class="text-lime">automation</span></span>
-            <span>for growing businesses.</span>
+            <span>We build the systems</span>
+            <span>that turn strangers</span>
+            <span>into <span class="text-lime">customers</span>.</span>
         </h1>
 
-        <p class="text-cream/70 font-medium text-base sm:text-lg md:text-xl max-w-xl">
-            {{ config('wavesync.founded_summary') }} designing, building, and automating the systems that help
-            businesses get found, get chosen, and get leads.
-        </p>
+        <p class="text-cream/70 font-medium text-base sm:text-lg md:text-xl max-w-2xl">From the first Google search to the phone ringing — websites, search visibility, and automation, working together. {{ config('wavesync.founded_summary') }}.</p>
     </div>
 </div>
 
-<style>
-    .bg {
-        position: relative;
-        width: 100%;
-        height: 88vh;
-        background-image: url('/images/wavesync_hero_bg.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: 1;
-    }
-
-    .bg::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.3);
-        z-index: 0;
-    }
-
-    .bg > * {
-        position: relative;
-        z-index: 1;
-    }
-
-    @media (max-width: 640px) {
-        .bg {
-            height: 50vh;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .bg {
-            height: 60vh;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .bg {
-            height: 80vh;
-        }
-    }
-</style>
+<x-video-frame />
 
 <div class="bg-mist py-28">
     <div id="about" class="w-11/12 mx-auto flex 2xl:w-10/12" data-reveal>
@@ -172,6 +74,89 @@
     </div>
 
     {{--
+        Full-bleed marquee, a pure rhythm/energy break between the logo strip
+        and the portfolio — no claims, just typography in motion. Two
+        identical copies back to back (same technique as the logo carousel),
+        so the -50% translateX keyframe loops seamlessly.
+    --}}
+    <div
+        class="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] bg-forest-deep py-8 sm:py-10 md:py-12 overflow-hidden"
+        aria-hidden="true"
+    >
+        <div class="flex w-max will-change-transform animate-scroll" style="animation-duration: 20s">
+            @for ($i = 0; $i < 2; $i++)
+                <div class="flex items-center shrink-0">
+                    @foreach (['Branding', 'Strategy','UI/UX Design','Web Design', 'Digital Marketing', 'SEO', 'Automation'] as $word)
+                        <span
+                            class="font-agency font-bold text-cream text-4xl sm:text-5xl md:text-7xl uppercase whitespace-nowrap mr-6 sm:mr-8 md:mr-10"
+                            >{{ $word }}</span
+                        >
+                        <span
+                            class="font-agency font-bold text-lime text-4xl sm:text-5xl md:text-7xl whitespace-nowrap mr-6 sm:mr-8 md:mr-10"
+                            >&#10022;</span
+                        >
+                    @endforeach
+                </div>
+            @endfor
+        </div>
+    </div>
+    {{--
+        Stats bento, 7 tiles across exactly two rows (3 + 4) rather than
+        spilling to a third — row 1's first cell stays wider than its
+        row-mates, matching the earlier bento pattern. "95%+ Client
+        Satisfaction" and "80%+ Repeat Clients" are measured performance
+        claims (not simple counts or policy commitments) — make sure these
+        are numbers that can actually be backed up before this goes live.
+    --}}
+    <div class="w-11/12 mx-auto 2xl:w-10/12" data-reveal>
+        <div class="grid grid-cols-12 gap-4 sm:gap-5 pt-20 sm:pt-24 md:pt-28 lg:pt-32">
+            <div
+                class="col-span-12 sm:col-span-5 md:col-span-5 bg-forest text-cream rounded-3xl sm:rounded-4xl p-6 sm:p-8 md:p-10 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+            >
+                <span class="font-agency font-extrabold text-5xl sm:text-6xl md:text-7xl">450+</span>
+                <span class="text-cream/70 text-sm sm:text-base font-medium">Projects Delivered</span>
+            </div>
+            <div
+                class="col-span-6 sm:col-span-4 md:col-span-4 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+            >
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl text-forest">150+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Clients Worldwide</span>
+            </div>
+            <div
+                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+            >
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">15+</span>
+                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Countries Served</span>
+            </div>
+
+            <div
+                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+            >
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">95%+</span>
+                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Client Satisfaction</span>
+            </div>
+            <div
+                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+            >
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">80%+</span>
+                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Repeat Clients</span>
+            </div>
+            <div
+                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-48 sm:min-h-52 md:min-h-56"
+            >
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl text-forest">Unlimited</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Revisions On Every Project</span>
+            </div>
+            <div
+                class="col-span-6 sm:col-span-3 md:col-span-3 bg-lime text-forest rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-48 sm:min-h-52 md:min-h-56"
+            >
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">Lifetime</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Support After Launch</span>
+            </div>
+        </div>
+    </div>
+
+    {{--
         mt matches the standard section rhythm used everywhere else on the page. The
         bottom side is deliberately padding, not margin: this wrapper and the Services
         section right after it both use that same standard rhythm on the touching sides,
@@ -211,20 +196,20 @@
 
                     <div class="col-span-1 md:col-span-3 w-full flex items-start justify-start md:justify-end">
                         <a
-                            href="#contact"
+                            href="{{ route('portfolio') }}"
                             class="group inline-flex items-center rounded-full border-2 sm:border-4 border-forest px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base font-bold text-forest"
                         >
                             <span class="relative overflow-hidden h-4 sm:h-5 leading-4 sm:leading-5">
                                 <span
                                     class="block whitespace-nowrap transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-4 sm:group-hover:-translate-y-5"
                                 >
-                                    Let's build yours
+                                    See Full Portfolio
                                 </span>
 
                                 <span
                                     class="absolute left-0 top-4 sm:top-5 block whitespace-nowrap transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-4 sm:group-hover:-translate-y-5"
                                 >
-                                    Let's build yours
+                                    See Full Portfolio
                                 </span>
                             </span>
                         </a>
@@ -232,102 +217,12 @@
                 </div>
             </div>
 
-            {{--
-                Real projects (from the founder's portfolio). No 'year' field —
-                none was recorded for these, and per policy we don't invent one.
-                'category' mirrors the category each project was actually tagged
-                with, and stands in for the old year+client line.
-            --}}
             @php
-                $caseStudies = [
-                    [
-                        'title' => 'Biscayne Bay Preparatory Academy',
-                        'category' => 'Web Design',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Biscayne-bay-prep.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Biscayne Bay Preparatory Academy',
-                        'category' => 'Branding & Marketing',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Seaside Beach Vacations',
-                        'category' => 'Web Design',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Seasidebeachvacations.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'TechPeak Digital',
-                        'category' => 'Web Design',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/techpeakdigitalui.png',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'All-in-One Digital Planner',
-                        'category' => 'Digital Products',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/DigitalPlanner.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Fillable Digital Planner',
-                        'category' => 'Digital Products',
-                        'image' => '/images/portfolio/digital-planner-fillable.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Sabor & Style',
-                        'category' => 'Web Design',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Sabor-and-Style.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Bulklcdparts',
-                        'category' => 'E-Commerce',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Bulklcdparts.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Digital Financial Planner',
-                        'category' => 'Digital Products',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Digital-Financial-Planner.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Pretty Corner Shop',
-                        'category' => 'E-Commerce',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/prettycornershop-eCommerce-Website-Design.jpg',
-                        'href' => '#contact',
-                    ],
-                    [
-                        'title' => 'Medicine Label Design',
-                        'category' => 'Packaging Design',
-                        'image' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Medicine-Label-Design.jpg',
-                        'href' => '#contact',
-                    ],
-                ];
+                $caseStudies = config('portfolio.case_studies');
             @endphp
-
-            {{--
-                overflow-x-auto is the baseline for every case where JS doesn't take over
-                (mobile, JS disabled, prefers-reduced-motion): a native horizontally
-                scrollable row, so every card stays reachable. On desktop, app.js switches
-                this to overflow-visible only once it has successfully set up the pinned
-                scroll-pan effect, since the two mechanisms would otherwise fight each other.
-            --}}
             <div
                 class="mt-6 sm:mt-8 md:mt-10 overflow-hidden mask-[linear-gradient(to_right,rgba(0,0,0,0.45),#000_8%_92%,rgba(0,0,0,0.45))]"
             >
-                {{--
-                    Left padding at rest intentionally matches the page's normal w-11/12
-                    (and 2xl:w-10/12) content-column margin, so the first card starts
-                    aligned with the rest of the page instead of sitting near the true
-                    screen edge. Right stays at the small fixed inset — as the track pans
-                    left during the pinned scroll, this left inset scrolls away with it,
-                    so by the time panning is underway the row reads as full-bleed on
-                    both sides, exactly like before.
-                --}}
                 <div
                     id="work-track"
                     class="w-full flex gap-6 md:gap-8 overflow-x-auto snap-x snap-mandatory py-4 px-4 sm:px-6 md:pl-[4.1667%] 2xl:pl-[8.3333%] md:pr-10"
@@ -367,40 +262,36 @@
         </div>
     </div>
 
+    {{--
+        Manifesto: a full-bleed editorial statement rather than another
+        eyebrow-plus-grid section, giving the page a deliberate pause before
+        the services pitch — the kind of brand-personality moment a
+        traditional corporate layout skips.
+    --}}
+    <div
+        class="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] bg-forest-deep py-20 sm:py-24 md:py-28 lg:py-32"
+        data-reveal
+    >
+        <div class="w-11/12 sm:w-9/12 md:w-8/12 mx-auto text-center flex flex-col items-center gap-5 sm:gap-6">
+            <div
+                class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"
+            >
+                <div class="size-2.5 sm:size-3 rounded-full bg-lime"></div>
+                How We Think
+            </div>
+            <p class="text-cream font-agency text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight">Good work isn't fast. It's considered. We'd rather build <span class="text-lime">one thing right</span> than five things quickly.</p>
+        </div>
+    </div>
+
     @php
-        $services = [
-            [
-                'title' => 'Web Design & Development',
-                'desc' => 'From pixel-perfect WordPress builds to custom Laravel applications, we design and develop websites and products that are intuitive to use and built to perform — backed by UX research and interaction design that keeps visitors engaged, converting, and coming back.',
-                'tags' => ['UI/UX Design', 'WordPress', 'Laravel', 'WooCommerce', 'Livewire', 'Custom Themes', 'SaaS', 'Page Speed'],
-                'img' => 'https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&q=80&w=2426',
-                'href' => '#contact',
-            ],
-            [
-                'title' => 'Branding & Product Design',
-                'desc' => 'Visual identity systems, marketing collateral, and digital product design that make a business instantly recognizable — from brand guidelines and social content to full product systems mapped around real user journeys and tested until every touchpoint converts.',
-                'tags' => ['Brand Identity', 'Graphic Design', 'Social Media', 'Print Design', 'Motion Graphics', 'Design Systems', 'Prototyping', 'CRO'],
-                'img' => 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1364',
-                'href' => '#contact',
-            ],
-            [
-                'title' => 'SEO & Digital Marketing',
-                'desc' => 'Getting found in search and turning that visibility into qualified leads — technical SEO, GEO/AEO for AI answer engines, and full-funnel paid and outreach campaigns that keep your pipeline full and your organic traffic compounding.',
-                'tags' => ['Technical SEO', 'GEO', 'AEO', 'Schema Markup', 'Meta Ads', 'Google Ads', 'Cold Email', 'Funnel Design'],
-                'img' => 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&q=80&w=2426',
-                'href' => '#contact',
-            ],
-            [
-                'title' => 'AI Automation & Integration',
-                'desc' => 'We automate the work that slows your business down. From AI-powered lead generation and cold email sequences to live customer support chatbots, multi-step n8n workflows, and custom LLM agents — we build intelligent systems that run 24/7, qualify leads, nurture prospects, and handle support without adding headcount.',
-                'tags' => ['n8n Workflows', 'Cold Email AI', 'Lead Generation', 'AI Live Support', 'Custom LLM Agents', 'Workflow Automation'],
-                'img' => 'https://ik.imagekit.io/eoweeomen/WavesyncAgency/ai-automation.png',
-                'href' => '#contact',
-            ],
-        ];
+        $services = config('service_offerings.services');
     @endphp
 
-    <div id="services" class="w-11/12 mx-auto 2xl:w-10/12 flex mb-16 sm:mb-20 md:mb-28 lg:mb-36" data-reveal>
+    <div
+        id="services"
+        class="w-11/12 mx-auto 2xl:w-10/12 flex mt-16 sm:mt-20 md:mt-28 lg:mt-36 mb-16 sm:mb-20 md:mb-28 lg:mb-36"
+        data-reveal
+    >
         <div class="w-full flex flex-col gap-6 sm:gap-8 md:gap-10">
             <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
                 <div class="col-span-1 md:col-span-2 flex flex-col gap-3 sm:gap-4 items-start">
@@ -413,8 +304,8 @@
                     <h3
                         class="text-forest font-agency text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold flex flex-col leading-tight sm:leading-[1.15] md:leading-[1.1] lg:leading-18 capitalize"
                     >
-                        <span>One team,</span>
-                        <span>four disciplines.</span>
+                        <span>Four disciplines,</span>
+                        <span>one goal: the right customers.</span>
                     </h3>
                 </div>
 
@@ -458,7 +349,12 @@
                                 <div class="flex flex-col gap-2">
                                     <div>
                                         <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">
-                                            {{ $service['title'] }}
+                                            <a
+                                                href="{{ route('services.show', $service['slug']) }}"
+                                                class="hover:text-lime transition-colors duration-300"
+                                            >
+                                                {{ $service['title'] }}
+                                            </a>
                                         </h3>
                                     </div>
                                     <div>
@@ -565,138 +461,158 @@
         </div>
     </div>
 
-    <x-testimonials />
-
-    <div id="process" class="w-11/12 mx-auto 2xl:w-10/12 flex my-16 sm:my-20 md:my-28 lg:my-36" data-reveal>
-        <div class="w-full flex flex-col gap-6 sm:gap-8 md:gap-10">
-            <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
-                <div class="col-span-1 md:col-span-2 flex flex-col gap-3 sm:gap-4 items-start">
-                    <h2
-                        class="capitalize text-forest text-xl sm:text-2xl md:text-3xl font-agency font-semibold flex items-center gap-2"
-                    >
-                        <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                        Simple process
-                    </h2>
-                    <h3
-                        class="text-forest font-agency text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold flex flex-col leading-tight sm:leading-[1.15] md:leading-[1.1] lg:leading-18 capitalize"
-                    >
-                        <span>How we </span>
-                        <span>actually work. </span>
-                    </h3>
-                </div>
-
-                <div class="col-span-1 md:col-span-3 w-full flex items-start justify-start md:justify-end">
-                    <a
-                        href="#contact"
-                        class="group inline-flex items-center rounded-full border-2 sm:border-4 border-forest px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base font-bold text-forest"
-                    >
-                        <span class="relative overflow-hidden h-4 sm:h-5 leading-4 sm:leading-5">
-                            <span
-                                class="block whitespace-nowrap transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-4 sm:group-hover:-translate-y-5"
-                            >
-                                Start a Project
-                            </span>
-
-                            <span
-                                class="absolute left-0 top-4 sm:top-5 block whitespace-nowrap transition-transform duration-300 ease-[cubic-bezier(.22,1,.36,1)] group-hover:-translate-y-4 sm:group-hover:-translate-y-5"
-                            >
-                                Start a Project
-                            </span>
-                        </span>
-                    </a>
-                </div>
+    {{--
+        The honest trade-off: Wavesync vs. freelancer vs. traditional agency,
+        as a proper row/column comparison table (inspired by the compare
+        tables used by Zaag and Design Monks) rather than a two-column
+        checklist — the checklist version only ever compared Wavesync
+        against one alternative, even though the heading asked about three.
+        Verdicts are a mix of check/warning/cross on purpose: making every
+        row a clean sweep for Wavesync would read as a strawman rather than
+        an honest comparison. Freelancer and Traditional Agency get credit
+        where it's genuinely warranted (freelancers: one person on the work;
+        agencies: structured process).
+    --}}
+    <div class="w-11/12 mx-auto 2xl:w-10/12 flex my-16 sm:my-20 md:my-28 lg:my-36" data-reveal>
+        <div class="w-full flex flex-col gap-8 sm:gap-10 md:gap-12">
+            <div class="flex flex-col gap-4 max-w-3xl">
+                <h2
+                    class="capitalize text-forest text-xl sm:text-2xl md:text-3xl font-agency font-semibold flex items-center gap-2"
+                >
+                    <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
+                    No Sugarcoating
+                </h2>
+                <h3
+                    class="text-forest font-agency text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-[1.15] capitalize"
+                >
+                    Freelancer, agency, or Wavesync?
+                </h3>
+                <p class="text-forest/70 text-base sm:text-lg font-medium">Pick Wavesync if you want the person who scopes your project to be the same person who builds it — live, working, and still supported after launch, not a folder of files handed off to someone else.</p>
             </div>
 
-            {{--
-                Decorative roadmap line connecting the 4 steps below, dipping down to
-                touch the top-center of each card (and tucking slightly behind it via
-                the negative margin, since the cards render after it in source order)
-                and arcing up between them — a path running through the steps rather
-                than a flat strip floating above them. Hidden below md where the cards
-                stack into 1-2 columns and a horizontal connecting line would no
-                longer line up with anything.
-            --}}
-            <div class="hidden md:block w-full -mb-2" aria-hidden="true">
-                <svg viewBox="0 0 1200 100" preserveAspectRatio="none" class="w-full h-16 lg:h-20">
-                    <path
-                        d="M0,70 C75,70 75,100 150,100 C225,100 225,25 300,25 C375,25 375,100 450,100 C525,100 525,25 600,25 C675,25 675,100 750,100 C825,100 825,25 900,25 C975,25 975,100 1050,100 C1125,100 1125,70 1200,70"
-                        fill="none"
-                        stroke="currentColor"
-                        class="text-forest/25"
-                        stroke-width="2"
-                        stroke-dasharray="7 7"
-                        stroke-linecap="round"
-                    />
-                    <circle cx="150" cy="100" r="6" class="fill-lime" />
-                    <circle cx="450" cy="100" r="6" class="fill-lime" />
-                    <circle cx="750" cy="100" r="6" class="fill-lime" />
-                    <circle cx="1050" cy="100" r="6" class="fill-lime" />
-                </svg>
-            </div>
+            @php
+                $tradeoffRows = [
+                    [
+                        'label' => 'Who does the work',
+                        'freelancer' => ['status' => 'check', 'text' => 'One person, start to finish'],
+                        'agency' => ['status' => 'cross', 'text' => 'Senior pitches, junior delivers'],
+                        'wavesync' => ['status' => 'check', 'text' => 'One person, start to finish'],
+                    ],
+                    [
+                        'label' => 'Design + development',
+                        'freelancer' => ['status' => 'warning', 'text' => 'Usually just one discipline'],
+                        'agency' => ['status' => 'warning', 'text' => 'Separate teams, handoff required'],
+                        'wavesync' => ['status' => 'check', 'text' => 'Both under one roof'],
+                    ],
+                    [
+                        'label' => 'Process & reliability',
+                        'freelancer' => ['status' => 'warning', 'text' => 'Varies — no guaranteed process'],
+                        'agency' => ['status' => 'check', 'text' => 'Structured, but slower & pricier'],
+                        'wavesync' => ['status' => 'check', 'text' => 'Defined process, every project'],
+                    ],
+                    [
+                        'label' => 'Pricing',
+                        'freelancer' => ['status' => 'warning', 'text' => 'Often unclear scope'],
+                        'agency' => ['status' => 'cross', 'text' => 'Change orders add up'],
+                        'wavesync' => ['status' => 'check', 'text' => 'Scoped and agreed upfront'],
+                    ],
+                    [
+                        'label' => 'After launch',
+                        'freelancer' => ['status' => 'cross', 'text' => 'Support usually ends at payment'],
+                        'agency' => ['status' => 'cross', 'text' => 'Needs a new contract'],
+                        'wavesync' => ['status' => 'check', 'text' => 'Lifetime support included'],
+                    ],
+                    [
+                        'label' => 'What you walk away with',
+                        'freelancer' => ['status' => 'warning', 'text' => 'Depends who you hired'],
+                        'agency' => ['status' => 'warning', 'text' => 'Often just files, no build'],
+                        'wavesync' => ['status' => 'check', 'text' => 'A live, working site'],
+                    ],
+                ];
 
-            <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-2">
-                <div
-                    class="flex gap-4 col-span-1 bg-forest text-cream rounded-3xl sm:rounded-4xl h-fit md:sticky md:top-16"
-                >
-                    <div class="w-full p-5 sm:p-6 flex flex-col justify-between">
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">*Discover</h3>
-                            </div>
-                            <div>
-                                <p class="text-sm sm:text-base md:text-lg">We start by understanding your business, your customers, and where the current website or workflow is actually falling short.</p>
-                            </div>
+                $tradeoffIcons = [
+                    'check' => ['icon' => 'fi-rr-check', 'badge' => 'bg-lime text-forest-deep'],
+                    'warning' => ['icon' => 'fi-rr-exclamation', 'badge' => 'bg-amber-100 text-amber-600'],
+                    'cross' => ['icon' => 'fi-rr-cross-small', 'badge' => 'bg-forest/5 text-forest/30'],
+                ];
+            @endphp
+
+            <div class="w-full overflow-x-auto">
+                <div class="min-w-175 md:min-w-0 rounded-3xl sm:rounded-4xl border border-forest/10 overflow-hidden">
+                    {{-- Header row --}}
+                    <div class="grid grid-cols-[1.3fr_1fr_1fr_1fr]">
+                        <div class="bg-mist p-4 sm:p-5 flex items-center border-r border-b border-forest/10">
+                            <span
+                                class="font-agency font-bold text-forest/50 text-xs sm:text-sm uppercase tracking-wide"
+                                >Comparing</span
+                            >
+                        </div>
+                        <div class="bg-mist p-4 sm:p-5 flex items-center border-r border-b border-forest/10">
+                            <span class="font-agency font-bold text-forest text-sm sm:text-base">Freelancer</span>
+                        </div>
+                        <div class="bg-mist p-4 sm:p-5 flex items-center border-r border-b border-forest/10">
+                            <span class="font-agency font-bold text-forest text-sm sm:text-base"
+                                >Traditional Agency</span
+                            >
+                        </div>
+                        <div class="bg-forest p-4 sm:p-5 flex items-center border-b border-forest">
+                            <span class="font-agency font-bold text-lime text-sm sm:text-base">Wavesync</span>
                         </div>
                     </div>
-                </div>
 
-                <div
-                    class="flex gap-4 col-span-1 bg-forest text-cream rounded-3xl sm:rounded-4xl h-fit md:sticky md:top-16"
-                >
-                    <div class="w-full p-5 sm:p-6 flex flex-col justify-between">
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">*Design</h3>
+                    {{-- Body rows --}}
+                    @foreach ($tradeoffRows as $index => $row)
+                        <div class="grid grid-cols-[1.3fr_1fr_1fr_1fr]">
+                            <div
+                                class="bg-white p-4 sm:p-5 flex items-center border-r border-forest/10 {{ $index < count($tradeoffRows) - 1 ? 'border-b' : '' }}"
+                            >
+                                <span
+                                    class="font-agency font-semibold text-forest text-sm sm:text-base"
+                                    >{{ $row['label'] }}</span
+                                >
                             </div>
-                            <div>
-                                <p class="text-sm sm:text-base md:text-lg">Wireframes and visual design come next — built around how your customers actually move through a decision, not just how a template looks.</p>
+
+                            @foreach (['freelancer', 'agency'] as $column)
+                                <div
+                                    class="bg-white p-4 sm:p-5 flex items-center gap-2 sm:gap-3 border-r border-forest/10 {{ $index < count($tradeoffRows) - 1 ? 'border-b' : '' }}"
+                                >
+                                    <div
+                                        class="flex items-center justify-center size-5 sm:size-6 shrink-0 rounded-full text-[10px] sm:text-xs {{ $tradeoffIcons[$row[$column]['status']]['badge'] }}"
+                                    >
+                                        <i class="fi {{ $tradeoffIcons[$row[$column]['status']]['icon'] }} flex"></i>
+                                    </div>
+                                    <span
+                                        class="text-forest/70 text-xs sm:text-sm leading-snug"
+                                        >{{ $row[$column]['text'] }}</span
+                                    >
+                                </div>
+                            @endforeach
+
+                            <div
+                                class="bg-forest p-4 sm:p-5 flex items-center gap-2 sm:gap-3 {{ $index < count($tradeoffRows) - 1 ? 'border-b border-forest-deep' : '' }}"
+                            >
+                                <div
+                                    class="flex items-center justify-center size-5 sm:size-6 shrink-0 rounded-full text-[10px] sm:text-xs {{ $tradeoffIcons[$row['wavesync']['status']]['badge'] }}"
+                                >
+                                    <i class="fi {{ $tradeoffIcons[$row['wavesync']['status']]['icon'] }} flex"></i>
+                                </div>
+                                <span
+                                    class="text-cream text-xs sm:text-sm leading-snug font-medium"
+                                    >{{ $row['wavesync']['text'] }}</span
+                                >
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div
-                    class="flex gap-4 col-span-1 bg-forest text-cream rounded-3xl sm:rounded-4xl h-fit md:sticky md:top-16"
-                >
-                    <div class="w-full p-5 sm:p-6 flex flex-col justify-between">
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">*Build</h3>
-                            </div>
-                            <div>
-                                <p class="text-sm sm:text-base md:text-lg">We build the site, brand assets, or automation on Laravel, WordPress, or the right workflow tooling — and connect the pieces that need to talk to each other.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div
-                    class="flex gap-4 col-span-1 bg-forest text-cream rounded-3xl sm:rounded-4xl h-fit md:sticky md:top-16"
-                >
-                    <div class="w-full p-5 sm:p-6 flex flex-col justify-between">
-                        <div class="flex flex-col gap-2">
-                            <div>
-                                <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">*Launch</h3>
-                            </div>
-                            <div>
-                                <p class="text-sm sm:text-base md:text-lg font-medium">After launch we keep watching what's working, fixing what isn't, and automating anything repetitive we find along the way.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
+
+    <x-testimonials />
+
+    <x-process-section />
 </div>
 
 <x-contact-form />
+
+<x-faq-section />

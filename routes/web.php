@@ -10,6 +10,34 @@ Route::get('/', function () {
     return view('public.home');
 })->name('home');
 
+Route::get('/services/{slug}', function (string $slug) {
+    $services = collect(config('service_offerings.services'));
+    $service = $services->firstWhere('slug', $slug);
+
+    abort_unless($service, 404);
+
+    $relatedCaseStudies = collect(config('portfolio.case_studies'))
+        ->filter(fn (array $caseStudy) => in_array($caseStudy['category'], $service['portfolio_categories'], true))
+        ->values()
+        ->all();
+
+    return view('public.service', [
+        'service' => $service,
+        'otherServices' => $services->reject(fn (array $s) => $s['slug'] === $slug)->values()->all(),
+        'relatedCaseStudies' => $relatedCaseStudies,
+    ]);
+})->name('services.show');
+
+Route::get('/about', function () {
+    return view('public.about');
+})->name('about');
+
+Route::get('/portfolio', function () {
+    return view('public.portfolio', [
+        'caseStudies' => config('portfolio.case_studies'),
+    ]);
+})->name('portfolio');
+
 Route::post('/contact', function (Request $request) {
     try {
         $validated = $request->validate([

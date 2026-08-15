@@ -76,6 +76,56 @@
     @apply mx-auto flex max-w-screen-2xl flex-col px-4 sm:px-6 md:px-8;
 }
 
+/*
+   Shared dark hero background (photo + dark overlay), used by the homepage,
+   service-page, and about-page heroes. Height is left to each usage via
+   Tailwind h-* utilities on the element, since each context wants a
+   different height. The actual background-image is set inline per usage
+   rather than here: a root-relative url() inside this file resolves against
+   wherever this stylesheet was fetched from, which during local dev is the
+   Vite dev server's own origin (not the Laravel app), so it 404s — an
+   inline style attribute is part of the document itself and always
+   resolves correctly.
+
+   Wrapped in @layer components (rather than left unlayered) on purpose:
+   Tailwind v4 emits utility classes inside cascade layers, and an unlayered
+   rule always wins over a layered one regardless of specificity or source
+   order — an earlier unlayered version of `.hero-media-bg > *` was silently
+   overriding the header's `sticky` and `z-50` utility classes with its own
+   `relative`/`z-index: 1`, so the header was never actually sticky. Inside
+   @layer components, Tailwind's utilities (in the higher-priority
+   `utilities` layer) correctly win when an element sets its own position/
+   z-index, while this rule still applies its default to everything else.
+*/
+@layer components {
+    .hero-media-bg {
+        position: relative;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        /* No overflow:hidden here on purpose — the header's Services mega
+           menu is an absolutely-positioned descendant that needs to render
+           outside this box (below the header) without being clipped.
+           background-image rendering is already contained to the element's
+           own box regardless. */
+    }
+
+    .hero-media-bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 0;
+    }
+
+    .hero-media-bg > * {
+        position: relative;
+        z-index: 1;
+    }
+}
+
 @keyframes scroll {
     to {
         transform: translateX(-50%);
