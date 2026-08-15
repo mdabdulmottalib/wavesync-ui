@@ -1,39 +1,4 @@
 <div class="bg w-full flex flex-col py-6">
-    {{--
-        Ambient background effect: shadcn's "hero-31" block background image
-        (assets.watermelon.sh/hero-31-bg.avif), self-hosted and recolored to the
-        brand palette via CSS filter (grayscale + sepia as a base, then hue-rotate
-        into lime/forest territory) combined with mix-blend-mode: screen so the
-        image's black areas disappear into the .bg forest background instead of
-        showing a hard rectangle. Purely decorative, so it's aria-hidden and
-        pointer-events-none.
-    --}}
-    {{--
-        style="position:absolute" is inline (not a Tailwind class) on purpose: the
-        .bg > * rule below sets position:relative on every direct child, and since
-        that inline <style> block is later in source order than the compiled
-        Tailwind CSS, its position:relative would otherwise win over the `absolute`
-        utility class and break this positioning. Inline style always wins regardless
-        of source order, so it's the reliable fix — everything else here still comes
-        from Tailwind utilities.
-    --}}
-    <div style="position: absolute" class="inset-0 pointer-events-none" aria-hidden="true">
-        <img
-            src="/images/wavesync_hero_bg.jpg"
-            alt=""
-            class="w-full h-full object-cover"
-            style="
-                object-position: right top;
-                transform: scaleX(-1);
-                opacity: 0.55;
-                filter: grayscale(1) sepia(1) hue-rotate(45deg) saturate(3) brightness(1);
-                mix-blend-mode: screen;
-                -webkit-mask-image: radial-gradient(ellipse 65% 60% at 85% 5%, black 35%, transparent 90%);
-                mask-image: radial-gradient(ellipse 65% 60% at 85% 5%, black 35%, transparent 90%);
-            "
-        />
-    </div>
-
     <header
         class="p-2.5 mx-auto w-full max-w-5xl z-50 bg-green-50/5 rounded-full backdrop-blur-3xl left-0 right-0 top-0 border-2 border-amber-50/5 sticky"
     >
@@ -121,51 +86,44 @@
         position: relative;
         width: 100%;
         height: 88vh;
-        background-color: var(--color-forest);
-        overflow: hidden;
+        background-image: url('/images/wavesync_hero_bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
     }
 
-    @media (max-width: 640px) {
-        .bg {
-            position: relative;
-            width: 100%;
-            height: 50vh;
-            background-color: var(--color-forest);
-            overflow: hidden;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .bg {
-            position: relative;
-            width: 100%;
-            height: 60vh;
-            background-color: var(--color-forest);
-            overflow: hidden;
-        }
-    }
-    @media (max-width: 1024px) {
-        .bg {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            background-color: var(--color-forest);
-            overflow: hidden;
-        }
-    }
-    @media (min-width: 1024px) {
-        .bg {
-            position: relative;
-            width: 100%;
-            height: 80vh;
-            background-color: var(--color-forest);
-            overflow: hidden;
-        }
+    .bg::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 0;
     }
 
     .bg > * {
         position: relative;
         z-index: 1;
+    }
+
+    @media (max-width: 640px) {
+        .bg {
+            height: 50vh;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .bg {
+            height: 60vh;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .bg {
+            height: 80vh;
+        }
     }
 </style>
 
