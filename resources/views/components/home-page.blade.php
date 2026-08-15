@@ -530,22 +530,35 @@
                     ],
                 ];
 
-                $tradeoffIcons = [
-                    'check' => ['icon' => 'fi-rr-check', 'badge' => 'bg-lime text-forest-deep'],
+                // Two separate icon sets rather than one: a bright lime badge reads
+                // fine against the dark Wavesync column but looks out of place as a
+                // small saturated chip sitting directly on the light table rows, so
+                // the light columns get a muted forest badge instead and lime stays
+                // reserved for the Wavesync column where it's meant to stand out.
+                $tradeoffIconsLight = [
+                    'check' => ['icon' => 'fi-rr-check', 'badge' => 'bg-forest/10 text-forest'],
                     'warning' => ['icon' => 'fi-rr-exclamation', 'badge' => 'bg-amber-100 text-amber-600'],
                     'cross' => ['icon' => 'fi-rr-cross-small', 'badge' => 'bg-forest/5 text-forest/30'],
+                ];
+                $tradeoffIconsDark = [
+                    'check' => ['icon' => 'fi-rr-check', 'badge' => 'bg-lime text-forest-deep'],
+                    'warning' => ['icon' => 'fi-rr-exclamation', 'badge' => 'bg-amber-100 text-amber-600'],
+                    'cross' => ['icon' => 'fi-rr-cross-small', 'badge' => 'bg-white/10 text-white/40'],
                 ];
             @endphp
 
             <div class="w-full overflow-x-auto">
                 <div class="min-w-175 md:min-w-0 rounded-3xl sm:rounded-4xl border border-forest/10 overflow-hidden">
-                    {{-- Header row --}}
+                    {{--
+                        Header row: all four labels share the same weight,
+                        size, and case now — "Comparing" used to be small,
+                        muted, and uppercase while its neighbors were bold
+                        and full-size, which read as an accident rather
+                        than a deliberate hierarchy.
+                    --}}
                     <div class="grid grid-cols-[1.3fr_1fr_1fr_1fr]">
                         <div class="bg-mist p-4 sm:p-5 flex items-center border-r border-b border-forest/10">
-                            <span
-                                class="font-agency font-bold text-forest/50 text-xs sm:text-sm uppercase tracking-wide"
-                                >Comparing</span
-                            >
+                            <span class="font-agency font-bold text-forest text-sm sm:text-base">Comparing</span>
                         </div>
                         <div class="bg-mist p-4 sm:p-5 flex items-center border-r border-b border-forest/10">
                             <span class="font-agency font-bold text-forest text-sm sm:text-base">Freelancer</span>
@@ -577,9 +590,11 @@
                                     class="bg-white p-4 sm:p-5 flex items-center gap-2 sm:gap-3 border-r border-forest/10 {{ $index < count($tradeoffRows) - 1 ? 'border-b' : '' }}"
                                 >
                                     <div
-                                        class="flex items-center justify-center size-5 sm:size-6 shrink-0 rounded-full text-[10px] sm:text-xs {{ $tradeoffIcons[$row[$column]['status']]['badge'] }}"
+                                        class="flex items-center justify-center size-5 sm:size-6 shrink-0 rounded-full text-[10px] sm:text-xs {{ $tradeoffIconsLight[$row[$column]['status']]['badge'] }}"
                                     >
-                                        <i class="fi {{ $tradeoffIcons[$row[$column]['status']]['icon'] }} flex"></i>
+                                        <i
+                                            class="fi {{ $tradeoffIconsLight[$row[$column]['status']]['icon'] }} flex"
+                                        ></i>
                                     </div>
                                     <span
                                         class="text-forest/70 text-xs sm:text-sm leading-snug"
@@ -592,9 +607,9 @@
                                 class="bg-forest p-4 sm:p-5 flex items-center gap-2 sm:gap-3 {{ $index < count($tradeoffRows) - 1 ? 'border-b border-forest-deep' : '' }}"
                             >
                                 <div
-                                    class="flex items-center justify-center size-5 sm:size-6 shrink-0 rounded-full text-[10px] sm:text-xs {{ $tradeoffIcons[$row['wavesync']['status']]['badge'] }}"
+                                    class="flex items-center justify-center size-5 sm:size-6 shrink-0 rounded-full text-[10px] sm:text-xs {{ $tradeoffIconsDark[$row['wavesync']['status']]['badge'] }}"
                                 >
-                                    <i class="fi {{ $tradeoffIcons[$row['wavesync']['status']]['icon'] }} flex"></i>
+                                    <i class="fi {{ $tradeoffIconsDark[$row['wavesync']['status']]['icon'] }} flex"></i>
                                 </div>
                                 <span
                                     class="text-cream text-xs sm:text-sm leading-snug font-medium"
