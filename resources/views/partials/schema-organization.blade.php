@@ -15,6 +15,7 @@
         $at . 'id' => config('app.url') . '/#organization',
         'name' => config('app.name'),
         'url' => config('app.url'),
+        'logo' => asset('images/logo.svg'),
         'founder' => [
             $at . 'type' => 'Person',
             'name' => config('wavesync.founder_name'),

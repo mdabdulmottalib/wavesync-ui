@@ -14,6 +14,7 @@
 
     @include ('partials.seo-meta')
     @include ('partials.schema-organization')
+    @stack ('schema')
 
     @stack ('styles')
 </head>

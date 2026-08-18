@@ -2,7 +2,7 @@
     'faqs' => [
         [
             'question' => 'What services does Wavesync Agency offer?',
-            'answer' => 'We work across four areas: web & digital experiences (UI/UX design, WordPress, Laravel, digital product design), brand & creative (graphic design), SEO & digital growth (search visibility, digital marketing), and AI & business automation (workflow automation, integrations). Most client work draws on more than one of these at once.',
+            'answer' => 'We work across four areas: web design (UI/UX design, WordPress, Laravel, digital product design), branding identity (graphic design), SEO & digital marketing (search visibility, digital marketing), and automation & integration (workflow automation, integrations). Most client work draws on more than one of these at once.',
         ],
         [
             'question' => 'Do you work with international or remote clients?',
@@ -70,6 +70,38 @@
         </div>
     </div>
 </div>
+
+{{--
+    FAQPage schema mirrors exactly the $faqs already rendered above — never a
+    separately-maintained list, so it can't drift out of sync with what's
+    actually visible on the page. Uses the $at trick from
+    partials/schema-organization.blade.php since Blade's compiler treats a
+    literal '@type' inside a PHP string as a directive.
+--}}
+@php
+    $at = '@';
+
+    $faqPageLd = [
+        $at . 'context' => 'https://schema.org',
+        $at . 'type' => 'FAQPage',
+        'mainEntity' => collect($faqs)
+            ->map(fn (array $faq) => [
+                $at . 'type' => 'Question',
+                'name' => $faq['question'],
+                'acceptedAnswer' => [
+                    $at . 'type' => 'Answer',
+                    'text' => $faq['answer'],
+                ],
+            ])
+            ->all(),
+    ];
+@endphp
+
+@push ('schema')
+    <script type="application/ld+json">
+{!! json_encode($faqPageLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endpush
 
 @once
     @push ('scripts')

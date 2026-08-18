@@ -5,7 +5,7 @@
         {{-- Brand --}}
         <div class="lg:col-span-3 flex flex-col gap-5 sm:gap-6">
             <a href="{{ route('home') }}">
-                <h6 class="font-agency text-5xl font-extrabold">wavesync</h6>
+                <img src="/images/logo.svg" alt="Wavesync" class="h-9 sm:h-10 w-auto" />
             </a>
 
             <p class="text-lg text-cream/80 max-w-96 font-medium leading-relaxed">We build the websites, search visibility, and automation that turn searches into customers. {{ config('wavesync.founded_summary') }}.</p>
@@ -61,7 +61,7 @@
                         <a href="#" class="hover:text-cream transition-colors duration-300">Cookie Settings</a>
                     </li>
                     <li>
-                        <a href="/#contact" class="hover:text-cream transition-colors duration-300">Contact Support</a>
+                        <a href="{{ route('contact.page') }}" class="hover:text-cream transition-colors duration-300">Contact Support</a>
                     </li>
                 </ul>
             </div>
@@ -75,7 +75,7 @@
                         <a href="#" class="hover:text-cream transition-colors duration-300">Careers</a>
                     </li>
                     <li>
-                        <a href="/#contact" class="hover:text-cream transition-colors duration-300">Contact Us</a>
+                        <a href="{{ route('contact.page') }}" class="hover:text-cream transition-colors duration-300">Contact Us</a>
                     </li>
                 </ul>
             </div>
@@ -90,14 +90,12 @@
         <p class="text-xs sm:text-sm text-cream/60">All rights reserved.</p>
     </div>
 
-    {{-- Watermark (motion removed, plain div) --}}
+    {{-- Watermark (motion removed, plain div); full-bleed and low-opacity so
+         it reads as a subtle gray blend into bg-ink rather than a stark
+         white shape — footer's own overflow-hidden clips any edge crop. --}}
     <div class="relative -bottom-16 pt-8">
-        <div class="w-full flex items-center justify-center text-cream">
-            <h6
-                class="font-agency font-extrabold text-[clamp(5rem,16vw,12rem)] leading-none whitespace-nowrap uppercase"
-            >
-                wavesync
-            </h6>
+        <div class="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] flex items-center justify-center">
+            <img src="/images/logo.svg" alt="" class="w-full h-auto opacity-10" />
         </div>
     </div>
 </footer>

@@ -12,7 +12,7 @@
             class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"
         >
             <div class="size-2.5 sm:size-3 rounded-full bg-lime"></div>
-            Boutique Digital Studio
+            Founder-Led Digital Studio
         </div>
 
         <h1
@@ -27,7 +27,8 @@
     </div>
 </div>
 
-<x-video-frame />
+{{-- TODO(content): re-enable once the real showreel video is ready --}}
+{{-- <x-video-frame /> --}}
 
 <div class="bg-mist py-28">
     <div id="about" class="w-11/12 mx-auto flex 2xl:w-10/12" data-reveal>
@@ -108,50 +109,58 @@
         claims (not simple counts or policy commitments) — make sure these
         are numbers that can actually be backed up before this goes live.
     --}}
+    {{--
+        min-w-0 on every cell below: CSS Grid items default to min-width:auto,
+        which refuses to shrink a cell below its content's intrinsic width —
+        with long labels like "Revisions On Every Project" at bold display
+        sizes, that silently forced the whole 12-col row (and the page)
+        wider than the viewport at exactly the md breakpoint. min-w-0 lets
+        the cell shrink to its grid track and the text wrap normally instead.
+    --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12" data-reveal>
         <div class="grid grid-cols-12 gap-4 sm:gap-5 pt-20 sm:pt-24 md:pt-28 lg:pt-32">
             <div
-                class="col-span-12 sm:col-span-5 md:col-span-5 bg-forest text-cream rounded-3xl sm:rounded-4xl p-6 sm:p-8 md:p-10 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+                class="col-span-12 sm:col-span-5 md:col-span-5 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-6 sm:p-8 md:p-10 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
             >
-                <span class="font-agency font-extrabold text-5xl sm:text-6xl md:text-7xl">450+</span>
-                <span class="text-cream/70 text-sm sm:text-base font-medium">Projects Delivered</span>
+                <span class="font-agency font-extrabold text-5xl sm:text-6xl md:text-7xl wrap-break-word min-w-0">450+</span>
+                <span class="text-cream/70 text-sm sm:text-base font-medium min-w-0">Projects Delivered</span>
             </div>
             <div
-                class="col-span-6 sm:col-span-4 md:col-span-4 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+                class="col-span-6 sm:col-span-4 md:col-span-4 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
             >
-                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl text-forest">150+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Clients Worldwide</span>
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl text-forest wrap-break-word min-w-0">150+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium min-w-0">Clients Worldwide</span>
             </div>
             <div
-                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+                class="col-span-6 sm:col-span-3 md:col-span-3 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
             >
-                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">15+</span>
-                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Countries Served</span>
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl wrap-break-word min-w-0">15+</span>
+                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium min-w-0">Countries Served</span>
             </div>
 
             <div
-                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+                class="col-span-6 sm:col-span-3 md:col-span-3 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
             >
-                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">95%+</span>
-                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Client Satisfaction</span>
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-3xl lg:text-5xl wrap-break-word min-w-0">95%+</span>
+                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium min-w-0">Client Satisfaction</span>
             </div>
             <div
-                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
+                class="col-span-6 sm:col-span-3 md:col-span-3 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl text-forest p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-56 sm:min-h-64 md:min-h-72"
             >
-                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">80%+</span>
-                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Repeat Clients</span>
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-3xl lg:text-5xl wrap-break-word min-w-0">80%+</span>
+                <span class="text-forest-deep/70 text-xs sm:text-sm font-medium min-w-0">Repeat Clients</span>
             </div>
             <div
-                class="col-span-6 sm:col-span-3 md:col-span-3 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-48 sm:min-h-52 md:min-h-56"
+                class="col-span-6 sm:col-span-3 md:col-span-3 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-48 sm:min-h-52 md:min-h-56"
             >
-                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl text-forest">Unlimited</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Revisions On Every Project</span>
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-2xl lg:text-5xl text-forest wrap-break-word min-w-0">Unlimited</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium min-w-0">Revisions On Every Project</span>
             </div>
             <div
-                class="col-span-6 sm:col-span-3 md:col-span-3 bg-lime text-forest rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-48 sm:min-h-52 md:min-h-56"
+                class="col-span-6 sm:col-span-3 md:col-span-3 min-w-0 bg-lime text-forest rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-48 sm:min-h-52 md:min-h-56"
             >
-                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-5xl">Lifetime</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Support After Launch</span>
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl md:text-2xl lg:text-5xl wrap-break-word min-w-0">Lifetime</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium min-w-0">Support After Launch</span>
             </div>
         </div>
     </div>
@@ -348,13 +357,10 @@
 
                                 <div class="flex flex-col gap-2">
                                     <div>
+                                        {{-- Plain text, not a link — individual service pages are
+                                             temporarily disabled (see routes/web.php). --}}
                                         <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">
-                                            <a
-                                                href="{{ route('services.show', $service['slug']) }}"
-                                                class="hover:text-lime transition-colors duration-300"
-                                            >
-                                                {{ $service['title'] }}
-                                            </a>
+                                            {{ $service['title'] }}
                                         </h3>
                                     </div>
                                     <div>

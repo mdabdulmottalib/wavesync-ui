@@ -1,6 +1,6 @@
 <div class="w-11/12 mx-auto 2xl:w-10/12 flex my-16 sm:my-20 md:my-28 lg:my-36">
-    <div class="w-full flex flex-col gap-6 sm:gap-8 md:gap-10">
-        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-4">
+    <div class="w-full flex flex-col gap-8 sm:gap-10 md:gap-12">
+        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-6 md:gap-8 items-end">
             <div class="col-span-1 md:col-span-2 flex flex-col gap-3 sm:gap-4 items-start">
                 <h2
                     class="capitalize text-forest text-xl sm:text-2xl md:text-3xl font-agency font-semibold flex items-center gap-2"
@@ -17,7 +17,11 @@
                 </h3>
             </div>
 
-            <div class="col-span-1 md:col-span-3 w-full flex items-start justify-start md:justify-end">
+            <div class="col-span-1 md:col-span-3 flex flex-col md:items-end gap-4 sm:gap-5">
+                <p class="text-forest/70 text-sm sm:text-base md:text-lg font-medium max-w-md md:text-right">
+                    Every review here is real and unedited — pulled straight from client feedback, not written for
+                    the website.
+                </p>
                 <a
                     href="#contact"
                     class="group inline-flex items-center rounded-full border-2 sm:border-4 border-forest px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg font-bold text-forest"
@@ -134,70 +138,117 @@
                     'message' => "This seller worked hard to finish the project.",
                 ],
             ];
+
+            // Real numbers, computed from the reviews above rather than a
+            // fixed figure — stays honest even as more get added over time.
+            $reviewCount = count($testimonials);
+            $avgRating = round(collect($testimonials)->avg('rating'), 1);
+            $avatarPreview = array_slice($testimonials, 0, 4);
+            $remainingCount = max($reviewCount - count($avatarPreview), 0);
         @endphp
 
-        {{-- SLIDER --}}
-        <div id="testimonialSlider" class="w-full relative overflow-hidden">
+        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-5 items-stretch">
+            {{-- Rating summary --}}
             <div
-                id="testimonialTrack"
-                class="w-full flex transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
+                class="md:col-span-2 col-span-full bg-forest text-cream rounded-3xl sm:rounded-4xl p-6 sm:p-8 flex flex-col justify-between gap-6 sm:gap-8"
             >
-                @foreach ($testimonials as $testimonial)
-                    <div class="testimonial-slide w-full md:w-1/2 shrink-0 px-1.5 sm:px-2">
+                <div class="flex flex-col gap-2 sm:gap-3">
+                    <span class="font-agency font-extrabold text-6xl sm:text-7xl leading-none">{{ number_format($avgRating, 1) }}</span>
+                    <div class="flex items-center gap-1.5">
+                        @for ($i = 0; $i < 5; $i++)
+                            <i class="fi fi-sr-star flex text-base sm:text-lg text-lime"></i>
+                        @endfor
+                    </div>
+                    <span class="text-cream/60 text-sm sm:text-base font-medium">({{ $reviewCount }} reviews via Fiverr)</span>
+                </div>
+
+                <p class="font-agency font-bold text-xl sm:text-2xl leading-snug">Client feedback that speaks for itself.</p>
+
+                <div class="flex items-center">
+                    @foreach ($avatarPreview as $person)
                         <div
-                            class="bg-forest text-cream rounded-3xl sm:rounded-4xl h-[300px] sm:h-[320px] md:h-[350px] relative"
+                            class="size-11 sm:size-12 rounded-full border-2 border-forest -ml-3 first:ml-0 overflow-hidden shrink-0 relative"
                         >
-                            <div class="p-5 sm:p-6 md:p-8">
-                                <div class="flex flex-col gap-4 sm:gap-6 md:gap-8">
-                                    <div class="w-full flex items-center justify-between">
-                                        <div class="flex items-center gap-3 sm:gap-4">
-                                            @if (! empty($testimonial['avatar']))
-                                                <div
-                                                    class="size-11 sm:size-12 md:size-14 rounded-full relative overflow-hidden shrink-0"
-                                                >
-                                                    <img
-                                                        class="inset-0 object-cover object-center w-full h-full"
-                                                        src="{{ $testimonial['avatar'] }}"
-                                                        alt="{{ $testimonial['name'] }}"
-                                                    />
-                                                </div>
-                                            @else
-                                                <div
-                                                    class="size-11 sm:size-12 md:size-14 rounded-full bg-lime/15 border border-lime/40 flex items-center justify-center text-lime font-agency font-bold text-base sm:text-lg shrink-0"
-                                                    aria-hidden="true"
-                                                >
-                                                    {{ $testimonial['avatar_initial'] }}
-                                                </div>
-                                            @endif
+                            @if (! empty($person['avatar']))
+                                <img
+                                    class="absolute inset-0 w-full h-full object-cover object-center"
+                                    src="{{ $person['avatar'] }}"
+                                    alt="{{ $person['name'] }}"
+                                />
+                            @else
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center bg-lime/15 text-lime font-agency font-bold text-sm sm:text-base"
+                                    aria-hidden="true"
+                                >
+                                    {{ $person['avatar_initial'] }}
+                                </div>
+                            @endif
+                        </div>
+                    @endforeach
+                    @if ($remainingCount > 0)
+                        <div
+                            class="size-11 sm:size-12 rounded-full border-2 border-forest -ml-3 bg-lime text-forest-deep flex items-center justify-center font-agency font-bold text-sm shrink-0"
+                        >
+                            +{{ $remainingCount }}
+                        </div>
+                    @endif
+                </div>
+            </div>
 
-                                            <div>
-                                                <h3 class="font-agency font-bold text-base sm:text-lg leading-3.5">
-                                                    {{ $testimonial['name'] }}
-                                                </h3>
-                                                <p class="text-xs sm:text-sm text-cream/70">{{ $testimonial['location'] }}</p>
-                                            </div>
-                                        </div>
+            {{-- Featured single-review carousel --}}
+            <div class="md:col-span-3 col-span-full">
+                <div id="testimonialSlider" class="w-full h-full relative overflow-hidden">
+                    <div
+                        id="testimonialTrack"
+                        class="w-full h-full flex transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)]"
+                    >
+                        @foreach ($testimonials as $testimonial)
+                            <div class="testimonial-slide w-full shrink-0 h-full">
+                                <div
+                                    class="bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-6 sm:p-8 h-full flex flex-col justify-between gap-5 sm:gap-6 relative overflow-hidden"
+                                >
+                                    <i
+                                        class="fi fi-sr-quote-right absolute -top-3 right-5 sm:right-7 text-6xl sm:text-7xl md:text-8xl text-forest/5 pointer-events-none"
+                                        aria-hidden="true"
+                                    ></i>
 
-                                        <div class="flex flex-col items-end gap-1 sm:gap-1.5 shrink-0">
-                                            <div class="flex items-center gap-1 sm:gap-1.5">
-                                                @foreach (range(1, $testimonial['rating'] ?? 5) as $index)
-                                                    <i class="fi fi-sr-star flex text-xs sm:text-sm text-lime"></i>
-                                                @endforeach
-                                            </div>
-                                            @if (! empty($testimonial['source']))
-                                                <span class="text-[10px] sm:text-xs uppercase tracking-wide text-cream/50">via {{ $testimonial['source'] }}</span>
-                                            @endif
+                                    <div class="flex flex-col gap-3 sm:gap-4 relative">
+                                        <div class="flex items-center gap-1.5">
+                                            @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
+                                                <i class="fi fi-sr-star flex text-sm sm:text-base text-lime"></i>
+                                            @endfor
+                                            <span class="ml-1 font-agency font-bold text-forest text-sm sm:text-base">{{ number_format($testimonial['rating'] ?? 5, 1) }}</span>
                                         </div>
+                                        <p class="text-forest text-base sm:text-lg md:text-xl font-agency leading-relaxed line-clamp-4 sm:line-clamp-5">"{{ $testimonial['message'] }}"</p>
                                     </div>
 
-                                    <div>
-                                        <p class="text-sm sm:text-base md:text-lg font-agency leading-relaxed line-clamp-4 md:line-clamp-5">"{{ $testimonial['message'] }}"</p>
+                                    <div class="flex items-center gap-3 relative">
+                                        @if (! empty($testimonial['avatar']))
+                                            <div class="size-10 sm:size-11 rounded-full relative overflow-hidden shrink-0">
+                                                <img
+                                                    class="absolute inset-0 w-full h-full object-cover object-center"
+                                                    src="{{ $testimonial['avatar'] }}"
+                                                    alt="{{ $testimonial['name'] }}"
+                                                />
+                                            </div>
+                                        @else
+                                            <div
+                                                class="size-10 sm:size-11 rounded-full bg-forest/5 border border-forest/10 flex items-center justify-center text-forest font-agency font-bold text-sm shrink-0"
+                                                aria-hidden="true"
+                                            >
+                                                {{ $testimonial['avatar_initial'] }}
+                                            </div>
+                                        @endif
+                                        <div>
+                                            <h4 class="font-agency font-bold text-forest text-sm sm:text-base">{{ $testimonial['name'] }}</h4>
+                                            <p class="text-forest/50 text-xs sm:text-sm">{{ $testimonial['location'] }} &middot; via {{ $testimonial['source'] }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
 
@@ -205,14 +256,14 @@
             <button
                 id="prevBtn"
                 type="button"
-                class="group inline-flex items-center justify-center rounded-full border-2 border-forest font-bold text-forest size-10 sm:size-11 md:size-12 cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-300"
+                class="group inline-flex items-center justify-center rounded-full bg-lime font-bold text-forest-deep size-10 sm:size-11 md:size-12 cursor-pointer hover:opacity-90 transition-opacity duration-300"
             >
                 <i class="fi fi-rr-arrow-small-left flex text-xl sm:text-2xl md:text-3xl"></i>
             </button>
             <button
                 id="nextBtn"
                 type="button"
-                class="group inline-flex items-center justify-center rounded-full border-2 border-forest font-bold text-forest size-10 sm:size-11 md:size-12 cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-300"
+                class="group inline-flex items-center justify-center rounded-full bg-forest font-bold text-cream size-10 sm:size-11 md:size-12 cursor-pointer hover:bg-forest-deep transition-colors duration-300"
             >
                 <i class="fi fi-rr-arrow-small-right flex text-xl sm:text-2xl md:text-3xl"></i>
             </button>
@@ -230,32 +281,18 @@
             const slides = Array.from(track.children);
             const total = slides.length;
 
-            let itemsPerView = window.innerWidth >= 768 ? 2 : 1;
             let currentIndex = 0;
             let autoplayTimer = null;
             const AUTOPLAY_DELAY = 4000;
 
-            // max index so the track never scrolls past the last full view
-            function maxIndex() {
-                return Math.max(total - itemsPerView, 0);
-            }
-
-            function slideWidthPercent() {
-                // width of ONE slide as a percentage of the track container
-                return 100 / itemsPerView;
-            }
-
             function updateTransform(withTransition = true) {
                 track.style.transition = withTransition ? 'transform 700ms cubic-bezier(.22,1,.36,1)' : 'none';
-                const offset = currentIndex * slideWidthPercent();
-                track.style.transform = `translateX(-${offset}%)`;
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
             }
 
             function goToIndex(index) {
-                const max = maxIndex();
-                // wrap around one card at a time
-                if (index < 0) index = max;
-                else if (index > max) index = 0;
+                if (index < 0) index = total - 1;
+                else if (index > total - 1) index = 0;
                 currentIndex = index;
                 updateTransform(true);
             }
@@ -285,16 +322,6 @@
                 startAutoplay();
             }
 
-            function recalcResponsive() {
-                const newItemsPerView = window.innerWidth >= 768 ? 2 : 1;
-                if (newItemsPerView !== itemsPerView) {
-                    itemsPerView = newItemsPerView;
-                    currentIndex = Math.min(currentIndex, maxIndex());
-                    updateTransform(false);
-                }
-            }
-
-            // Button events — move ONE card per click
             nextBtn.addEventListener('click', function () {
                 next();
                 restartAutoplay();
@@ -305,11 +332,9 @@
                 restartAutoplay();
             });
 
-            // Pause on hover / touch
             slider.addEventListener('mouseenter', stopAutoplay);
             slider.addEventListener('mouseleave', startAutoplay);
 
-            // Swipe support for mobile — one card per swipe
             let touchStartX = 0;
             let touchEndX = 0;
 
@@ -335,14 +360,6 @@
                 { passive: true },
             );
 
-            // Responsive recalculation
-            let resizeTimeout;
-            window.addEventListener('resize', function () {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(recalcResponsive, 150);
-            });
-
-            // Init
             updateTransform(false);
             startAutoplay();
         })();

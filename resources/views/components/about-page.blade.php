@@ -13,14 +13,13 @@
         </div>
 
         <h1
-            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-agency flex flex-col leading-tight sm:leading-tight md:leading-[1.1]"
+            class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold font-agency flex flex-col leading-tight sm:leading-tight md:leading-[1.1]"
         >
-            <span>Crafted, not templated.</span>
-            <span>Considered, not rushed.</span>
-            <span>Built to <span class="text-lime">last</span>.</span>
+            <span>One person.</span>
+            <span>Big <span class="text-lime">waves</span>.</span>
         </h1>
 
-        <p class="text-cream/70 font-medium text-base sm:text-lg md:text-xl max-w-2xl">Wavesync is led by {{ config('wavesync.founder_name') }} — {{ config('wavesync.founded_summary') }} designing, building, and automating for clients who expect their digital presence to match the quality of everything else they've built.</p>
+        <p class="text-cream/70 font-medium text-base sm:text-lg md:text-xl max-w-2xl">Every project — <span class="text-cream font-semibold">150+</span> and counting — is shaped personally, start to finish: {{ config('wavesync.founded_summary') }} of hands-on design, development, and automation, with no outsourced hand-offs in between.</p>
     </div>
 </div>
 
@@ -44,63 +43,145 @@
         </div>
     </div>
 
-    {{-- Mission --}}
+    {{-- Stats --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-            <div class="md:col-span-2 col-span-full">
-                <h2
-                    class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
-                >
-                    <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                    Our Mission
-                </h2>
+        <div class="grid grid-cols-3 border-y border-forest/10 divide-x divide-forest/10">
+            <div class="flex flex-col items-center gap-1 sm:gap-2 py-8 sm:py-10 md:py-12 text-center px-2">
+                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl text-forest">450+</span>
+                <span class="text-forest/60 text-xs sm:text-sm md:text-base font-medium">Projects Delivered</span>
             </div>
-
-            <div class="md:col-span-3 col-span-full space-y-4 sm:space-y-5">
-                <p class="text-forest font-agency text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold leading-snug sm:leading-tight md:leading-[1.2]">Most businesses lose customers not because the product is wrong, but because the digital front door doesn't hold up — slow, generic, or forgettable. Our mission is to close that gap.</p>
-                <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">We build the website, the brand, and the systems behind them to the same standard the business itself was built to — so the first impression a customer gets is an honest one.</p>
+            <div class="flex flex-col items-center gap-1 sm:gap-2 py-8 sm:py-10 md:py-12 text-center px-2">
+                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl text-forest">150+</span>
+                <span class="text-forest/60 text-xs sm:text-sm md:text-base font-medium">Clients Worldwide</span>
+            </div>
+            <div class="flex flex-col items-center gap-1 sm:gap-2 py-8 sm:py-10 md:py-12 text-center px-2">
+                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl text-forest">15+</span>
+                <span class="text-forest/60 text-xs sm:text-sm md:text-base font-medium">Countries Served</span>
             </div>
         </div>
     </div>
 
-    {{-- Values --}}
+    {{-- Mission --}}
+    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+        <div
+            class="rounded-3xl sm:rounded-4xl bg-forest px-6 sm:px-12 md:px-20 py-14 sm:py-16 md:py-20 flex flex-col items-center text-center gap-5 sm:gap-6"
+        >
+            <div
+                class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"
+            >
+                <div class="size-2.5 sm:size-3 rounded-full bg-lime"></div>
+                Our Mission
+            </div>
+            <p class="text-cream font-agency text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug sm:leading-tight max-w-3xl">Most businesses lose customers not because the product is wrong, but because the digital front door doesn't hold up. Our mission is to close that gap.</p>
+            <p class="text-cream/60 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl">We build the website, the brand, and the systems behind them to the same standard the business itself was built to — so the first impression a customer gets is an honest one.</p>
+        </div>
+    </div>
+
+    {{-- Why Choose Us --}}
+    @php
+        $whyChooseUsImage = collect(config('portfolio.case_studies'))->firstWhere('title', 'Seaside Beach Vacations');
+        $whyChooseUsPoints = [
+            ['icon' => 'fi-rr-link-alt', 'title' => 'One system, not three vendors', 'desc' => "Website, SEO, and automation are usually bought separately, from people who don't talk to each other. Wavesync builds all three as one connected system, so nothing gets lost in the handoff."],
+            ['icon' => 'fi-rr-search', 'title' => 'Built to get found, not just admired', 'desc' => 'A homepage only does its job if it turns visitors into inquiries. Every site is built with search visibility and conversion in mind from the start, not bolted on after launch.'],
+            ['icon' => 'fi-rr-earth-americas', 'title' => 'Real experience, not a first attempt', 'desc' => "450+ projects across 15+ countries means patterns get recognized fast — what actually converts, what actually ranks, and what quietly breaks six months later."],
+            ['icon' => 'fi-rr-receipt', 'title' => 'Scoped upfront, no surprise invoices', 'desc' => "Every project is quoted before work starts, not billed hourly against a running clock. What's agreed is what gets charged."],
+        ];
+    @endphp
+    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
+            <div class="md:col-span-3 col-span-full flex flex-col gap-6 sm:gap-7 order-2 md:order-1">
+                <div class="flex flex-col gap-3 sm:gap-4">
+                    <h2
+                        class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
+                    >
+                        <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
+                        Why Choose Us
+                    </h2>
+                    <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                        We don't just design. We build systems that work.
+                    </h3>
+                    <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">A good-looking site nobody finds doesn't grow a business. Here's what that actually means day to day.</p>
+                </div>
+
+                <div class="flex flex-col divide-y divide-forest/10 border-t border-forest/10">
+                    @foreach ($whyChooseUsPoints as $point)
+                        <div class="flex items-start gap-4 sm:gap-5 py-5 sm:py-6">
+                            <div
+                                class="flex items-center justify-center size-10 sm:size-11 shrink-0 rounded-xl bg-forest/5 text-forest text-base sm:text-lg"
+                            >
+                                <i class="fi {{ $point['icon'] }} flex"></i>
+                            </div>
+                            <div class="flex flex-col gap-1 sm:gap-1.5">
+                                <h4 class="font-agency font-bold text-forest text-base sm:text-lg">
+                                    {{ $point['title'] }}
+                                </h4>
+                                <p class="text-forest/70 text-sm sm:text-base leading-relaxed">{{ $point['desc'] }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+
+            <div class="md:col-span-2 col-span-full order-1 md:order-2 flex flex-col gap-4 sm:gap-5">
+                <div class="relative w-full aspect-8/5 overflow-hidden rounded-3xl sm:rounded-4xl">
+                    <img
+                        class="absolute inset-0 w-full h-full object-cover object-center"
+                        src="{{ $whyChooseUsImage['image'] }}"
+                        alt="{{ $whyChooseUsImage['title'] }}"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="flex items-center justify-between gap-4 px-1">
+                    <span class="text-forest/50 text-xs sm:text-sm font-medium"
+                        >{{ $whyChooseUsImage['title'] }} — {{ $whyChooseUsImage['category'] }}</span
+                    >
+                    <a
+                        href="{{ route('portfolio') }}"
+                        class="text-forest text-xs sm:text-sm font-bold hover:underline shrink-0"
+                        >See the work &rarr;</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- What We Do: not currently shown anywhere on the About page — the
+         homepage covers services, but a visitor landing directly on /about
+         has no summary of what Wavesync actually does. Cards link to the
+         homepage's #services anchor rather than individual service pages,
+         since those are temporarily disabled (see routes/web.php). --}}
+    @php
+        $aboutServices = config('service_offerings.services');
+    @endphp
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
         <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
             <h2
                 class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
             >
                 <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                How We Work
+                What We Do
             </h2>
             <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                Principles, not policies.
+                The four things. Working as one.
             </h3>
+            <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Most agencies hand you off between departments for this. Wavesync builds all four as a single connected system, shaped by one person.</p>
         </div>
 
-        @php
-            $aboutValues = [
-                ['icon' => 'fi-rr-diamond', 'title' => 'Craft over templates', 'desc' => "Every project is scoped and built around the business in front of us. Nothing ships from a starter kit with the logo swapped."],
-                ['icon' => 'fi-rr-user', 'title' => 'One person, start to finish', 'desc' => 'The person who scopes your project is the same one who builds it — no handoffs between sales, design, and delivery.'],
-                ['icon' => 'fi-rr-time-past', 'title' => 'Considered, not rushed', 'desc' => "Fewer clients, handled properly, beats more clients handled generically. Deadlines matter, but they don't dictate quality."],
-                ['icon' => 'fi-rr-shield-check', 'title' => 'Support doesn\'t end at launch', 'desc' => "A finished site or system still needs someone accountable for it after it ships. That someone stays on."],
-            ];
-        @endphp
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-            @foreach ($aboutValues as $value)
-                <div
-                    class="flex flex-col gap-3 sm:gap-4 rounded-3xl bg-white border border-forest/10 p-6 sm:p-7 md:p-8"
-                >
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            @foreach ($aboutServices as $service)
+                <div class="flex flex-col gap-4 rounded-3xl bg-white border border-forest/10 p-6 sm:p-7">
                     <div
                         class="flex items-center justify-center size-11 sm:size-12 shrink-0 rounded-xl bg-forest/5 text-forest text-lg"
                     >
-                        <i class="fi {{ $value['icon'] }} flex"></i>
+                        <i class="fi {{ $service['icon'] }} flex"></i>
                     </div>
-                    <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">{{ $value['title'] }}</h4>
-                    <p class="text-forest/70 text-sm sm:text-base leading-relaxed">{{ $value['desc'] }}</p>
+                    <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">{{ $service['title'] }}</h4>
+                    <p class="text-forest/70 text-sm leading-relaxed line-clamp-4">{{ $service['desc'] }}</p>
                 </div>
             @endforeach
         </div>
+
+        <div class="flex justify-center mt-8 sm:mt-10"></div>
     </div>
     <div
         class="w-screen ml-[calc(50%-50vw)] mr-[calc(50%-50vw)] bg-forest-deep py-20 sm:py-24 md:py-28 lg:py-32 mt-16 sm:mt-20 md:mt-28"
@@ -113,24 +194,24 @@
                 <div class="size-2.5 sm:size-3 rounded-full bg-lime"></div>
                 Then &amp; Now
             </div>
-            <p class="text-cream font-agency text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight">From one <span class="text-lime">Core 2 Duo</span> PC to Wavesync Agency.</p>
+            <p class="text-cream font-agency text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold leading-snug sm:leading-tight">From one <span class="text-lime">Core 2 Duo</span> PC to Wavesync.</p>
         </div>
     </div>
     {{-- Founder's journey: real story, in the founder's own words --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+        <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
+            <h2
+                class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
+            >
+                <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
+                How It Started
+            </h2>
+            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                No roadmap. No shortcuts.
+            </h3>
+        </div>
         <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10">
             <div class="md:col-span-2 col-span-full flex flex-col gap-6 sm:gap-7">
-                <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
-                    <h2
-                        class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
-                    >
-                        <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                        How It Started
-                    </h2>
-                    <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                        No roadmap. No shortcuts.
-                    </h3>
-                </div>
                 <div>
                     <blockquote
                         class="text-forest font-agency text-xl sm:text-2xl md:text-3xl font-semibold leading-snug sm:leading-tight"
@@ -173,15 +254,6 @@
 
             <div class="md:col-span-3 col-span-full flex flex-col gap-8 sm:gap-10">
                 <div class="flex flex-col gap-3 sm:gap-4">
-                    <h2
-                        class="capitalize text-forest text-xl sm:text-2xl md:text-3xl font-agency font-semibold flex items-center gap-2"
-                    >
-                        <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                        Founder &amp; CEO
-                    </h2>
-                    <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold">
-                        {{ config('wavesync.founder_name') }}
-                    </h3>
                     <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">
                         {{ config('wavesync.founded_summary') }} designing websites, building brands, and automating the
                         parts of running a business that shouldn't need a person doing them by hand. Every project that
@@ -231,11 +303,86 @@
         <x-logo-carousel />
     </div>
 
-    <x-process-section />
+    {{-- Values --}}
+    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+        <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
+            <h2
+                class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
+            >
+                <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
+                How We Work
+            </h2>
+            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                Principles, not policies.
+            </h3>
+        </div>
 
+        @php
+            $aboutValues = [
+                ['icon' => 'fi-rr-diamond', 'title' => 'Craft over templates', 'desc' => "Every project is scoped and built around the business in front of us. Nothing ships from a starter kit with the logo swapped."],
+                ['icon' => 'fi-rr-user', 'title' => 'One person, start to finish', 'desc' => 'The person who scopes your project is the same one who builds it — no handoffs between sales, design, and delivery.'],
+                ['icon' => 'fi-rr-time-past', 'title' => 'Considered, not rushed', 'desc' => "Fewer clients, handled properly, beats more clients handled generically. Deadlines matter, but they don't dictate quality."],
+                ['icon' => 'fi-rr-shield-check', 'title' => 'Support doesn\'t end at launch', 'desc' => "A finished site or system still needs someone accountable for it after it ships. That someone stays on."],
+            ];
+        @endphp
+
+        {{--
+            Deliberately not another card grid — "What We Do" above already
+            covers that shape. Each principle reads as its own big editorial
+            statement instead: oversized title doing the work a card's
+            border/background usually would, icon reduced to a quiet accent
+            on the right rather than the visual anchor.
+        --}}
+        <div class="flex flex-col border-t border-forest/10">
+            @foreach ($aboutValues as $index => $value)
+                <div
+                    class="group flex flex-col md:flex-row md:items-center gap-4 md:gap-10 py-8 sm:py-10 md:py-12 border-b border-forest/10"
+                >
+                    <span
+                        class="font-agency font-extrabold text-lg sm:text-xl text-forest/25 group-hover:text-lime transition-colors duration-500 md:w-12 shrink-0"
+                    >
+                        {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
+                    </span>
+
+                    <h4
+                        class="font-agency font-extrabold text-forest text-3xl sm:text-4xl md:text-5xl leading-tight md:w-2/5 shrink-0 group-hover:text-forest-deep transition-colors duration-500"
+                    >
+                        {{ $value['title'] }}
+                    </h4>
+
+                    <p class="text-forest/60 text-sm sm:text-base md:text-lg leading-relaxed md:flex-1">{{ $value['desc'] }}</p>
+
+                    <div
+                        class="hidden md:flex items-center justify-center size-14 rounded-2xl bg-forest/5 text-forest/40 text-2xl shrink-0 group-hover:bg-lime group-hover:text-forest-deep transition-colors duration-500"
+                    >
+                        <i class="fi {{ $value['icon'] }} flex"></i>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
     <x-testimonials />
 </div>
 
 <x-contact-form />
 
 <x-faq-section />
+
+@php
+    $at = '@';
+
+    $aboutBreadcrumbLd = [
+        $at . 'context' => 'https://schema.org',
+        $at . 'type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [$at . 'type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => route('home')],
+            [$at . 'type' => 'ListItem', 'position' => 2, 'name' => 'About', 'item' => route('about')],
+        ],
+    ];
+@endphp
+
+@push ('schema')
+    <script type="application/ld+json">
+        {!! json_encode($aboutBreadcrumbLd, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endpush

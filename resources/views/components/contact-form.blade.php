@@ -88,7 +88,9 @@
 
                                 <div>
                                     <span class="text-sm sm:text-base font-medium">Book a 30 min call</span>
-                                    <h6 class="font-agency text-base sm:text-lg md:text-xl">{{ config('wavesync.founder_name') }}</h6>
+                                    <h6 class="font-agency text-base sm:text-lg md:text-xl">
+                                        {{ config('wavesync.founder_name') }}
+                                    </h6>
                                     <span class="text-sm sm:text-base font-medium">Founder & CEO</span>
                                 </div>
                             </div>
@@ -167,8 +169,13 @@
                                         aria-haspopup="listbox"
                                         aria-expanded="false"
                                     >
-                                        <span class="text-forest/50 truncate" data-dropdown-label>Choose your budget range</span>
-                                        <i class="fi fi-rr-angle-small-down flex text-base shrink-0 transition-transform duration-300" data-dropdown-icon></i>
+                                        <span class="text-forest/50 truncate" data-dropdown-label
+                                            >Choose your budget range</span
+                                        >
+                                        <i
+                                            class="fi fi-rr-angle-small-down flex text-base shrink-0 transition-transform duration-300"
+                                            data-dropdown-icon
+                                        ></i>
                                     </button>
                                     <ul
                                         class="absolute z-20 left-0 right-0 mt-2 max-h-64 overflow-y-auto rounded-xl border-2 border-forest/80 bg-cream shadow-lg hidden"
@@ -176,12 +183,48 @@
                                         data-dropdown-panel
                                         data-lenis-prevent
                                     >
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="under_1000">Under $1,000</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="1000_5000">$1,000 – $5,000</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="5000_10000">$5,000 – $10,000</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="10000_25000">$10,000 – $25,000</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="25000_plus">$25,000+</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="not_sure">I'm not sure yet</li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="under_1000"
+                                        >
+                                            Under $1,000
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="1000_5000"
+                                        >
+                                            $1,000 – $5,000
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="5000_10000"
+                                        >
+                                            $5,000 – $10,000
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="10000_25000"
+                                        >
+                                            $10,000 – $25,000
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="25000_plus"
+                                        >
+                                            $25,000+
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="not_sure"
+                                        >
+                                            I'm not sure yet
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -200,8 +243,13 @@
                                         aria-haspopup="listbox"
                                         aria-expanded="false"
                                     >
-                                        <span class="text-forest/50 truncate" data-dropdown-label>Choose how you found us</span>
-                                        <i class="fi fi-rr-angle-small-down flex text-base shrink-0 transition-transform duration-300" data-dropdown-icon></i>
+                                        <span class="text-forest/50 truncate" data-dropdown-label
+                                            >Choose how you found us</span
+                                        >
+                                        <i
+                                            class="fi fi-rr-angle-small-down flex text-base shrink-0 transition-transform duration-300"
+                                            data-dropdown-icon
+                                        ></i>
                                     </button>
                                     <ul
                                         class="absolute z-20 left-0 right-0 mt-2 max-h-64 overflow-y-auto rounded-xl border-2 border-forest/80 bg-cream shadow-lg hidden"
@@ -209,16 +257,76 @@
                                         data-dropdown-panel
                                         data-lenis-prevent
                                     >
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="google_search">Google Search</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="social_media">Social Media</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="friend_or_colleague">Friend or Colleague</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="referral">Client Referral</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="advertisement">Advertisement</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="linkedin">LinkedIn</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="portfolio">Portfolio / Previous Work</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="blog">Blog or Article</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="email">Email Campaign</li>
-                                        <li class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200" role="option" data-value="other">Other</li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="google_search"
+                                        >
+                                            Google Search
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="social_media"
+                                        >
+                                            Social Media
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="friend_or_colleague"
+                                        >
+                                            Friend or Colleague
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="referral"
+                                        >
+                                            Client Referral
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="advertisement"
+                                        >
+                                            Advertisement
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="linkedin"
+                                        >
+                                            LinkedIn
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="portfolio"
+                                        >
+                                            Portfolio / Previous Work
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="blog"
+                                        >
+                                            Blog or Article
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="email"
+                                        >
+                                            Email Campaign
+                                        </li>
+                                        <li
+                                            class="px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-forest cursor-pointer hover:bg-forest hover:text-cream transition-colors duration-200"
+                                            role="option"
+                                            data-value="other"
+                                        >
+                                            Other
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -421,15 +529,13 @@
             const services = [
                 { label: 'UI/UX Design', value: 'ui-ux-design' },
                 { label: 'Web Development', value: 'web-development' },
+                { label: 'SaaS Development', value: 'saas-development' },
                 { label: 'Branding', value: 'branding' },
                 { label: 'Graphic Design', value: 'graphic-design' },
                 { label: 'SEO', value: 'seo' },
                 { label: 'Digital Marketing', value: 'digital-marketing' },
                 { label: 'Cold Email', value: 'cold-email' },
-                { label: 'AI Automation', value: 'ai-automation' },
-                { label: 'SaaS Development', value: 'saas-development' },
-                { label: 'Digital Product Design', value: 'digital-product-design' },
-                { label: 'Etsy / Marketplace Products', value: 'etsy-marketplace-products' },
+                { label: 'Automation', value: 'ai-automation' },
             ];
 
             const createNewList = (label, value) => {

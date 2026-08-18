@@ -1,8 +1,8 @@
 @extends ('layouts.app')
 
-@section ('title', 'Home')
+@section ('title', 'Web Design, Branding, SEO & Automation')
 
-@section ('description', 'Wavesync Agency helps growing businesses build stronger digital experiences, get found online, and automate repetitive work — through web development, branding, SEO, and AI automation.')
+@section ('description', 'Wavesync is a founder-led digital studio building the websites, brand identities, search visibility, and automation systems that turn strangers into customers.')
 
 @section ('content')
     <div>

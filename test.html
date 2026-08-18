@@ -1,0 +1,1968 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Online High School Courses, Biscayne Bay Preparatory Academy</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --navy: #153a66;
+                --navy-deep: #061436;
+                --accent: #2b7c90;
+                --accent-bright: #63b6c8;
+                --ink: #182338;
+                --muted: #586275;
+                --paper: #eef1f4;
+                --card: #ffffff;
+                --line: #d6dbe1;
+                --line-strong: #bcc3cc;
+                --field: #fbfcfd;
+                --radius: 8px;
+                --shadow: 0 1px 2px rgba(13, 28, 55, 0.05), 0 8px 22px rgba(13, 28, 55, 0.06);
+            }
+            * {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                background: var(--paper);
+                color: var(--ink);
+                font-family: 'Public Sans', system-ui, sans-serif;
+                font-size: 15px;
+                line-height: 1.55;
+                -webkit-font-smoothing: antialiased;
+            }
+            h1,
+            h2,
+            h3,
+            h4,
+            .serif {
+                font-family: 'Source Serif 4', Georgia, serif;
+            }
+            a {
+                color: var(--accent);
+            }
+            button {
+                font-family: inherit;
+                cursor: pointer;
+            }
+            :focus-visible {
+                outline: 2px solid var(--navy);
+                outline-offset: 2px;
+            }
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    transition: none !important;
+                    scroll-behavior: auto;
+                }
+            }
+
+            .masthead {
+                background: var(--navy-deep);
+            }
+            .masthead .inner {
+                max-width: 1080px;
+                margin: 0 auto;
+                padding: 15px 22px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 16px;
+            }
+            .org {
+                display: flex;
+                align-items: center;
+                gap: 13px;
+                min-width: 0;
+            }
+            .seal-img {
+                height: 46px;
+                width: auto;
+                display: block;
+                flex: none;
+            }
+            .org h1 {
+                font-size: 16px;
+                margin: 0;
+                font-weight: 700;
+                color: #fff;
+                letter-spacing: 0.01em;
+                line-height: 1.15;
+            }
+            .org small {
+                display: block;
+                color: var(--accent-bright);
+                font-size: 11px;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin-top: 2px;
+            }
+            .m-actions {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex: none;
+            }
+            .login,
+            .m-enroll {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: 700;
+                font-size: 13.5px;
+                border-radius: 6px;
+                padding: 9px 14px;
+                white-space: nowrap;
+                border: none;
+            }
+            .login {
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.35);
+                background: none;
+            }
+            .login:hover {
+                background: rgba(255, 255, 255, 0.08);
+            }
+            .login svg {
+                width: 16px;
+                height: 16px;
+                stroke: var(--accent-bright);
+                fill: none;
+                stroke-width: 1.8;
+            }
+            .m-enroll {
+                color: var(--navy-deep);
+                background: var(--accent-bright);
+            }
+            .m-enroll:hover {
+                background: #7ac4d6;
+            }
+            @media (max-width: 620px) {
+                .org small {
+                    display: none;
+                }
+                .login span {
+                    display: none;
+                }
+                .login {
+                    padding: 9px;
+                }
+                .org h1 {
+                    font-size: 14px;
+                }
+            }
+            .accent-rule {
+                height: 3px;
+                background: var(--accent-bright);
+            }
+
+            .wrap {
+                max-width: 1080px;
+                margin: 0 auto;
+                padding: 34px 22px 30px;
+            }
+            .title {
+                font-size: clamp(26px, 4.6vw, 34px);
+                color: var(--navy);
+                font-weight: 700;
+                margin: 0 0 6px;
+                padding-bottom: 14px;
+                border-bottom: 2px solid var(--navy);
+                position: relative;
+            }
+            .title::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: -2px;
+                width: 120px;
+                height: 2px;
+                background: var(--accent-bright);
+            }
+            .curr-head {
+                font-size: clamp(21px, 3.4vw, 27px);
+                color: var(--navy);
+                margin: 30px 0 6px;
+                font-weight: 700;
+            }
+            .curr-head + .rule {
+                width: 64px;
+                height: 3px;
+                background: var(--accent-bright);
+                border-radius: 2px;
+                margin-bottom: 16px;
+            }
+            .lede {
+                color: var(--ink);
+                font-size: 15.5px;
+                max-width: 770px;
+                margin: 0 0 14px;
+            }
+            .lede.muted {
+                color: var(--muted);
+            }
+            .paths-glance {
+                display: grid;
+                gap: 12px;
+                margin: 18px 0 16px;
+                max-width: 840px;
+            }
+            .pg {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-left: 3px solid var(--accent-bright);
+                border-radius: 8px;
+                padding: 14px 16px;
+                box-shadow: var(--shadow);
+            }
+            .pg b {
+                font-family: 'Source Serif 4';
+                color: var(--navy);
+                font-size: 15.5px;
+                display: block;
+                margin-bottom: 3px;
+            }
+            .pg span {
+                color: var(--muted);
+                font-size: 13.5px;
+            }
+            .feature-row {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+                margin: 20px 0 6px;
+                max-width: 840px;
+            }
+            @media (max-width: 600px) {
+                .feature-row {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .feat {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-top: 3px solid var(--navy);
+                border-radius: 8px;
+                padding: 13px 15px;
+            }
+            .feat b {
+                font-family: 'Source Serif 4';
+                color: var(--navy);
+                font-size: 15px;
+                display: block;
+                margin-bottom: 2px;
+            }
+            .feat span {
+                color: var(--muted);
+                font-size: 12.5px;
+            }
+
+            .section-eyebrow {
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--muted);
+                font-family: 'Public Sans';
+                font-weight: 700;
+                margin: 0 0 12px;
+            }
+
+            /* diploma chooser */
+            .diploma {
+                margin: 34px 0 8px;
+            }
+            .toggle {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 18px;
+            }
+            .toggle button {
+                flex: 1 1 240px;
+                text-align: left;
+                background: var(--card);
+                border: 1.5px solid var(--line-strong);
+                border-radius: var(--radius);
+                padding: 15px 17px;
+                transition:
+                    border-color 0.15s,
+                    box-shadow 0.15s;
+            }
+            .toggle button:hover {
+                border-color: var(--navy);
+            }
+            .toggle button.on {
+                border-color: var(--navy);
+                box-shadow:
+                    inset 0 0 0 1px var(--navy),
+                    0 8px 20px rgba(13, 28, 55, 0.08);
+            }
+            .toggle .tt {
+                font-family: 'Source Serif 4';
+                font-weight: 700;
+                font-size: 17px;
+                color: var(--navy);
+                display: flex;
+                align-items: center;
+                gap: 9px;
+            }
+            .toggle .tt .cr {
+                margin-left: auto;
+                font-family: 'Public Sans';
+                font-size: 12px;
+                font-weight: 700;
+                color: #fff;
+                background: var(--navy);
+                border-radius: 999px;
+                padding: 3px 10px;
+            }
+            .toggle button.on .tt .cr {
+                background: var(--accent);
+            }
+            .toggle .td {
+                font-size: 12.5px;
+                color: var(--muted);
+                margin-top: 5px;
+            }
+
+            .reqcard {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+            .reqcard .cap {
+                background: var(--navy-deep);
+                color: #fff;
+                padding: 15px 20px;
+                display: flex;
+                align-items: baseline;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .reqcard .cap h4 {
+                margin: 0;
+                font-size: 18px;
+            }
+            .reqcard .cap .tot {
+                margin-left: auto;
+                font-size: 13px;
+                color: var(--accent-bright);
+                font-weight: 700;
+            }
+            .reqcard .blurb {
+                padding: 14px 20px 4px;
+                color: var(--muted);
+                font-size: 13.5px;
+            }
+            .reqtable {
+                padding: 6px 20px 16px;
+            }
+            .reqrow {
+                display: flex;
+                justify-content: space-between;
+                gap: 14px;
+                padding: 11px 0;
+                border-bottom: 1px solid var(--line);
+                font-size: 14px;
+            }
+            .reqrow:last-child {
+                border-bottom: none;
+            }
+            .reqrow .lab small {
+                display: block;
+                color: var(--muted);
+                font-size: 12px;
+                margin-top: 1px;
+            }
+            .reqrow .val {
+                font-weight: 700;
+                color: var(--navy);
+                font-variant-numeric: tabular-nums;
+                white-space: nowrap;
+            }
+            .reqrow.total {
+                border-top: 2px solid var(--navy);
+                margin-top: 2px;
+                padding-top: 13px;
+            }
+            .reqrow.total .lab {
+                font-weight: 700;
+                font-family: 'Source Serif 4';
+            }
+            .reqrow.total .val {
+                color: var(--accent);
+            }
+            .reqextra {
+                padding: 4px 20px 20px;
+            }
+            .reqextra .eh {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--muted);
+                font-weight: 700;
+                margin: 8px 0 10px;
+                padding-top: 14px;
+                border-top: 1px solid var(--line);
+            }
+            .reqextra ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .reqextra li {
+                position: relative;
+                padding: 7px 0 7px 22px;
+                font-size: 13.5px;
+                color: var(--ink);
+                line-height: 1.5;
+            }
+            .reqextra li::before {
+                content: '';
+                position: absolute;
+                left: 2px;
+                top: 13px;
+                width: 7px;
+                height: 7px;
+                border-radius: 2px;
+                background: var(--accent-bright);
+            }
+            .reqextra .bestfor {
+                margin-top: 14px;
+                background: var(--field);
+                border: 1px solid var(--line);
+                border-left: 3px solid var(--navy);
+                border-radius: 6px;
+                padding: 11px 13px;
+                font-size: 13.5px;
+                color: var(--ink);
+            }
+            .reqextra .bestfor span {
+                font-weight: 700;
+                color: var(--navy);
+                text-transform: uppercase;
+                font-size: 11px;
+                letter-spacing: 0.06em;
+                margin-right: 6px;
+            }
+
+            /* categories */
+            .cats {
+                margin-top: 34px;
+            }
+            .cat {
+                margin-bottom: 12px;
+                border-radius: var(--radius);
+                overflow: hidden;
+                box-shadow: var(--shadow);
+            }
+            .cat-btn {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                background: var(--navy);
+                color: #fff;
+                border: none;
+                padding: 18px 20px;
+                text-align: left;
+                transition: background 0.15s;
+            }
+            .cat-btn:hover {
+                background: #1a4576;
+            }
+            .cat.open .cat-btn {
+                background: var(--navy-deep);
+            }
+            .cat-ico {
+                width: 38px;
+                height: 38px;
+                flex: none;
+                border: 1.6px solid var(--accent-bright);
+                border-radius: 6px;
+                display: grid;
+                place-items: center;
+            }
+            .cat-ico svg {
+                width: 20px;
+                height: 20px;
+                stroke: #fff;
+                fill: none;
+                stroke-width: 1.7;
+            }
+            .cat-name {
+                font-size: 16px;
+                font-weight: 700;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+            }
+            .cat-meta {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                gap: 14px;
+            }
+            .cat-cr {
+                font-size: 12px;
+                font-weight: 700;
+                color: var(--navy-deep);
+                background: var(--accent-bright);
+                border-radius: 999px;
+                padding: 4px 11px;
+                white-space: nowrap;
+            }
+            .chev {
+                width: 18px;
+                height: 18px;
+                stroke: #fff;
+                fill: none;
+                stroke-width: 2.4;
+                transition: transform 0.2s;
+            }
+            .cat.open .chev {
+                transform: rotate(180deg);
+            }
+            .cat-body {
+                display: none;
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-top: none;
+            }
+            .cat.open .cat-body {
+                display: block;
+            }
+            .course {
+                border-bottom: 1px solid var(--line);
+            }
+            .course:last-of-type {
+                border-bottom: none;
+            }
+            .course-btn {
+                width: 100%;
+                background: var(--card);
+                border: none;
+                text-align: left;
+                padding: 14px 18px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                transition: background 0.12s;
+            }
+            .course-btn:hover {
+                background: var(--field);
+            }
+            .course-btn .cn {
+                font-family: 'Source Serif 4';
+                font-size: 15.5px;
+                color: var(--ink);
+                font-weight: 600;
+            }
+            .course-btn .tag {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.03em;
+                padding: 3px 8px;
+                border-radius: 5px;
+                white-space: nowrap;
+                flex: none;
+                text-transform: uppercase;
+            }
+            .tag.req {
+                color: #fff;
+                background: var(--navy);
+            }
+            .tag.el {
+                color: var(--muted);
+                background: #eef0f3;
+            }
+            .tag.col {
+                color: #fff;
+                background: var(--accent);
+            }
+            .tag.tut {
+                color: var(--accent);
+                background: #e2f0f3;
+                border: 1px solid #c5e2e8;
+            }
+            .course-btn .cplus {
+                margin-left: auto;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border: 1.5px solid var(--line-strong);
+                color: var(--muted);
+                display: grid;
+                place-items: center;
+                font-size: 15px;
+                line-height: 1;
+                flex: none;
+                transition: 0.15s;
+            }
+            .course.open .cplus {
+                background: var(--navy);
+                border-color: var(--navy);
+                color: #fff;
+                transform: rotate(45deg);
+            }
+            .course-desc {
+                display: none;
+                padding: 0 18px 16px 18px;
+                color: var(--muted);
+                font-size: 13.5px;
+                max-width: 760px;
+            }
+            .course.open .course-desc {
+                display: block;
+            }
+            .cat-note {
+                padding: 12px 18px;
+                font-size: 12.5px;
+                color: var(--muted);
+                background: var(--field);
+                border-top: 1px solid var(--line);
+            }
+
+            /* ENROLL */
+            .enroll {
+                margin-top: 44px;
+                scroll-margin-top: 12px;
+            }
+            .enroll-card {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-top: 3px solid var(--navy);
+                border-radius: var(--radius);
+                box-shadow: var(--shadow);
+                overflow: hidden;
+            }
+            .enroll-head {
+                padding: 22px 24px 6px;
+            }
+            .enroll-head h3 {
+                font-size: 22px;
+                margin: 0 0 4px;
+                color: var(--navy);
+            }
+            .enroll-head p {
+                color: var(--muted);
+                font-size: 14px;
+                margin: 0;
+            }
+            .steps {
+                display: flex;
+                gap: 0;
+                flex-wrap: wrap;
+                padding: 14px 24px 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .stp {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 12.5px;
+                font-weight: 600;
+                color: var(--muted);
+                padding: 8px 16px 12px;
+                border-bottom: 2px solid transparent;
+                margin-bottom: -1px;
+            }
+            .stp .n {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: #e7e9ec;
+                color: var(--muted);
+                display: grid;
+                place-items: center;
+                font-size: 11px;
+                font-weight: 700;
+            }
+            .stp.active {
+                color: var(--navy);
+                border-bottom-color: var(--navy);
+            }
+            .stp.active .n {
+                background: var(--navy);
+                color: #fff;
+            }
+            .stp.done .n {
+                background: var(--navy-deep);
+                color: #fff;
+            }
+            .epanel {
+                display: none;
+                padding: 22px 24px;
+            }
+            .epanel.on {
+                display: block;
+            }
+            .grid2 {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .grid3 {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 15px;
+            }
+            @media (max-width: 560px) {
+                .grid2,
+                .grid3 {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .field {
+                margin-bottom: 15px;
+            }
+            label {
+                display: block;
+                font-size: 12.5px;
+                font-weight: 600;
+                color: var(--ink);
+                margin-bottom: 6px;
+            }
+            label .opt {
+                color: var(--muted);
+                font-weight: 500;
+            }
+            input,
+            select {
+                width: 100%;
+                padding: 11px 12px;
+                border: 1px solid var(--line-strong);
+                border-radius: 5px;
+                font-size: 15px;
+                font-family: inherit;
+                color: var(--ink);
+                background: var(--field);
+            }
+            input:focus,
+            select:focus {
+                outline: none;
+                border-color: var(--navy);
+                background: #fff;
+            }
+            input.err,
+            select.err {
+                border-color: #b23a48;
+                background: #fdf6f7;
+            }
+            .err-msg {
+                font-size: 11.5px;
+                color: #b23a48;
+                margin-top: 5px;
+                font-weight: 600;
+                display: none;
+            }
+            .err-msg.show {
+                display: block;
+            }
+            .subhead {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                color: var(--muted);
+                font-weight: 700;
+                margin: 4px 0 12px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid var(--line);
+            }
+            .subhead:not(:first-child) {
+                margin-top: 22px;
+            }
+            .hint {
+                font-size: 11.5px;
+                color: var(--muted);
+                margin-top: 5px;
+            }
+
+            .path-pick {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+            .path-pick label {
+                flex: 1 1 240px;
+                border: 1.5px solid var(--line-strong);
+                border-radius: var(--radius);
+                padding: 15px;
+                cursor: pointer;
+                margin: 0;
+                display: block;
+                transition: border-color 0.15s;
+            }
+            .path-pick label.sel {
+                border-color: var(--navy);
+                box-shadow: inset 0 0 0 1px var(--navy);
+            }
+            .path-pick .pt {
+                font-family: 'Source Serif 4';
+                font-weight: 700;
+                font-size: 16px;
+                color: var(--navy);
+            }
+            .path-pick .pd {
+                font-size: 12.5px;
+                color: var(--muted);
+                margin-top: 4px;
+            }
+            .path-pick input {
+                display: none;
+            }
+
+            .payopt {
+                border: 1.5px solid var(--line-strong);
+                border-radius: var(--radius);
+                padding: 14px;
+                margin-bottom: 11px;
+                cursor: pointer;
+                display: flex;
+                gap: 12px;
+                align-items: flex-start;
+            }
+            .payopt.sel {
+                border-color: var(--navy);
+                box-shadow: inset 0 0 0 1px var(--navy);
+            }
+            .payopt input {
+                width: auto;
+                margin-top: 3px;
+            }
+            .payopt .po-t {
+                font-weight: 700;
+                color: var(--ink);
+                font-size: 14.5px;
+            }
+            .payopt .po-d {
+                font-size: 12.5px;
+                color: var(--muted);
+                margin-top: 2px;
+            }
+            .payopt .po-amt {
+                margin-left: auto;
+                font-weight: 700;
+                color: var(--navy);
+                font-family: 'Source Serif 4';
+                white-space: nowrap;
+            }
+
+            .cardbox {
+                margin-top: 16px;
+                padding-top: 16px;
+                border-top: 1px solid var(--line);
+            }
+            .cardbox.hide {
+                display: none;
+            }
+
+            .btn {
+                border: 1px solid var(--navy);
+                border-radius: 5px;
+                padding: 13px 24px;
+                font-size: 14.5px;
+                font-weight: 700;
+                color: #fff;
+                background: var(--navy);
+            }
+            .btn:hover {
+                background: var(--navy-deep);
+            }
+            .btn.ghost {
+                background: #fff;
+                color: var(--navy);
+                border-color: var(--line-strong);
+            }
+            .btn.ghost:hover {
+                border-color: var(--navy);
+            }
+            .btn-row {
+                display: flex;
+                gap: 12px;
+                margin-top: 22px;
+                flex-wrap: wrap;
+            }
+            .btn-row .btn:last-child {
+                margin-left: auto;
+            }
+
+            .summ {
+                background: var(--field);
+                border: 1px solid var(--line);
+                border-radius: var(--radius);
+                padding: 14px 16px;
+                margin-bottom: 8px;
+            }
+            .summ .sr {
+                display: flex;
+                justify-content: space-between;
+                font-size: 13.5px;
+                padding: 5px 0;
+                color: var(--muted);
+            }
+            .summ .sr b {
+                color: var(--ink);
+            }
+            .summ .sr.tot {
+                border-top: 1px solid var(--line);
+                margin-top: 6px;
+                padding-top: 10px;
+                font-size: 15px;
+                color: var(--navy);
+                font-weight: 700;
+            }
+
+            .confirm {
+                text-align: center;
+                padding: 36px 24px;
+            }
+            .confirm .stamp {
+                display: inline-flex;
+                align-items: center;
+                gap: 9px;
+                font-size: 12px;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--navy);
+                border: 1px solid var(--navy);
+                border-radius: 3px;
+                padding: 7px 13px;
+                margin-bottom: 18px;
+            }
+            .confirm .stamp svg {
+                width: 15px;
+                height: 15px;
+                stroke: var(--navy);
+                stroke-width: 2.4;
+                fill: none;
+            }
+            .confirm h3 {
+                font-size: 24px;
+                margin: 0 0 8px;
+                color: var(--navy);
+            }
+            .confirm p {
+                color: var(--muted);
+                max-width: 460px;
+                margin: 0 auto 18px;
+                font-size: 14px;
+            }
+            .confirm .ref {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border: 1px solid var(--line);
+                border-radius: 5px;
+                padding: 14px 16px;
+                margin: 0 auto 18px;
+                max-width: 420px;
+                background: var(--field);
+            }
+            .confirm .ref span {
+                font-size: 11.5px;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--muted);
+                font-weight: 600;
+            }
+            .confirm .ref b {
+                font-family: 'Source Serif 4';
+                font-size: 18px;
+                color: var(--navy);
+            }
+
+            footer {
+                border-top: 1px solid var(--line);
+                margin-top: 40px;
+            }
+            footer .inner {
+                max-width: 1080px;
+                margin: 0 auto;
+                padding: 22px;
+                color: var(--muted);
+                font-size: 12px;
+                line-height: 1.7;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="masthead">
+            <div class="inner">
+                <div class="org">
+                    <img
+                        class="seal-img"
+                        alt="Biscayne Bay Preparatory Academy"
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAACMCAYAAACzkr3gAABS7klEQVR4nO29d3wcxfkH/H1m9u4k9yYX3LCxcQOMsTFgCEgGDARSiWRCQgjVQAL8SCAhBaSDNJIA6YkpIaEEkOi9S/RmICaYXh2wccFV0rWded4/ZmZ39nSSbEpC3vd9PhzW7e3OzswzT3/mGcInCMxMUgoGCABvwRNU3kI318t/r9RGT+/bsv4QEcJQSfe1rQ1Yswa8bFkTZ7NZ3qJG/j8E0n7E/+CnWxCCwMyyuZllY2Njj/d+GqA7UvlI0NzcLBsaGtSvfnvlEQcfNK9JFcNQKZIEAknzSp8UWANgth1S9qoAEZnLzGBLhez1mogAkMGKALQGAA0BgnbvEAB0PFi2L2fi6JoEQYMB1mB3HwkAtJkIa9et36jyheK/167f8GZHR+fzjzzy5JtXXPrLV4Gos2Bm0dLSQg0NDdGrP00QfBKN1tTUEAAM6tdv3LTJEyZ+Eu/4b0GuwNi/dp7+3ndOfHnFijVL33jz7Tv/0XzTo0T0JmAW3wMPPBDU1tYqIvrUIPwTQbQDrYt5rbVWYRiqUAXs8Q9DrZaqOPkd5ElnJ+EpSSbu/kQ77pp3I1NZ2xXaSMpsAtm/2dzDzAwhBAOMgCSNHzdMChFM32H6ttOL4Zyv7rfvvNyKFac/9Pyyl/9+yomH31JXV9cBAMwsiaCB/z7CP1FEM0MIEkKBhDAzlRAWQogIMYYNm8l1jBpEAJu/y5Hi3y/sM2BAkogWAJihfTZPBOJIAETXyxeL6TvD/EmgaJEIKK0R5sHMikkQBwEwebttqidvN/qA3ebsdMCee8x989XX3rji17+55K9EtJwIuFazbCCK2Px/Az5RJUKSoAR1Coom0v3rgJnNZHuUR/YTEToRyh4zPzKXk7tpiyhqw33KtZLyfpg23fsp0R93v5BEMiAhBKRWLPO5POdzOSVlSe0yc7uJh31lQePVf7tgacv1953LPH5QA5FiZvpvKm2fKEWTN4sx244njh21ghJUZh8GgyFAXThftFjss7YxQ5nuK5n2hYdZ5q6svJyl+98jzhBfAXNycTARCJIAlpqBfL6gpSA9edKYQZMnjfnxC8se+trjTzx3LhFdBoBbW1uDurq6sOeZ+/jhk11hRg1OTAyByibPINSxUHeP+1dXUGAd9bP3NyWuV36GEA+4IiWXgVsQEbfp0ndEHIWiZyA0U5DrLHAxnw9nTB874RtHfOGvjz3xwl31x353Ql1dXdjaygE+IYunO/hkZXQs3GIq8ieqG7+FkdEe1QGx+eVTU5n87oq8mGojpJlGKj5XrtRVovZK8tzrnh2XhpAgzQjynTmdSqX1HrvNOGDkiO8+td/uu51cV0fXMLPtwn9GUftEKZoj9VUDvsIVUWFsG0cTa4Yfy3VPppdPslGwku8kwGl0iWtR26YDyX66/hB1eV+ibW9h9KTJuy4ABJIpobQO8p05NWHbUcMOP+zzV19/W+uviQhSCv5Pye1PmHWb5svpLDFRRCBBgKDIhKIKz/iTmqAk9wIr0zl+IEI22wXB5e9mQFh2bNqM2XSXBdUN+OLGb9d2CUQMJoaQUnZ2tHN1WqovH1z73Xtbn7pVa+53zjlZ3dzcLLt9wccEnyxFi2i2IsyVI6x8UpmZtdastWZmZqV09F0pxVozK6VYKfOdmVlpzUorVsysWbPyPqFWrLRizaY915ZmzVqruG2tWSlmrWE/2v+YvgOJFegrhWYhxX4AH5yEkkGKSqokS6Viab/aXQ9++NHn7pswYf/hCxsaVH39J4vsT1brBlnnY5m8i/yQiCjJTUdVVdV/VEnpDZg1tF0ZWmtoZgGCiPrtNHkgGq27Zp53eoKhekESWulUIcyHe83bebd/XHvB/d864ewF1123cGVjY6PIZrO6Uj8+KkSIbm5uls51+VHhbSBobG0F3tiQAgCjd/heMCsmLY/W1mkiSODFl97syBeKnSQkaWYWxjFFYDu3xNq15pRd4ZgBANZEVpkjBgOktcOEgLCvJwZDAxogTcbudqjTAARYswwCUdWvb9/0oMGD5KCBfUSQMuNjxQjDMFRaCxIkHFYTcpsdI3PXYn5uzEkKCvnOcLc5O+zw58U/v+MrRxXnNzU1bQDwiSD7E6We3//56lO/fcJhvymViiFrBBFmyJPHbKZWklTMUv7ygr9846wfnnQLMDUAXg4RkftAuyw2VpiEgXYcGwEMLBubf79ro/w6yD4XqWtAXzl55tSq3ebMrR45smbStuPGzth23Ngdh9cM2mPUqCHbj9lmOACgkC8pzSFJQYIgIksAdpyApwgmvttoi0aYqcoEDz+2tHXvPXfe3yp7H3tgxFG0+MPF1y8YMXRQ/1yuIAFASuOy09r0WyklSRNJKZXx5SlorYkFi4ACTURamRshhBBFVVKDBvSdZxezs2egmY1i4JlOBECIEEoTxo2buJ6AjSRec2a4hY09DGNjN3/3dF9vv23Ea0tX4LWlDwDA6wDusj+kT/ludubee+516HbbjfvqjBkTx2VkCqpQUiUVCiEEGX5SZq6VtW5cvwRBCErFQukz82bW3XhL2++J6KTWVg7q6uhjdaq4xdfnn/968/2ZO0zoXyyakF8i5l/ey6SzyOs8PHYMCAJYh1ZAxTatcJ4wT0sNpFQaQl56xU1fPvGYQ29qbGyV2WytAoD6+hYxffoWipXasu9t3fxeft391mZ+nDFjBre0tGD69Ok8Y8YMqqmpodraWpZSKK2jQQ9Y/LcbvrbrLjueOmvHSVMAoJDLKyFI+pMU2d9wpp62fwkQAVorCCnDUFFwxRXXH7do0WGXtDa2BnXZj92DVtPvrbfff4+Zw0KhUCoUC2GxWAiLpWJYKhXDYqkYFovFsFA0/5ZKpbBULJpPvhiWCubfsGA/xWJYKhbCYqGg8vkCFwp5zufNp1AocCGX54L7u1DgXK7AxUIpzOcUX3z5jZ8DjM7wMQ/yQwEzEzMHzc3N0jk5GhsbRWtra+BZXX2uaL79O6+9/t4HzMxhqVTKd+a5kC9wPmfGXcybcRfzBS7mzW/Rp1Dgzs6cZsXhG2+9lz/l9J/uRERoZP7YrCLLugVrzQKAVEqxYT+AT9ZuTNrKG+fPMVEix6YoZskJ+nPPd+OaJNMggyE4bW+qBzMTEfG55y7ebsKE0aOLzCwoTUDJPp1C/LcZTBgASNCB/yWwz/hQsvcEkLKKlcrTO++s4H+veG/VJX+86n0i2uQ3wsyyoaUFWeOvptbWVrnvvvM7j2g4+IIvLFx0w+mnnviHvfaYebAUrHKFopBSEigAtIuGmfmIzDE7WikE5XJ5TNx2m0xD/eev+t2vfzS7CQiz3foPtw4soldpYcNoHocxXXK9s56syDuEWPb4jv5KPYpCkS7SS17fvT+FEGBd9E0+CSDcde5OjfvO3+2I9s48AhkgShlxqymxqCIvSUJOdgXzYrtOE2PQSmPjhk369FOOXtPR0fn6qlUfPLfqvVV3nXL2L54gog/smERTUxPqPITX1dW9ffO1iw+57oYHzpk/f+5Zgwf25Vwux0HAZNh10tkTBXOMVgophVSlQrjn3B12+OtVN59ORD8zMe2PHuJ0k+ppeb5HwE1drEkmojvutm5ci1EzNg4Mz2PJfrgy4g6AUujCsvv1rSoFAelB/TJhGHJg5LuwFkvs9XKLMbLmyBm0zqjiZJyMReQt85+lqgAD+g8VIBoBiBEA9szn1Lf3nj939etvr7j7/geX/IWIHrPzIYlI19XVhY2NjaKpqQlEdPYfLrrmlS8evN/fRm8zVOY78ywDQazZTpFDrkcgDAihUQpJSqn1nrvO+uHChSdeAeDdj8O+FtG/HDPbOPSHSFliABps5k0QmOIpc65HJjIaWJn3iJnBwjwPSrJ11mwn27RkTYsEhEqlmFkUSkWhtBJKs9BaCcVKKB0KFYZCq9BcU6HQOhSaQ6GVEqxCwVoJrUKhdChCrWwb5nlt29CsTXusRKlUEoViiXMdec51dqhCIR+mUqwnThgzfEHd3CNOO/Grj97/4DM3fuuMn8whIiWI2CGDiPSSJUtS3z7+sKuuar6p/t/vrtFVfapYKcXGpHI++qQmbiwRASkE5fMF3n7y2L4Lv1r/UyLipqamj2wG+4iOHdNeOk63iQIRcl0MgWMEVwg2xM8hjiKVt8vWwZG8HcyRt8Q3Rz1/snFCONFiOEj8PX5OgISIFyN5jQAmYZDYemAESSlJypQkEkGotMjl8pzPdaihg/vw/L13+eIZ3z7mietubLtAM/fLZmOf9Zw5c0pLlixJff+0Y2+67ob7Dl+zdpOoqk4pxSFDGP9NYiB+bJw1iIRUpZKeu+uOX/vWGefNAfCR/eGWdY/wXXZk2GKSDXfJy4LXUe+6+ztiqWWhPfd7WePWNCMI0l2WSMTc2QkRJ19dNClmhYiuAY5V2KVql6ZrrauNSPa6k+0iESghEAUECKmURtjRqcaPqRHjx4087ZEnX97/kkuvPrKhoeFZl1jgkD1nzpzmAQNuGP/1r37+lykpw1DDaOteeLQ8JEtEKKlQj95mWHDw/nv/iIi+1L2usWVgKXoVkxsmEUdILKPmRPw2iu9yAuE+lHeuK4IRKWlOK+JQ+CaF7UpXdl7WTCJ5MHJQWITFaUr2nVZncJ+urSFaD06kmiErEDQEEWQQyHwppFKxFO45d8oOZ55+9EM/Puf3h9TV1YWtra0BEFP2sUd9+Vd33fPI1UEqHRBYOUW2u3kybxUSGnrH6ZMPOf7bjVOJSH2UkGb0oP+qKHfLYykJivUQJJhAOhmBip9Bxecj0eDFoCOuH3RFKtvgPEd2XQ/cwQe3IK1eQZa648WFLrqnEy1J28NDhqeHEADNOsjlcmrK5HF9jz7i0JvP+cWfv+Ij+9Zbb1XMLE759o+/9c/nX1+ZyWSIldblUTvXtJPhQggqhSU9ZvTQYP+6vY8FgNrapg+N6K7Rq7LFVTGsGClhYGbSni5tqcfMmdYspBRU3o4/g0SEBGYrUK8oo7soggG3FmNW3gUoVi4jRRzxpDqdJLKzumvHH3/ZnEgpZWdnTk/YdhQdcdiXrinkcgvq6uoecBsZgNpg+fJH1t92b+t3J2w39h/90lKVlPJM0soLN9ShCFhi8vbbLhw1avbZ8+eLTsTrcavArRAuT2mJlBr7KWeLDCCdyVCmKi0zVWmZyaRlJpORmUxGVlVlRFVVRlZXV1EX2exxet9GdxGeSnFT7T8fyTNHDbFCVt5/07SfSGCSAGL72qMq+7+eWGqlLBTXtpRC5DpyvO34EfKrh3352oULvzO2vr5eG228LmRmedbpx1/91BNLH5CplASzKtdxEmNjBkGKMCyp7SeNG/PDs06fz8xobv5w3rJoXpNacNKudBPhDZxTgaTl77zX8f6q9S8LQVAhMxFIygAyECgWi+hTnRk1deq222it2ZixHFFj5E6PJtq8V1ciJ3L2p/MRmye07p764lExnM3t26/Rq4kAjVgT5vjJhCfLsxQiPQVJJVQEKZHP59SMqeOHnXDS164gojpmpmw2i5aWFhAR7r7voR/OnDH58WHDBlBJhbHGH7VpOmjCtgxWxNVVAc/YcfvPAbitvr6H4fYAEaKjMWmOFBEnz9zAHRtkhhYykK++8e7zC/bdfV53jf/6gr+dvuOOk39VLJUUmGPfMMVKPUcXnbzuyroDkkQElQqqFHNInv8m4dEiojhKSIIBHWvkbpDaLF2nwIEBIcji3PRBa2bWBMUsRRAbaIw4t6yyFqxAQspisRTuueesfS75+40nEtGfnHfLmolPfvbAfR6dP3LXvRAWFSOQxBQNO1q4BBAENJQAQDVDBi8AkBJClCq8uFeIsl8jh4nHVuPsiHjXgg8kUmyd/tL+6z4pZqZBgwdQ9BJvvs1X63wp+yFKP/JgU0e+SgOyvTOfKRS0LBS1MB+IYolFoaRFocQiX9KyUFIiX1KiWAxlsailuR+yUITM57XMl1gUShD5Eps2zHdZLEHmiyRLSspUOh1kqlNBdZ8MSYJiVoYlUVeu6VO2cx9orURKkt573uzsggXHDAGgmZma2toEM9Nzz734p85cCBlIsM+kOOaasSFJQquQhw8fNv7Ms36zs2HfW29Tx6ybk2EI77r91/YkYi+AUmHJUBEnZHxrayvX1dXx4ouviymvTI1NfLMBESaAdIIXKwB47LlXsu+9v+byztxmndJpphRprZP2tlZE8AIaJNzvEu5eoQVTypCOVpqAEEKmmZkFwpLQglmF4aDBQwZtu802w2eNGlGz99TtJ4zIZIBCvqDYxB5M+2VU7bNzIaQoFgvh5Eljh33r1CNOI6KzWpmDbF2dOoeIR47c5eba2j1WzN558jalUlGDSbhV4ue0s9VOVKhUzbD+wdy5O80D8HRNTX1P8qoixKy7TBmrmBVh/2XrvBLdGdCuTcuXHT91ES4P+94LrQbuOUxcn35y5pEvAXhpawf30WHMkL9cdGHDbrvNPHPnnSaPLxXzSmmS1rFTEdmm34DWRg2ZOmm7E/f5whfOny/EBgCktZZE1PnuuyvvnL3z9scIwZrLpzLSPQxRaZv9MXzE0HkAfltbu/VadxdljO2qIvu3+9HsOXbIN5dFIHrUAJ3vxSk5sZZtzRxyiLe2NMPbcRxDY2OjmDFjxlav4g8Dy5bVUG0tUFtby0LQuhOOr/8LsE3L7Xc2//mgA/asJxWGYVgKgCDaYw0gcsK4nSVCCFEsltTEiWOGHrfw2PoHb7754tbWVtnU1AYA9Nbyd+/I5cJj0ilBoTKI1VonnFEeCADo37fvDkjs+N5y8BEdGZtsFRhG0twoN+C4l8C4o0jf/2DtbLunKnq3a7BiO59UZmR3kM1Gf7p48wcHH7RXwzUt91xSf+j+x0gdKq1ZWhdOpNADSZautUY6neIJE8cfDuDi2tpa3dbWBAB8y+0PPHPgvvsUpk4ZnQlLBY40Ft/cs+1pq2AO7N9/xNwDv9aPiDa5WP2WjilCVDm5JGQo+QiOSZoqOBArQcIEIm8QZb+zMXA/TWUiuK6uLjzrrLMFM8vD6hcc+8ADT9+RSldJECvAn5fyQA0DIMGaaXjN0D2+9LWTxzhXLjNT6x1/Xb6xvf11a4IwV+DGkcwnQVoxqjLpwQvmzB4LAFsb0fIRza7xyCnAMTKMlkyJBUHgnn3QznayrNq4Pm3QAFzBRNlq0fMfgWw2q5uampiZ6bxf/OW4V197d0MqFQhOeoOSlAFACCKtlBo3dmRmv9q9as1vta4+Cm9Yt/lVcyNFBmO5w8YpeZq16t+/nxg9fpvxALC1oswhOko8cH5eAiCcW1BzJLd94F4wk3RtepQLinzPQNwIA0ilhNWbW7ZmHJ84ZLNZjTbI++7764rnl73yZyEkSSlUOS80yFFwLiHFitMpgYnjxswFgKamWrS1mYfy+c4XAABCRCRV7oyBtd+1ClFdFWD4yBEDgLh8yJZCzCYjL6ebfE4mGpS7CwHAS4esBNLupiQyiQra+sljfTKanWhxhf/VugA9Q1Nbk2Zmuq/1scveXbGumJKBdFt+HcTasrbat7Ei+vTpO83eol0K6toPNqwIFSBhwsJOoYNOCkozUYKJgFx7bsyH6XsXeUieLRc7+pPgJ+NsyUuYk+veLBr7iujFcJEj26cP6ev7BMEphYt/d/ZrK1a+vxRCEAGqSzgWLrcu9k9UVQdjAZCUUre1mfuEkMuLhRLgHJBRCDhW6pxm7+a8pmaInZ/arep7l9gvswazNp111hTHstvcGSlPPSI6dsKUy+Myx4k1KboKh08lSCLC+o2bnrffY5Hn/Usc7dQ0iE6nBwI1fbWXQNPRmSupUhiLd29+NdhyUsQeRADVVdUAgNraret0XAAgupS043z26kyjGL29KcjCazK5/dTFtDkyLMx9n+iuv48B2tpMn3O5wmuAyVx1wC7ODsu1PNslCIIBU6bMHAAA22zzKgFASReIbK5/FGWjWE4n4v92jrT+cJZmBeet/ccpBP5PRGXcvBvDtwL4GqQTyF207i1v7r8IbQCA6urMagBduZCnfFtRBAAQRNRnaJ/ErYMGDaIglUoMu3KwJJ6aXC5netG2db2O4tHJdRIrXeWBdr9XhN5sXl3+SLRK4qyP5BP/8SouHxKK+VwfAND+zEWxemuPcIw4pXVpxRtv2+HNBgDk2ztHp1NkEivKJiLhWkVM0RvWbbB/tW1Vf+PoVRc3VSw/Y02y3D1dIZxTAZz0jYZiJyHR7v8ENQO1RjiSpNT2gNFpIojGQNEidt4rpbBx1arnN/ria9jQgYNFgCh4AXic1FdgBUHYqQ4yVe9/mH7HGSbeRbcqK01+z4H+yuCcL5Gr3GofXTI4AAj9qce4BsBDhg/ZEQC07hr1i+SzN1ft7bn1AApaa5ptCBp9+vbZ1rRhEg5jcUnlDYIgqFDS2NSZ+wAA1qyp3ap58pIDfSePpwGXWVJeFo/jVN2Cjni3juVWN3gU1oYMexUH/z2w/mW914FH1QwbPGi2cf0kuRpbM4UirmXmoKN98z/tLXL27NkKAPpU9Z0BxLZ2pL5RV25HJMWmjZv5jbffXAEAy5Y1fThE+zpWwvPqaRY2t32LqZqseRUp1WWaN2svG9R1yFaS/DRCW1ubJCIcddgXDho/dtSAUqmkhLGlkfwIMIyTSEoJpYAV7698GgAuuugZEkJojBjRd9Dg/lMBaz7b1C0wI2ZqTqFhFgEoVyhsXPr4i28BQFPTh0S0DxXtWWvbJQq3oud8awdsTbb4OxskG23PXLTeoE8zomtra5mZMW3qpFNSKYJSKvbqxVtWLJictlRKytWr1+uly9560Fx/BsyMk75++g4jR9aM0qrEIBKR61l4uhC5xEwzSZs2d669/fY/by4nmC0BD9Heg8alU+bai2VttN4q7KrwwSki2sp75wIFLKt2OqBTPAShPHPk0wKLFy9JEZH6zUVXHzNz5pTZpUJBEZFk57P3fAVeJqcGJL2/es2bF5733ZeMzT0bANNus2fMHTliEJiFMsg1E8E66QkD4nncuKHjFQCh1lpiC72SDiJlLBa8iFaSDz4r9+TtFiPFmVPwZE8EFFN8xSzQ/zI0NrYGixbNKX1x4fHbHTh/zwv6VAVaaS2sRpnMvony6xiCjEq+fMXaGwCESqng+ONnK4B4xIghBxEApTQRXCZRMpXYgduu3rGp/VEAaOsygb2DF9Qo2/teBhQt0sS1XlaVToiGaAsM24CJuep8r2BmpD9drJsWL16SymbrwqlTDxh1xv9965Yp240dkO8sgKQkMigCAJfB6lgtGAQhpXzvvbXhww8/9ncAaGpqgiDSBx547Jix2wzfWyvFWqvYfYjYderaZAaCICM6Okv414uvPAsAa1patnqOIjuadXI3ZU/gu0x6bNy6BylmAV5eFSVtOkvp+r9vUEelK4QQvGjRnFJ9/cnT/3bFhQ/O232n6blcp4KEcHPEgFf10FK0qdISplIpeu2Nt285/+dnvMjMsra2Fgzgy1855KtTJk/oG4YlRYLcOq8IWisWAuL9VWvWX3HTDU8CQH19/YdOJaKo3LFPsSgjcEquA+6FzXZxy5oMEu+C8+3Gqn0lGd1bytLHCUKQzmazbCNV1X/9203H77nHLtnttx87sFDIKSlMaDLqG1zJJUTyWWtGOpC0Zs0Gbnv4iZ8TEVpaWlBfX68ABDvMmHSslECx6LnKPR+3A/u3BiBXvr/26aUP3rzB5oZ/eEQn9GnqmVa9lNTeZEV0bIk/GYD1ulkZB8uiwJUR/WEG9hGg7/+dcd6UXefsuP+USROPmjVryhRBQGdHpw5SgXSdr7TGPVkdiiAInnnupWuzPz55CTPLpqY2WrhQcPaXfz54hx0mbQ+tbPUi4xmLgiF+QEMQgkAyA3jr7XdvAYC2traPlByo/ZAjw2jK5WYWwRarSTozu4XyRKiE04QI5pQKgrb+PoJImFduk9pFl11/8rTJ236xWNBaMQuCSy8DyGMR7LZagJigYfwbvtOBmGGS6jRrKezBPQRSWmvRv3+/TFVVZvywIQPHjh4zFAAQlgqqqCCCIBCVUnv9v4kISimurq4Wr7z27sa/Xnnz95iZmpqauKmpCdks0167zfpR/34ZFPL5yK3polbRPmkXwNfgIJ0O3nxn5aa7H3jwZtvWh1r0XlQw7qzPYqMV5pCVDJ/18lK7zaQ8MO/MtGiAlaG+3iSqbz9x27332nOX+Vsxro8ErBTCYikMtRJEZj9Qr3onCMwamXRKdeZUcOddD53ScsV5y1s+N1vOmNEEIlK/PP+y+jmzdty1VCgosIhEQKzAcWxukttbBlalUudtLXe30yW/5Pr6+o+0yS658v3ux5oUIpec82z2orVVWgUJOURe/nhlKcD2PZ1aa1UqhSHAQUxNnhYRxU/LfrNOCCcaCG6xInZluX7F7gMhhAikEJaDVVioZWNhAJKoJGSQuvPeBy8+7ZSvXW6rH2ibRFg9v3bP8wb078O5XI6k4dpdZbIbMTOIBBUKBb39pHEjH3z4unuOO+2Mg66//roPPkzxmpiifSWsAkUDfumprTXjCGDds31uv5QlHlg/ioQQQgJgASHZaoSGU5Oxzys2aB0Z9l92wxKmQpF/K9lF57bc9KT8JywHtzIIOkhlUve1Pn3vV75QewInN9bpm25p+8HOMydNCMNQSSklWAEs47bcGBwLh0syhCgUCmrmjpN2veQ3v7x9wX6P79vU1NSJrSwOGzlMojpYgHFHev6T8gF6G+F7hHgjB3ehWHYT72uwzNAV7Gg/rVh7Tvdo3zQDLsvd91L5/XcuRrh3Rvk7sUfL3RdxtTJqK3dmeItBA0RtDz915+ELv/llNjXIor2+nzng+FEjRo34npQEVpp1qBgsYTsKJk4sLCbP52DeKMNisbTTDpN3u/bGe24gIjJ53VvusIr4vfCUsWivMsy5UdHeYW/qgSSSKkGZFKgIXSatQhpolGxq2Whv4VNGPAXlVOtCEBHiESPX5zhc9nA5FfvvJAI6Owv0yotvPL1mzYsFIgqbmpqiZ0V+1Jq77n9o/iOPP/8YiSBIp1OklNKABoEh7PGMib7AuImFFUFa61Qhnwv32WOnBbfc+dBFRKRaW7vWZOsO4jBlAil2QgldWK0PvbFw385OUAq6skZ3qxZb5gJ1IqQcwf6pOpWOPkrYDF3G0+UtXfpX6UalWVRXpfjYY7569pLnXvrnz8+/rJ6INAnBDQ0t4sEHs2H2zEWPfWbezM9ccc0tZyx/b02xum+1gGDFXoOJObF6S5QCbG4JdKlUOmj/zxyz+G+3/qCujqJaKb1BRQ0uUmcqEGxZNmePSPEYt727e9sTVuNUPThHKvD0Ll/9U/G69Je6l70EbzFG1JXsZ5zX7iHGcgkGU7HUqWfvPHX6Scd9tfnmux6+nHncoJaWBtXa2ho0NrJgZj76G1/69fl/uGz+c0tfW55OV0kihN7Rp/GgyrppIoABCqEOAqnCgxfs+bMfZH/3mbq6unBL9ktXyAKFUW6EsXOjhPJyrWlrwK5OhotgIZqo+MVWtlZwmAiRvOSz10jWk0fNHFsP5XLVUbhAXILK/B1XL/KzUp1sjihLc7RzxQ3NLAABSYHI53K6X59Aff6AvY5Y8tzdT3z3zF/tVldXF9bWtgkiQmsrB3/49Y8eXXjkafPaHnr20VQ6ExBR6Gd3RmlEHhe0FjeEEJTLFcToUYP585/d72+DJ84eWF9fz70FmGJft2sbTj7FClS5CbClASZrVkSmjGO1DgFxFoWVSRCQFcSOS9fpohCVRY7863ZeurgVvb4lL1gFyE+77WmU0UlPHkeyp+GIYhjKXGd7OHvnKVNOPukbD/7x0puOqqurC5lZ1NVR2NzcLF9fevt7dfvMnn9/69PN6XQqEKRDoxAhYqXl5ER2X7EQaVHMF9Tuc6ZN/NMvz7vAeg57Pu+6ywCs6RJjPJqHaGCeL6pH0nbEayY6nvz4GsoQVXlqiUi7U3PcaTnuhBx3zRyCY0+3YfNV296GWnGolbnmtcP2PuWdiMN+zlo3IsCYP1RRcln7F0Kmg1xHpx4/dnjmyMM++9errr3tZ9bckg0NDfrsxkbBzKX95s9deMc9j12VzlQHJEToFGGGT2BOgQRMeQ0GgAC6FO5bu9vRZ2X/vL8QQvXEwrsIcuYkq/Slh0PQlgaYyC9uECHYM3X8lwBg1pCy61Z4EiIthKCqTDrVu3v9IwAztFZghmawZs3QWguCPSCFdGSTA5xctHahmiCHqfcpUlLkc3nu2yelGg49+AepG+5NEdEZrcxBndHMydrZX3/wsefTe++xY32pWAyZZQAygVzfdxF5KEmBIZArhFQztB/233/ehec28iwbNPHRFUFcxrmsrhvIFWFPruqY3Zoh9jxvHGk1kdOi7DHX+Sjy49nRbTZLfcXq9atef/O99cVCrgAWAYHYHMqspRMF2u7RdXu22RTsZgZYeMNgBjGztwTNvDCTqK5OUyqV6jdo0CAxoH8m4nalQolZs9LM0jhEvb4nlLSu5hdJony+FAQBl770+f1Ov+b6e7iO6HutrRwQUdjY2Bgh+4mnXxi925wZ8wqFnCKSkhHXXXWxB6cZMBhCSFksFtQeu+4440+XtpxIRL/r7pDTHlXzqNMVZPWWQfdRp+5kpx+9ch0+7NC6HwDTfwq8pwHBwHqYE2/6C2CAubm/JmwGgHa7UPpR/HcZ9O8Xv3gzAGxCv1GjaMcdpomdp+8wdPKUcaPGjBy+4/CaIbsOHTJwjxHDh02sGTYgAIBSqRjqUEkhJPlcLja8u86VEAKlUpiqTgelLxyy7xl/vrhlZV0dXRgjpUkIIYo/O/+C+p9nG/85fftxQ/P5nBZCisoSzcUNCayZgjTpPXfb5ce7715/ZW1t7XqwWeT+E9EpOWzTbE2fbTE55ugwbx8xMT/eQg8cGYe/c9a7tshdR3yYilaqkpwpAi+uS17aiMTJNpu3rCvd3du+cgUeX/kMHr8Xq2EK4zxgf6r+6XmL5+4ya+bhE7Yd0zBl8uhBSAH5fF6BSXqeAk++2YUsKLomhUCu0BlU96kKv/T5/S94f+UfXqmrq7vDROhINTa2Btls3YrdZ+1+9IjjDr91UP+MKpVCCGEzBTyry1d5QCSKhUK44/SJNSd8++uLiOjnra2tQV3ZppdukgNjh4RTzHxz5MMCeawI8Ki6d/+5Ybco+yRrm1X8bMk9/qexsVE0NzfL1tbWgI2/Ovej7y968KAFuy/6xnHf37Hlhvt/8cpryzdUVVXJQJpD7ux8mwXtYcVp8UYrZUgpKZ9TYsTwgfzlLx1w+cEHLxrtl5FsbeXgh98//rZ7H3h8sQyCqHyGmyvXVvSBOVEgVFoSgWftPOPkuXMPHFBbW6tQgQ8AQPVbb73/LjNzLpdT+bw5xaaYK0Snu7jTXAqFAudz+ZCZ+d4Hnr7fdiKhvTtvzcUXN3+PmblYLJUKubx3Soxp052ak88XuFQqhoWC4sWX3PhFAGhu5k/FKTkAyJ6QE/Vnv/3qx91250N/37Chk5mZ87mCKhSKZix2jgr+qTi5gh1rnguFEnd2dobMzHfd+9hdAODatotNYMjcAUuefXU5M+t8rqCK+VJ0ylCEG38ecwUuFUolpZgvvfymU4AYBw7ioEaXKIanPEU3uXs8b1aPUPm0WWaOSlsk3ZKMLffe/seAGxoalDWNqLW1Nbjvvpblhxy095EX/+26r772+rvrMlVpoVRJRdTrhTbZUrPVQmEqIUhZCsOwbu+5B/zuz1cf48wuIuKWFhDWPbXpvvsf/V57e4FSKcHOERSLzjK/BhhKF0kI8A4zphwJgCxVR+AdkG4eFq5Eu+20711ySlnkj+hFRBORdmLA72iX+6Luf3rzugGAiLjOHpLCzPKM//vGNWeefd6eTzz5wrLq6j4SVi763jTfu+ZAEKBKJZFOS73f/Hm/2PeLRwyFLSPZ0GCQfuYZR12z5NkXHxUykMw6gTRf03eEoiGkDhW2HTdy5x+f89udiYh9uzo6U0NrbUt2sifny45IKB95L7kObE5m7dpBz1liVmT8ntSnK923IthDUlRra2tww9V/eHn//Q6tfeSR557KZDIB4MlVAJHzA4gJBwxBUhQLJT1t+3HDTj726O+R0ZIFADQ1tRERoe3Rp36ycVMO6UAmicVVQvDCv0IIKKXU8GGDxO67zl4IxBk6gMe6Kapyb686b1y0Ert6OHrxEsbte+aZ76KMvWPGSgQIQspPcbmaJNTZgEJHx2trP/OZLx74xJMv/CuTqZJaK23KPMXpQVG2aOxjhtZKaq155o7TTzjyyNNHwlJ1NlsXaq1F9ocn3LX0X68+I4JA+gsIgMmaAZzTDARAsSHWsWNGfQ5m7qNn4vJTyRzW8j/gOUFR6c6tge7t8U89MXeBhoYGde2110qif69v+vkfPr9s2dtrqqqqSStVtukk6W1kAkgSlUpFte244QMOO/zL37bEJgGT7UlEWPrCC7/qzBURBGUn8PnuaWtvEZEIQ8WjRg2betbP/zSLiLjRKsrebkpOPkh+fqXfT4IrZ0zUM2ZcZilx7MpjTooGikyS5GT8L0FDQ4N64IEHgrtvXvz2jTfe/Y21azdTOpVibWufdwfWHBYAeOKEMUeNGjW7jxAiBEB1dXVKa02nnHDmLa+89tZ7QRBI9tLwoiyfCEmWO2qlaoYOEHNm7bgfANRaHFe2o4H4gBEgeSCZhyjdWy1QLiNdzw9pNAgGa520ocPwU7s/uieoM9Gp4KyzTrjroUef/rsMAklEKmLXSKZSuuAFgURYLOpxY0dt03TuDxYwM1pbW90mOgm8m1v1/gc3mGdYu0PXoyggEO/FRuxZHDKw3wIAqLWLIz7gzMe09kyEnv0YWz4TVpN36Tz/m7TbMzQ1NWlmFn+79OLvv/Lyu+szmbRgpYzbHfE6d9q4g1AprqoKePtJEw8DgNraWgaAFrPHipb+6/XbN28uQJAQ2nOcUML7DYMuc8QghgwaNKOmZno/E8LkrjVIiDwlKfqfgVjzc/ZVz/jSXpzE5Z05rZ7B0Mn9If/zkM1mdVtbm7j11mtWPf3s0t9oDZICyuyD8URXWfROgyQAqhkxZN8pU+b1F0IoANTQ0KCJiH918eLHlr+3enWQSgnWmsllDyJpagEAg0VYKvGggYNGfOOE46cBQHNzi/C07iRey5PVKiUciF6Q5DR5uBVMFL/Ivaz8i/z0eUy2BmpraxUz02XXXLn4tTff2yRTVYHWOvZHOb0E8bxKIUlrrcePHTnsG0cfPZeZ0dzcLACw1lp88Mpjm9esXfc0AAgSpvakFzwpj5gpHeqamkHYYcqUqYCpG9rlgDMCRRvXI08Mw1Tdj5Qq1+meUe2HKaMUHBMnRCSlrEZi/mGUPsUOky0BZw8/cOs1q5a/t/IOEoSAhHLzqcHJBEYrIlUY6n59M5gyZcIeAFBjbeC2NiNeN7d3PggAgXTVJOO2Eoe7EoFIcioARtYMGA8AtbW13ZS2KEvZcfwfSDpQRC+SNpFi6rxFSf3efDhB2v/z0NTURgDT66+/c12xxBBBb6mtDKUUAcDQIYN3BoBaOyFr1pi90MvfXr4sX1AQghK+ibgFIDKonRNFSldo1ssZY+e8cSaQJ08i5YkTL1A9F/eNE+zLyij6Rn7UadvU/zbjNtDUVKsA4utuvvORf/975WYRBFKx25mTdJG6j1WnUZ3JTAYAaR1Hy5YtYwB47Ol/LVu75oOCkLZOuBeoLndqsc2x69ev32j3QxcZXZ4I6AMhqT32BuQdtZDwedsOOi8NAdFuQvxnt8h+IkDm5CB64NZLV61bv84c+sJmj3+lqWMAJMwSr6pODQVG9bEH1FA228QE4B9//fvq9o7cWpCpS2bi+HGY1xSYNXNsz1qBEBgBQEgpVUTR8Cja9tagwe3mdzKgSxd7GrBrTNutsZRIp3ViwRcHGRlYt93HXpidvM9/AiQAtG/ufBmweqjoxsNktHBiDWTSweDPHLD7QGONMgCyxvO7uZLWa9wDyeTKuJwGAJAwtFKVyVQDEMzc/dmUlryT3901Z131Yg5Hucrurm6Xc0+tbDVEpSmYOWB7+JoQxETEQhhqs9cDl1z/sffCQi5f/DdgfNPO+vDNrHiRa4A1+vbpl9ph2txqoOu5GZs2thfNCE3tUCLhcV2n68TQx5R8JsBDdMJrQ8mH/EyQxPXeJkdE9yXaSoBnt1tH/4eZcGpubpatzIEQgrPZrK6rqwuJKCQiRUSsNQfMnNKaAyJiez2sq6sLs1nSlt3Kj3ryugOX2FgqqdUAICxr7o42SAhiVoAIUiww0Fxtcj8LAEgJWgtYTui2hlaKS9hXSClTAFLM3SQH+rHOyItjvC72unv7Fp6S47UbIdUqeY71kL1U2roK/MTMQkqpzPG9AIDgW6f9YtrsnWfsOmr44B379aue0KdP3xEkqEamUrJULGql1dp8PreqozP/1orV6156YenrS37zq++8SESdgAn5XXONkg0NFJ018qFBihxgiLnHkymMksJCgKTMSAB48cWWxKogSUXApnXB4SFZqABILCYCRhCwqmvFA5Q/oNnuLULEduJ2epHRLO2d7ng0x/M5sUQSfvktK0xDra2tcv78upCIFABx1k//Ujd75rRDtxk5vLZm2JBpY8cM78n3MtEfwcp91+HrXz/knXf/vebeZ5a+cOW5P1r0YEMDKSEI11xzrfQW0VZALQBAq3C4GWMv64UYJCQxNEhwCQCmT693D5npZ6oCAG3WROwdK0NzlBgCBrCKAZ+i3aLw15AfdfJ+4/j1PfaeSLB/mxfxtmq+r4VSt2zNh+bmZnnYwoWqzqQCD1j81xu/PnPHKcdOnjRm1pBB/QEAYamIMMwrFbpXkHHesNtfbWKtQqRYkMDwYf3kNiOHjJ+90+Rj95g7/dgD95331JKlLy4+ddHCKxsaGoo2zWerqLu21vzbp7pqFOCoOWkSMSeiekwkqZAvFt9esXo9ADQ1ge1ha+a9AjXmG1M5Fbs2zc/2AqMEICQkKx4QAK+sv91373UG3s2m4d6WqXe7Z1oxbHKxhreANAAJDitTdGNjo2hqaoKl4Oq/X3Hrolm77HjqtKnjtw0EoMKSLhVDrZQSYC1AwiT3x9nXYBjuBBKWe2ijMCqNUiGniUgPGpAW83bbYe6uu+wwd/fZM0+5+56HfkxEtxERzj777K2pMqABoF+/vtsBZoOB8NJ/XbaJWXcUzWk+l9/46G33bTTzm2ywf/+BBl/Jg4EjJc80y+7VyOU6zReixHFI9k5LW07ORx4yc5O/JzlycXYLKoG0aME4rhMpYm4nB0FVSDBhZmnTd/QvfnP5YU8/9/KSww875MIdp4/fFmFJ5TvzOiyxYOZASBIkhT0bPKnSx+NhAKzBpMAUCpJKpiSEFIIoxUqpUiqF4tzZU2Yef3T9rdff8tClzNw/m83qxsYt3I8shAaQHtC/j/NOJUgw3sVpbT57HE5HR/ua9euf2WgKkJGjXgZG9AXzcDsQSlaIKaM3+7VQKG4EoLTWka9bxEYY4PKQo2p4zu4FEgdvYguVsfjppBMmSkTUAMxRj2AWyRfYWiB1nz1p/D33P3vdt4497Oo5O0+ZrlQu7OzsMGWkAhKQDFdEJ05mNGPWABQDWrMmIEwHATLpjMhUpWWmOh2QCGQhp0RnLhSd+VDmCjpVKCHNDIwYMQhf/txnjn76uVef/OaiMyZnsyY5sKeR2vRgymYvnDVyRM34sBSysDGgqASkZb0sIgJlAGjvyL8CAMpsZOBGa2IdfdKxw6oyqSFahTAbYJJCL/qbCEQBA0C+GK627Qq3OrnMvoJfCslBlJwea0+92NFm5o080VbRjjeLRRQXFWphL0d8mRSCFBGpv1x689framdfuP3E0cNQLKp8Pk9EIpAuac7jDlF1AHJV/DQzlA5EIFLV1QKA+GDdZqxe88G/N7d3Prd2zQcvbti48YWOTbmVH3ywAUEG6Nu3r8hkqvpXVffdfkRNzXZDB/eZWDN4yO4nn3D8P/fada9vHnfcF1t6qgxkk/J41q67fL5m2EAUCwVFJAPDRb1tTo7dgkBktnGu39jxLIDotDt3NOGMKVOmDR48KBOGoQa5XTUeBcJX+AyxbNq8aaVDVITohMOErabt+VMr7aXo7UQNp4zF3z02mjC1TG+JCForabap7FAE0LftoSXnz52906LqPink8znFRNKVgHY1v6OYCHG0mOyoVCZISUoJuWFDO95/+/3n3nzrvVtfevW1W04/9ZuvAGjveQQ+DBx09913fiYf8heOOvGXTzU1nb48m22iClyNAOgxY3avHjdm1NfBDKW1EF4euw/mu4AUUnywbjOWvfLG40AczHCHgo+fOGan/gMyKOTy2gUPygWnE69uy5sK+UX3W8/yxtlpDMQ5ZN562EK1pMvgkES6u8rMqK6uQkPDF9QZZ1ww55tHHfrX6dPG7VjM51WuIxRBSkYlGtlbjAQn/+GoWFWl0wJCyHdXrA3ffvu9a5f+6+WLvn3CYQ9HozL6RUoKUfK3RMcOk3rU1LRRrVGfNRFtOOCAebcCuLWxsVGUexIdtLa2SiIK/3Tx9V+bMW3SuFIxVCSkjLhj2VMW+TpIpcSK95evbPz9JY8RERoaGjQA1NYarjh8yJB9rPVp0GxDv5H27ZBstZ1igfHBmnVvAEBTW5t/Inx8v50Jw1K1x2acIyV6pmdUE7uzIiJcRnK/nD8wGFoTXn/zrQ8u+ltLwwHzay8bN3ZYn3yuIwSLQEgR9SWy5a0W6/CktGYZkM6kq+SqNZvw6qtvNd9+10M/O+8npyw1Q2K687XXModMnVKwiCrNO+xb20zac885NSNGH7zi2ReWNjQ0/KmxkUU2mwyuMDO1tLQIwCQDVhqvXTx64uz9Bu4xd+bZQUCcD40p5LzRbtj+OicyiXOr1264C+8+kdNsttQCMMcyYHzV0MFDdjY3u+3r5L/YSmKCZo10EIiVq9bx8y+/aE6zra3V0f5ois42NhvhY2SWG88JBb1HZcyvyxGlEpWZa0ZmAyCWhXyR5+2y0y/n7Tl7lyGDByCfyymiVECRKzXGqp/0D2gopVR1dV9ZLGn56JNL2+6+/6mzz/3R8Q9bBMimlhYphCgycwGo6Xfs7/745UFjar4i+mb2GrLtxMGrn3/5jc5i7ieNjSyyTWBkk2MhV1eiB3jmmWeCOXPmlFpuuO/CnXfabmzeVumPSpR6M+jPg5RCbNqcpyXP/utyIMoVQ3Nzs2hoaFCN554xd+SIIdtAay0FhDNXE5zRWUeAFlKKje0dKy8874+vEgFZIo6r+zpTyeuU49R+EoJBoLPfewa/Eo5jq3biE+0BhljT6RQdckjdLqoYcj6XAwlbTTfKj0IXPUEzEAgRZjJVweuvv7vpkUee+eFRR33xj/Y9sqWlBQA429BQBFD9zd9cfsywyRNOHTZ+/CRKCZS0wpo33l5x5a//sufqJ69ZtXPjZgHKboU1YWDJkiWpOXPmlH72q4uP3H/+vKN0GIbEHETWnDcRZHUJG/NXQZASr77x5pIfnHbUQ2w2xSsgls8zZ037/JAhfVEqFDQItvqCaStaMFHzZrLWfbDheeDdnNamcmGE6Ch1N2l6miXiK04e9J7al4xqJCjZ1+bZKFVEMMoGIEgIEGlLwF6tMHKZLQSlQq6uzjAgggcfXfrQH/982fEtV/32FWYWTU1AQ0sLWiyb/fovLjts9PTJZw8cO2KaSgl0FNuVLFJYXd0v88HLr1+4+slrVh2/eHEqu2hRqecxdQWH5P/77q/mLzz0cxcNHFitch2dUsrASjwXFLIPWOuIteGe+YKm55Yu+xmc18hOV20tFID06FGjDgVMPTMRWURGnEYZO2Tqo0syVLhy9fp7gCgVKT4KgeyeJ5MYSrEzg8iG2OKBJUJjPQBTvBB8rmBPYbXosq3YyBgJIeKdlradhOlnskuVClV1dTW9v3qjuOaGe39eu9fO81uu+u0rra2tARFp1LaJloYGNWnnA2v+76o7r5l+QO3Vg7YbO61TFVUhl9ekIIJUOtP+/trSi88+dz2Y6aIVK7bKp+02282ZM6d05o8uWLDo+IW3TJxQk+7s7BAikMQ2y5VF7KJwDicBCWZW6XRGPv3MC48c/81Db/KpubWxVQoh+NcXXv7ZadtP2LZUKioQIvFsAqtUVtWRIUQg16zZqP/53L/aAKCtzShzXbRuctEQS9lckZrNxPd26JyvmSYSGhLmWxml29Z95EaeOFgRrTms6lMdvPzq8tXNLfd9s/HHx9zJppa1qKurCxtbOcjWUfj5H/1q76nz9vj7sEnjt23PtSvZqSkQpmisZq1lkKaOjZtff+rK85fTVRdw0pnQPTQ2NorapiZRRxRms1ksvvSGEw/Yb97vxo8dEeQ62rUMUqKctZazSlaKq/uksPzdterGW+77NhGxU/YAoLapVnOWMWvmDqf271eFfD4XU6+Z/IRGZ2u4aREE4v1Va179WfbkpWwPZAM8RMcZmyjTDq2ArcC6e015czs1CCbE6TMCj513iX17FXZ95z+YIQXCVKYqeOzJF54898Lff+2uay96g2MtFZYqwiPOv+y4MbN2/GP/kcNS7Zs3hQIUsJRR/TDSxCyAXDH/LoybsKcjDKixsZFqa2tFbW0tE5HKZrO6/ugzppx05Fd/vvuuO30pUwV0dnRyEKSFIxB/TNE8EBkWm6aQIVMPtD3ZeOF5313qPIBAZOLpU0//5R4zZmy3j9ZKg4RMmDDeO8j6FaQpOCTeW7n2DhjFMYDdytu1/JRFoNu87TDl9hGZ1dmLaHZ9saUuyQokthqDMzYij06ZZl+urBE5eVzFDBHcce8jVx684DPHAcg3GlYdWi2EiEifeOnNvxw5a9oZmjR3trfrIAgCwG5ysu8mAlgzJLi6u/5bLx0TEXvnbGDRKedM/tLnDzxh6vbjjh8/dkS/sFhU+bwSqVSKnD+gy1zYsSitEUhRCoJU6o57n2o56ohDzvGiYwCA+vp6EBHfcfdj3xsxfAAVSwUlhBCGij28xOvHEIEUYv3GTix5/qXrgFh7B7xiNV3OLiwjYiIPIRH0nNftNABiHSf/MSfyzwxxW8SKLqE7EAkwa1Vd3UeuXddOD7Q9cvbCQw86V0qBH//4LJGtq0sg+bSr7vnbuDkzj9yc3xhyIZSBlNHQIg8xA8REWoVIB+mJY8aMqSZBuag7MOzZm/yB3/3Br0bvNnvWHhMnjvnC8OGDF4wdPTwDMAqFvGKQNEGI2PSLMWCBAaVKHKREGASZ1IMPP3fPwQt2+4ZdTFEItLm5WQoh1OlnXbDnzjtN/UJYKmmtKBCCI9y4oJOjaqPeKJ1KZeitt9564azTj37Ssu1I54h93T6GKoqqri5QF2nrDoQ9A8a1FsvhmI2z9rJYvPsMi9MAdJjJZII33lq56abbHjry9FMOu8lRQDab1T6Sv33V7ZdvM2f6EZtzG0oc6pSQMnL+lOsZDIhSsaj71AzbZvaRZ8z6909OebyhpUVMX7aMzznnHP3O6szsW+54+vwZU0b3y+c7h/fp02ebbbcdFTWSz+UVg4UQwmVXJPQZ3+TRWoM1q0wmIxUHqbvueezygw7Y81ghRMncGsdS6+vr0dDQQJ/dd58LRo0cTLlcpxaUhuHEfvQwaQaTlJoZwauvv/N3AKrNY9uAX4C3Am7LY9Dxd8czet5VEXOJmN27BxJ1OSLO7WhOIAyZpRBhJpMJnn3u1Wd+ef4le1kkB3alMhobhXUa6FOvuu2qsbN3OmJzx+YSK52Cl4xXPqZoHFpz3+FDMGrqpDOJiKfX1FA2m9Vnn3226Kib9OyG9at+n8uXRk6fvt3obbcdRdAoFIvFYj6fZyGEOeKMY8vBC99Cs4ZmxQCHmUxGV1VXyeXvfVC4quWu7x90wJ5HCiFKSikfyc59qv50Scv39po3a24+n1NEQoIMkmPE+s4mgtaagyAlX31t+cbmf9xwORGhrsy547lAvcLsngIURZgopujoRRA9ukCdZyyxTdiebyE4cgpGYRPzbgYrqD59MjJfUMF99z7+t88umHcSgFxjY2ukdNlEBCYicepVd1w+cpcZh3d2dpQEI8VEsaJY7hfwgABZ6GzXY6dN+dwXzvrTodm6uus9W5paTM7xnVdff88Pd9lp2onbTxozKJ1OA2CUSiWllWDrcyYho8I8TIJAYCHTVQJAsGrNBrz4ypu3XXvt7T9e/Iezl1qFMRFIqq9vlvvuOz886uTG6Qfsv3c2lSKlQjJn2VpZGkXmODkoKUkJIYKXXnnjHzfe+JfVvmIXTXtPiHIpRF3InWO67Bnc7pH4pFrHzgTHwRKCALOE0mABGWaq0/L1N1d2/P3K20787IJ5RwkhcvX1zTKbrYuQfM6552oikqf9484bx+w66/DOzs5QKJ2KfBJR+lNyc2CCSwkCwpBS1Sk9ba85F+97xJnbX7RoUen4xYtTALi5uVkSof2rhy744eHf/M7MK66+64dPPPniY6+/+V6hMx/KTFU6yFRngkyfKpnKpGUqk5ZBJh3IVDr4YENBLH3+jZW33/P4Zb/4/WV7z//M7M9ZJFdKS6Lm5npozcGRh33h7xPHDc8UCwVIYY5FTDpbOLIzXRg2nUqJt5avLd1+94O/sWZmF/4cm1d+VKrspq7hxei+Xryg5aXZEZlvsROBDFI4VNVVGcksg0ceff6xP152zYnXXPrz593EtLQYD5dDMmud/vZVdzePnbPT5zraN5YCRkqX64ZlsrmLNg+ApaT2znYeNHr44NmHH3JPekCfz120aNG/mq37lJnJmP20/BuPtvwcwM8/V3/shLq95u1UM2zorKHDho6TMjUCoD5Syo2d+c7Vq9euefmd5e8/fe6PTnoetryh8dY1oZzSAGDJEg6IqHTdzff/ZZ95s+YUcrkQQgTGRrC0S2WKqh2BEKwgRPDcc8v+cckfs69e/Icmmc1mu7yj2zBlZOLHLo9IDfdMuZ7trCioQQkFLGLWDABKBYEkKfvIV15f3v7o48+ee8w3vnQ+ANXaGrNqwLC3c85ZqJg5c/I/7rh53C47HbCpY2NJaJ1i6yWKqvUh6Ygp/04eS5RCiPZcux4wfsz4mV9c8FDNxHEnNxBdafrI1NTURvXNzfKkmhqqra1VRPTWrS2XvAXg5p6GT0R4+umnU+e9+aauhGDAuU+p9Ncrbj31kINqF2mlQyYKCJZxVtCdIqeS1pyuSomXX1ueu+a6687ujpqBSg4TileQs8/gv49i/4zu7XAU4TJMEG/pZLb4ZyWEoFS6Sm7cnMPTz/zzjj/+5arTb7r2ty9JIfDjs84SdV6V2n0aG4OWbEM4cNyOg7953nnXjdp5xvyOzo0hmFPaHXZaZi2UI9pds+M1ygwbs1EKKdTmdt1n+NBBk+vmXXH69a3ffPP5l35BRPfBaq/NzNTU1iYbm5vFupUradLkyRg1bhxPnDGDZ1u6+FtbmwSA4qv91aJFc0pz5szp1nfufOQX/OnKIw45cJ/fpCTCUqkkvZrcpq9OLkexZPO7DEhByODRJ/7525Yr//AWrvh9RWoGeqBol+5SIQwW+6C3ZEMcm2gXMwEqZCGgUqm0FFLKjs4Snv/Xy4/c3/bYed8//ZjbAFPasK6uLvTTdI5fvDh10aJFpX0PP3PinPqDbhw0bcJO7e2bwwAiQAUvmgOtdcVgTGKMHuhACi4VWciAR+40dd+Bo0fuO37nBx5Z//7KK1c//OxdRPQOyoqpVoAIsUecc/G09f9e3u+2i899GjEhAgCWLOHUnDlUOv/3Vx++8EsHXD50cB+dy+VlKhXE9OVCkVYZNkAwJU5Dnc5Uy6eeefWtH3z3Bz/lXg4njaJXvuB1CYC+fegz6pj99RyPllKSZq2JEIKVSJucrWDdus14Z/mKhx5/8rnffuuEr95g2xRNTU3wqRjM1AyIBqLSwuyfPjN53txrB4wfNap988YwYAq0c2ci9qiVy+Tya86+7eJ2JaMrkJBErKlj03qFlBDDp03aa+jkCXuNnDSxc+rCg5eo9vy/Sp35lzs2tb+umVdtXLMGJCUHKdKyX3Wm34C+Uwf0HbynDKombVz5/rupTOpCRNySnLVARFT6019bjv7CQfteus3IwTrXmaMgkBRxmm4XKINZI50O9LqNncFd9z188po1L7a3tECiB+04Nq+8iYibNIqTUwiYkTgiiblnZUwRB8JAVUcn8PZr76x47/11tzz61HNXnXX6MY/YSaaWlhZRLsPqm5tlC5FqANRJi6/79sgZ21+QGtIv1b5pgxIkAqM/EKDMwjRdoqSzx3fQuEHGITFzwasFIoCoGhMzpILm3OZ2JQiorqnp0z+T3jsjg72hNAqdHch1dELrEJmqagTpKihm5NauRWFjZ+vGVesuuOS0r90GAPjD2QCAxsbG4JxzsmE2m8U1LfdmD1iwx9kD+mV0LpcjKaVX76vMLeljhASEUKEQmeChhx+/rPHMY283XJB65DQxRVubyc9QJIrUqHiikKSESmD3l2Hjpk1rXnx5+YsrVqx57O13/n3LcUf/38PAOxvssz6Ck3KFmVqI1D4nnT5y9v6fvbBm4raHFYXShVIpTKVSguGdJ84Ak/T66CGb4zHE/fddNwRm5cVayGq3xnEjbF9MSrLWqpBDXgqiQBL1rUZVnz6QYYjihvbSpnWrl2xes+b6155+9YZ7/3DGW26MBKCxqYksFYcTJ+4//NLLfvGXffbe5UustcrnC0JKEW08NwvOJD7G53aZwRABOmRdVV0dPPXMq28c+80fnGpdqL2GV90Y+7z51orXJmw7apt8Pq+FIMEcTxAhXgBMAGutqqqq5L33P/3Qgv3m7tODfJDlnXBZH73kXaHhR787buKuM381eOL4ARvWfwApA6SDwPAXI8Bcz4wP21OyfNbsuyTtH9HQjRjUEeuHb68y27ot1g+gNLQONekwp3KF94v5whvtm3MvFdsLT61c9tYzd//l+6+4MTQzy5aGFkyfvoxra2sjpfK8Cy/5/Gf3r/vdDjMmji+VSqFSOohc5F5gR7i+2ZVq+ijAWnOmOq3feXcdfn/RlXte8JPTnrz22uYt2hsW+bqRiB1b95pG5L1yYKbWdqq3skSAssVIDXLr67s1M6L2bT8OOeP8V95/Y+WX/9X2dLtIsUinAqE9Q5m1piAwCYGsBUlh7DAdkEboiXkhKAgA1hV4YQiEAWBTqsGCKEAI0pJJC1ZCs9SaWKSpmMvlNBc2r13+7qZnbrxoLTyly8yZ0cjR1qaXNYFPOqle1NU1qGw2qw/+8qLJ3zrxiLN23WXHI4YNGYBCrqCYKEgoj/ZfQZaa3WTbf7USSKdFmMtz6u57H//W+eee9mR352f0BNVvvb0yKsxuiqXnbUF2+/GKs0eF2VufbrOD7ElW97oa/ueAzJgbW1uDxsbWoL6+Xnqb76Pxzty9fnTzTff/4rXX393MzFzK51W+M6eK+SIXcqZ4ezFf4IJfdL0QF61PFK7PF4vMzNfd8sDvAKCVuedU7a5dBgBUvfnmytcnTBg52rBuIdiFpny7E2Q0cg2VqcrI1gefeWh+7ZxKrDtS2Lt5X3faejRJ9fXNYsu2SP8HocX8b/r06TxjxgyqMQ4UllIqP+P126f9ZO782j2PnDZ1wmFTtx8/BADynZ2KSNhwZlcoL74ORqQrSEGlIJ1O3XnvEzd/dsEeX0wEdrYQfK078ZALaETyGYiSESLPVhyJRNkAuutAbx2Lfr/++sMUrt+SIfznIBH5SgIdefwPpuy95+4HTp0y6dCxo2v2GjumBmCgkM8rxRBSBNLfneraA9DFlGIXB2ABIVAK0unUAw89c99nF+xR7ylfW4xkoDeHCWLzyigvnPitVCxK65So9NJuHHjdXi+/p7d7ueze8uuV2tvS91a6lwBIYMyAhQsPHbD99O3Hbztu7MxR24yYPXRQn12GDhkwbcKEcVJIgHWIYj4fKk1SSpIBeXPou2T9QUTyOk72l9JQctvDz7Xuu8+cL0opSk1NTSKb3fp05B5LW7jokhu3V6lWKqUwferEWY88+s8XglTgOssw2abS9l1ZeUZg0mR8ewKAJm0MVwZs9TuAmEmQtMESgtZaCCG04x/MTCSi/bBMINaszC5Fs1nbJcKYkpl2AzbbjYz21BmvnLCpzsbEbAp1sLSFNkH2NDuwsxoonalKZ4IgNbAqk+o/eNCA1JDB/eL9Z2GIUBXDsKRJs5AkZSBMMYYIwY5ytXNAeKFfh2wA0JqQDmRJpILUfW1P3rF/3e6HCiHyP/7xWVt1CrwPfvQqNkWdIii8JW5dciCTd6SUxuixw6vGjh0x48O8+H8aGAhVqENV0roYWscREQkKjNvY8T+Xn+aVBgGigEoi51Ib541WJV3VJ8Ohlqk773r4r4cctPfxQgh11lkfHsmAlzPmceiIn5C/EinZaWZGMV8AM7Qvz30uWSllN24bkS/Xte1+oDIK6A3cXq4Ef3b/o65tOUXTZ5R+H12uWpQx4ZwwZheL6aGp/SSIpI0x+NzU2fgx+KZUUjYbd6M5AK6kqvr0kx+s34x7Hnj8rMO/csBPrBZPPfmxtwT8Gib2H+sSQ3ILahefsbtXkoh8o/YHl5rPlKhkmPydrTuPEMkmAF1Oce8aC+9+ETivEmDtf89ZEoUlmaOSleVZNA7h7vS+RE1bEbO38hQrF89LOG0qhEeTdrMbMiHUilPpQAVBv+DV1/69+qa77l/0/VOOuqmbJIUPBZX3R0cdrDQw89qIIoxbyjlQYSYs1qWixR5tlSa4p51/C+T8VHGZQ/P+rgj3qaJLyNGfSCv/XB53fL+nVJaxAD+fPJ4Ar4xlN4uvEiTyx6JTBuKFCLCp4UJQ1X2qpWIEDz3xr/t+/bOLjr/11j+81erlqn8cECMayUkzSkwF1guPVbqJZbjCDd4grAAyM+SEE9zi5Cj5NrkzBGUrvxJH6QnZcY8t8svu98djzqL1FlX57FDMkRMZOBVEQXf9STZnlS2Yo4vT6RSEDORrr7+38bGnljR+82tf/C1gTvGr+xiRDCSCGt7g4G8uTw6iuxWczNyoULYqMWh3b/zq3rJBukN4pf6UL4jufo9YcfT/yiKj0vOVwondhkWtEqsZ0FrpVCA5yKTl2g8249l/vnj9+b+9/Mx7bv3T6y5U29DQs5v4w4BF9AjhdlOyrWHlOh73GJEyRgDY2/tDRMkiNhzfa74mJzzyuvmy2SpOEZV1wx57Wmzu9/Ln7Q/JBUixdRFRbi+LuTeIxQ75F8x/rHU6JUnIatHZEeLJJc8/duf9j2R/eta37gFMwsXHyarLoWvlQHY6gpeLELFemINVgFgm2wUQKUG6jMU6lhjJPadxl70XVk5HLL4yUsu/J7iOfQ95SHPviMppuec4+snT8t0aKc8tix9mb8HHI3DKqNtbp93gtRDEVZlMAIJcv6EDr776ylOPPfrP87/znSOa7Xi6Jlx8AmARvUoJkyXuvFyeNEVMDdx18inJ/xIQ48wTdu6ZcoLz/mB/gaGcjXICGV2tga5tR6FNj43GtdS8xLeYAqOvXcbmEWziGoM1MwsBLUCUqspI2L3Ob7y9ov2dd1be+cQTz138ozOPu9eOrWLCxScFkTKmibXWmpmZlc3G9e1LU2OEk4nxADSX1fZCkuqYLZv3PUOejO6OS3Y5a8tHaERdNhjviqlaSo5ql0ZgnYqs7UstgjluHwC0istDJQL+EeKtveg2AsEk60shRBAEwi4NEZYYb7+9omPdhk2Pv/bmv2+/7PLrb7r75sVvA66g7DUuwf4/djyjm84+7yxf9c64scOH/ade/P8m6MyVsPaD9fnNHbmX1q5Z/8zy996/5/Irb3zyvtsuWu7u4V4SLj5pcBQdvvfeqreYFcJSyCYLQRNiFkkkSBModmDFctgjswRPI2YGhDC74AxJR/dbSoz0biIRMU2GOZ3d2faCSFuNmBDLTOt3ce05Rux1xfstsgSZmIiJbWKYc83FfoSk8mCpnQmktaZCMSzmMtVVK9asWRsW8uHbGzZsemnzxk3P337/Y29e+/fz3vYngJlFW1ubaGtr6zXh4pMGh+jivD122huYmAEUAZLNvxYGAtgoGdjgccQhMA5aB+sBDPaads9L+8wG7vLMQO8difaZgAGUfNbBoDIJ6b9nvXd9cNlvrg2ympPfjvLe5cD1d5195gMGULSfimCzaYKWFvCyZU1svVqfijNCujcW/3/oAkQAkYBSyh3NQG1tpsrfsmXL+KMEHT5p+H8AHlxz0P1xMoQAAAAASUVORK5CYII="
+                    />
+                    <div>
+                        <h1>Biscayne Bay Preparatory Academy</h1>
+                        <small>Online High School</small>
+                    </div>
+                </div>
+                <div class="m-actions">
+                    <button class="login" type="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3l9 5-9 5-9-5 9-5z" />
+                            <path d="M7 10v4c0 1.5 2.5 3 5 3s5-1.5 5-3v-4" /></svg
+                        ><span>Student Login</span>
+                    </button>
+                    <button class="m-enroll" type="button" onclick="document.getElementById('enroll').scrollIntoView()">
+                        Enroll
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="accent-rule"></div>
+
+        <div class="wrap">
+            <h1 class="title">Online High School Courses</h1>
+
+            <h2 class="curr-head">Explore Our High School Curriculum</h2>
+            <div class="rule"></div>
+            <p class="lede">
+                At Biscayne Bay Preparatory Academy, students choose a diploma path built around their goals and their
+                graduation timeline. Our fully online, self-paced curriculum follows the standard Florida course
+                requirements for every subject and is taught by state-certified instructors. The Academy offers three
+                diploma paths, described below: the 18-credit ACCEL diploma, the 24-credit standard diploma, and the
+                24-credit Honors College Preparatory diploma.
+            </p>
+
+            <div class="paths-glance">
+                <div class="pg">
+                    <b>18-Credit ACCEL Diploma</b
+                    ><span
+                        >An accelerated route to the same standard diploma in 18 credits. Students complete the same
+                        core courses; the physical education and online-course requirements are waived and the number of
+                        electives is reduced so students can finish sooner.</span
+                    >
+                </div>
+                <div class="pg">
+                    <b>24-Credit Standard Diploma</b
+                    ><span
+                        >The traditional Florida high school diploma. Twenty-four credits across English, mathematics,
+                        science, social studies, physical education, the arts, and electives, meeting all state
+                        graduation requirements.</span
+                    >
+                </div>
+                <div class="pg">
+                    <b>24-Credit Honors College Preparatory Diploma</b
+                    ><span
+                        >A college-preparatory path for university-bound students. The 24 credits are completed at the
+                        honors level and include two credits of a world language, with SAT and ACT preparation tutoring
+                        provided as a college-readiness support (not a for-credit class), aligned with Florida State
+                        University System admission requirements.</span
+                    >
+                </div>
+            </div>
+
+            <p class="lede muted">
+                Select a diploma path below to view its full credit breakdown, browse the courses in each subject, or
+                begin your enrollment at any time. Select any course to read its description.
+            </p>
+
+            <section class="diploma">
+                <p class="section-eyebrow">Choose a diploma path</p>
+                <div class="toggle" id="toggle">
+                    <button type="button" data-d="accel">
+                        <div class="tt">18-Credit ACCEL <span class="cr">18 credits</span></div>
+                        <div class="td">An accelerated path to the same standard diploma</div>
+                    </button>
+                    <button type="button" data-d="std" class="on">
+                        <div class="tt">24-Credit Standard <span class="cr">24 credits</span></div>
+                        <div class="td">The traditional Florida standard diploma</div>
+                    </button>
+                    <button type="button" data-d="honors">
+                        <div class="tt">24-Credit Honors <span class="cr">24 credits</span></div>
+                        <div class="td">College-prep honors track for university-bound students</div>
+                    </button>
+                </div>
+                <div class="reqcard">
+                    <div class="cap">
+                        <h4 id="reqTitle"></h4>
+                        <span class="tot" id="reqTot"></span>
+                    </div>
+                    <div class="blurb" id="reqBlurb"></div>
+                    <div class="reqtable" id="reqTable"></div>
+                    <div class="reqextra" id="reqExtra"></div>
+                </div>
+            </section>
+
+            <section class="cats">
+                <p class="section-eyebrow">Browse courses by subject, then tap a course for its description</p>
+                <div id="catList"></div>
+            </section>
+
+            <!-- ENROLLMENT -->
+            <section class="enroll" id="enroll">
+                <p class="section-eyebrow">Enrollment</p>
+                <div class="enroll-card">
+                    <div class="enroll-head">
+                        <h3>Enroll or Pay for Your Diploma</h3>
+                        <p>
+                            Complete the steps below to enroll. Your information is submitted securely to the Academy
+                            registrar.
+                        </p>
+                    </div>
+                    <div class="steps">
+                        <div class="stp active" data-s="1"><span class="n">1</span> Diploma path</div>
+                        <div class="stp" data-s="2"><span class="n">2</span> Student information</div>
+                        <div class="stp" data-s="3"><span class="n">3</span> Payment</div>
+                        <div class="stp" data-s="4"><span class="n">4</span> Confirmation</div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div class="epanel on" id="ep1">
+                        <div class="path-pick" id="pathPick">
+                            <label data-d="accel"
+                                ><input type="radio" name="path" />
+                                <div class="pt">18-Credit ACCEL Diploma</div>
+                                <div class="pd">Accelerated Florida diploma · 18 credits</div>
+                            </label>
+                            <label data-d="std" class="sel"
+                                ><input type="radio" name="path" checked />
+                                <div class="pt">24-Credit Standard Diploma</div>
+                                <div class="pd">Traditional Florida diploma · 24 credits · ACT/SAT prep available</div>
+                            </label>
+                            <label data-d="honors"
+                                ><input type="radio" name="path" />
+                                <div class="pt">Honors College Preparatory Diploma</div>
+                                <div class="pd">
+                                    Honors college-prep track · 24 credits · world language + honors core
+                                </div>
+                            </label>
+                        </div>
+                        <div class="btn-row">
+                            <button class="btn" data-next="1" style="margin-left: auto">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="epanel" id="ep2">
+                        <div class="subhead">Student</div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label>Legal first name</label><input id="fname" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                            <div class="field">
+                                <label>Legal last name</label><input id="lname" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                        </div>
+                        <div class="grid3">
+                            <div class="field">
+                                <label>Student email</label><input id="email" type="email" />
+                                <div class="err-msg">Enter a valid email</div>
+                            </div>
+                            <div class="field">
+                                <label>Phone <span class="opt">· optional</span></label
+                                ><input id="phone" type="tel" />
+                            </div>
+                            <div class="field">
+                                <label>Date of birth</label><input id="dob" type="date" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                        </div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label>Current grade level</label>
+                                <select id="grade">
+                                    <option value="">Select…</option>
+                                    <option>Grade 9</option>
+                                    <option>Grade 10</option>
+                                    <option>Grade 11</option>
+                                    <option>Grade 12</option>
+                                    <option>Adult learner</option>
+                                </select>
+                                <div class="err-msg">Required</div>
+                            </div>
+                            <div class="field">
+                                <label>Current or most recent school</label><input id="school" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                        </div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label>Approx. credits already earned <span class="opt">· optional</span></label
+                                ><input id="credits" inputmode="decimal" placeholder="e.g. 12.5" />
+                            </div>
+                            <div class="field">
+                                <label>Intended start term</label>
+                                <select id="term">
+                                    <option value="">Select…</option>
+                                    <option>Fall 2026</option>
+                                    <option>Spring 2027</option>
+                                    <option>Summer 2027</option>
+                                </select>
+                                <div class="err-msg">Required</div>
+                            </div>
+                        </div>
+                        <div class="subhead">Mailing address</div>
+                        <div class="field">
+                            <label>Street address</label><input id="street" />
+                            <div class="err-msg">Required</div>
+                        </div>
+                        <div class="grid3">
+                            <div class="field">
+                                <label>City</label><input id="city" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                            <div class="field">
+                                <label>State</label><input id="state" value="FL" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                            <div class="field">
+                                <label>ZIP</label><input id="zip" inputmode="numeric" maxlength="10" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                        </div>
+                        <div class="subhead">
+                            Parent / guardian
+                            <span style="text-transform: none; letter-spacing: 0; font-weight: 500"
+                                >(required for students under 18)</span
+                            >
+                        </div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label>Guardian name</label><input id="gname" />
+                                <div class="err-msg">Required for minors</div>
+                            </div>
+                            <div class="field">
+                                <label>Relationship</label><input id="grel" placeholder="Parent, guardian…" />
+                            </div>
+                        </div>
+                        <div class="grid2">
+                            <div class="field">
+                                <label>Guardian email</label><input id="gemail" type="email" />
+                                <div class="err-msg">Enter a valid email</div>
+                            </div>
+                            <div class="field"><label>Guardian phone</label><input id="gphone" type="tel" /></div>
+                        </div>
+                        <div class="btn-row">
+                            <button class="btn ghost" data-back="1">Back</button
+                            ><button class="btn" data-next="2">Continue to payment</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="epanel" id="ep3">
+                        <div class="subhead">How would you like to proceed?</div>
+                        <div id="payopts">
+                            <label class="payopt sel" data-opt="full"
+                                ><input type="radio" name="popt" checked />
+                                <div>
+                                    <div class="po-t">Pay diploma tuition in full</div>
+                                    <div class="po-d">Enroll and pay your full program tuition today.</div>
+                                </div>
+                                <div class="po-amt" id="amtFull">$0.00</div>
+                            </label>
+                            <label class="payopt" data-opt="deposit"
+                                ><input type="radio" name="popt" />
+                                <div>
+                                    <div class="po-t">Pay $50 enrollment fee to reserve a seat</div>
+                                    <div class="po-d">
+                                        Secure your enrollment now; the registrar bills tuition separately.
+                                    </div>
+                                </div>
+                                <div class="po-amt">$50.00</div>
+                            </label>
+                            <label class="payopt" data-opt="review"
+                                ><input type="radio" name="popt" />
+                                <div>
+                                    <div class="po-t">Submit for registrar review (no payment now)</div>
+                                    <div class="po-d">
+                                        Send your information to the registrar, who will contact you about tuition and
+                                        next steps.
+                                    </div>
+                                </div>
+                                <div class="po-amt">$0.00</div>
+                            </label>
+                        </div>
+
+                        <div class="cardbox" id="cardbox">
+                            <div class="subhead">Payment details</div>
+                            <div class="field">
+                                <label>Name on card</label><input id="cardname" />
+                                <div class="err-msg">Required</div>
+                            </div>
+                            <div class="field">
+                                <label>Card number</label
+                                ><input
+                                    id="cardnum"
+                                    inputmode="numeric"
+                                    placeholder="1234 5678 9012 3456"
+                                    maxlength="19"
+                                />
+                                <div class="err-msg">Enter a 16-digit card number</div>
+                            </div>
+                            <div class="grid3">
+                                <div class="field">
+                                    <label>Expiration</label><input id="exp" placeholder="MM/YY" maxlength="5" />
+                                    <div class="err-msg">MM/YY</div>
+                                </div>
+                                <div class="field">
+                                    <label>Security code</label
+                                    ><input id="cvc" inputmode="numeric" maxlength="4" placeholder="123" />
+                                    <div class="err-msg">3 to 4 digits</div>
+                                </div>
+                                <div class="field">
+                                    <label>Billing ZIP</label
+                                    ><input id="bzip" inputmode="numeric" maxlength="10" placeholder="33131" />
+                                    <div class="err-msg">Required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="summ" id="summ" style="margin-top: 16px"></div>
+                        <p class="hint">
+                            Tuition figures shown are sample program rates for demonstration. The registrar sets current
+                            tuition and any payment-plan or fee-waiver options.
+                        </p>
+
+                        <div class="btn-row">
+                            <button class="btn ghost" data-back="2">Back</button
+                            ><button class="btn" id="submitBtn" data-next="3">Submit enrollment</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="epanel" id="ep4">
+                        <div class="confirm">
+                            <div class="stamp">
+                                <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>Enrollment submitted
+                            </div>
+                            <h3 id="cHead">Enrollment received</h3>
+                            <p id="cMsg"></p>
+                            <div class="ref"><span>Registrar reference</span><b id="cRef">BBPA-2026-000000</b></div>
+                            <div
+                                class="summ"
+                                id="cSumm"
+                                style="max-width: 440px; margin: 0 auto 18px; text-align: left"
+                            ></div>
+                            <button class="btn ghost" onclick="location.reload()">Start a new enrollment</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="inner">
+                Biscayne Bay Preparatory Academy · Online High School · Courses follow the standard Florida course
+                requirements for each subject. Graduation requirements and course availability are subject to state
+                guidelines and academic advising. This is a demonstration page; no payment is processed.
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                'use strict';
+                var $ = function (id) {
+                    return document.getElementById(id);
+                };
+                var money = function (n) {
+                    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                };
+
+                /* ---- diploma requirement + tuition data ---- */
+                var DIPLOMAS = {
+                    std: {
+                        title: '24-Credit Standard Diploma',
+                        total: 24,
+                        electives: 8,
+                        tuition: 4995,
+                        blurb: 'The traditional path to a Florida standard high school diploma. Requires 24 credits, one online course, and a cumulative 2.0 GPA.',
+                        rows: [
+                            ['English Language Arts', 'English 1 to 4', 4],
+                            ['Mathematics', 'Includes Algebra 1 and Geometry', 4],
+                            ['Science', 'Includes Biology 1; two courses with a lab', 3],
+                            [
+                                'Social Studies',
+                                'World History, U.S. History, U.S. Government, Economics with Financial Literacy',
+                                3,
+                            ],
+                            ['Physical Education', 'HOPE, includes Health', 1],
+                            ['Fine or Practical Arts', '', 1],
+                            ['Electives', '', 8],
+                        ],
+                        highlights: [
+                            'Meets all Florida standard high school graduation requirements.',
+                            'Includes one online course and eight elective credits for flexibility in student interests.',
+                            'SAT and ACT preparation tutoring is available for students planning to attend college.',
+                        ],
+                        bestFor:
+                            'students who want the traditional Florida diploma with the widest choice of electives.',
+                    },
+                    accel: {
+                        title: '18-Credit ACCEL Diploma',
+                        total: 18,
+                        electives: 3,
+                        tuition: 3995,
+                        blurb: 'An accelerated route to the same standard diploma in 18 credits. The ACCEL option waives the physical education and online-course requirements and reduces electives, while keeping the same core courses and 2.0 GPA.',
+                        rows: [
+                            ['English Language Arts', 'English 1 to 4', 4],
+                            ['Mathematics', 'Includes Algebra 1 and Geometry', 4],
+                            ['Science', 'Includes Biology 1', 3],
+                            ['Social Studies', 'World History, U.S. History, U.S. Government, Economics', 3],
+                            ['Fine or Practical Arts', '', 1],
+                            ['Electives', '', 3],
+                        ],
+                        highlights: [
+                            'Includes the same core courses as the standard diploma, completed in fewer total credits.',
+                            'The physical education and online-course requirements are waived, and the number of electives is reduced.',
+                            'Requires a cumulative 2.0 GPA to graduate.',
+                        ],
+                        bestFor:
+                            'motivated students who want to graduate early or move on to college or the workforce sooner.',
+                    },
+                    honors: {
+                        title: 'Honors College Preparatory Diploma',
+                        total: 24,
+                        electives: 6,
+                        tuition: 5995,
+                        blurb: 'A college-preparatory path for university-bound students, completed at the honors level. Requires 24 credits including two credits of a single world language, and provides SAT and ACT preparation tutoring, a college-readiness support service rather than a for-credit class. Aligns with Florida State University System (SUS) admission requirements, with a strong cumulative GPA.',
+                        rows: [
+                            ['English Language Arts (Honors)', 'English 1 to 4 at the honors level', 4],
+                            ['Mathematics (Honors)', 'Algebra 1, Geometry, Algebra 2, and Pre-Calculus', 4],
+                            ['Science (Honors)', 'Biology 1, Chemistry 1, and Physics 1, all with labs', 3],
+                            ['Social Studies (Honors)', 'World & U.S. History, U.S. Government, Economics', 3],
+                            ['World Language', 'Two credits in the same language', 2],
+                            ['Fine or Performing Arts', '', 1],
+                            ['Physical Education', 'HOPE, includes Health', 1],
+                            ['Electives', '', 6],
+                        ],
+                        highlights: [
+                            'All core courses, English, mathematics, science, and social studies, are completed at the honors level for greater rigor and a stronger college transcript.',
+                            'Mathematics extends through Pre-Calculus, with three laboratory sciences: Biology 1, Chemistry 1, and Physics 1.',
+                            'Two credits of a single world language satisfy Florida State University System (SUS) admission requirements.',
+                            'SAT and ACT preparation tutoring is included as a college-readiness support, not a for-credit class.',
+                            'A cumulative GPA of 3.0 or higher is recommended for competitive university admission.',
+                            'World-language credits and college-admission testing also support eligibility for Florida scholarship programs such as Bright Futures, which carry their own GPA, test-score, and service requirements.',
+                            'Academic advisors help each student choose honors sections, plan the world-language sequence, and schedule SAT and ACT tutoring.',
+                        ],
+                        bestFor: 'students planning to enroll at a four-year college or university.',
+                    },
+                };
+                var ENROLL_FEE = 50;
+                var currentPath = 'std';
+
+                function renderDiploma(key) {
+                    currentPath = key;
+                    var d = DIPLOMAS[key];
+                    $('reqTitle').textContent = d.title;
+                    $('reqTot').textContent = d.total + ' credits total';
+                    $('reqBlurb').textContent = d.blurb;
+                    var t = $('reqTable');
+                    t.innerHTML = '';
+                    d.rows.forEach(function (r) {
+                        var div = document.createElement('div');
+                        div.className = 'reqrow';
+                        div.innerHTML =
+                            '<div class="lab">' +
+                            r[0] +
+                            (r[1] ? '<small>' + r[1] + '</small>' : '') +
+                            '</div><div class="val">' +
+                            r[2].toFixed(1) +
+                            ' cr</div>';
+                        t.appendChild(div);
+                    });
+                    var tot = document.createElement('div');
+                    tot.className = 'reqrow total';
+                    tot.innerHTML =
+                        '<div class="lab">Total credits to graduate</div><div class="val">' + d.total + '</div>';
+                    t.appendChild(tot);
+                    var eb = document.querySelector('.cat-cr[data-el]');
+                    if (eb) eb.textContent = d.electives + ' credits';
+                    // program highlights
+                    var ex = $('reqExtra');
+                    ex.innerHTML = '';
+                    if (d.highlights && d.highlights.length) {
+                        var html = '<div class="eh">Program highlights</div><ul>';
+                        d.highlights.forEach(function (x) {
+                            html += '<li>' + x + '</li>';
+                        });
+                        html += '</ul>';
+                        if (d.bestFor) html += '<div class="bestfor"><span>Best for</span> ' + d.bestFor + '</div>';
+                        ex.innerHTML = html;
+                    }
+                    document.querySelectorAll('#toggle button').forEach(function (b) {
+                        b.classList.toggle('on', b.dataset.d === key);
+                    });
+                    // sync enrollment path picker
+                    document.querySelectorAll('#pathPick label').forEach(function (l) {
+                        var on = l.dataset.d === key;
+                        l.classList.toggle('sel', on);
+                        l.querySelector('input').checked = on;
+                    });
+                }
+                $('toggle').addEventListener('click', function (e) {
+                    var b = e.target.closest('button[data-d]');
+                    if (b) renderDiploma(b.dataset.d);
+                });
+
+                /* ---- catalog: standard Florida courses with descriptions ---- */
+                var ICONS = {
+                    book: '<path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z"/>',
+                    calc: '<rect x="5" y="3" width="14" height="18" rx="2"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="8.2" y2="11"/><line x1="12" y1="11" x2="12.2" y2="11"/><line x1="16" y1="11" x2="16.2" y2="11"/><line x1="8" y1="15" x2="8.2" y2="15"/><line x1="12" y1="15" x2="12.2" y2="15"/><line x1="16" y1="15" x2="16.2" y2="15"/>',
+                    flask: '<path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><line x1="7" y1="16" x2="17" y2="16"/>',
+                    globe: '<circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"/>',
+                    puzzle: '<path d="M10 3v2a2 2 0 0 0 4 0V3h4a1 1 0 0 1 1 1v4h-2a2 2 0 0 0 0 4h2v4a1 1 0 0 1-1 1h-4v-2a2 2 0 0 0-4 0v2H6a1 1 0 0 1-1-1v-4H3a2 2 0 0 0 0-4h2V4a1 1 0 0 1 1-1z"/>',
+                };
+                var TAGS = { req: 'Required', el: 'Elective', col: '24-Credit', tut: 'Prep Tutoring' };
+
+                var CATS = [
+                    {
+                        key: 'la',
+                        name: 'Language Arts',
+                        icon: 'book',
+                        req: '4 credits',
+                        courses: [
+                            [
+                                'English 1',
+                                'req',
+                                'Develops reading, writing, speaking, and language skills through the study of literature, informational texts, and composition at the ninth-grade level.',
+                            ],
+                            [
+                                'English 2',
+                                'req',
+                                'Builds on English 1 with close reading of complex literature and informational texts, argumentative and expository writing, and research.',
+                            ],
+                            [
+                                'English 3',
+                                'req',
+                                'Focuses on American literature and rhetoric, advanced composition, and analysis of informational and argumentative texts.',
+                            ],
+                            [
+                                'English 4',
+                                'req',
+                                'Emphasizes British and world literature, college- and career-ready writing, research, and communication at the twelfth-grade level.',
+                            ],
+                        ],
+                        note: 'Four English Language Arts credits (English 1 to 4) are required for both diplomas.',
+                    },
+                    {
+                        key: 'ma',
+                        name: 'Mathematics',
+                        icon: 'calc',
+                        req: '4 credits',
+                        courses: [
+                            [
+                                'Algebra 1',
+                                'req',
+                                'Covers linear equations and inequalities, functions, systems, exponents, polynomials, and quadratics.',
+                            ],
+                            [
+                                'Geometry',
+                                'req',
+                                'Studies congruence, similarity, right-triangle trigonometry, circles, area, and volume with an emphasis on proof.',
+                            ],
+                            [
+                                'Algebra 2',
+                                'req',
+                                'Extends algebra to polynomial, rational, exponential, and logarithmic functions along with probability and statistics.',
+                            ],
+                            [
+                                'Mathematics for College Algebra',
+                                'el',
+                                'Prepares students for college-level algebra through the study of functions, equations, and problem solving.',
+                            ],
+                            [
+                                'Mathematics for College Liberal Arts',
+                                'el',
+                                'Applies mathematical reasoning, data analysis, and modeling to real-world and college contexts.',
+                            ],
+                            [
+                                'Probability & Statistics with Applications',
+                                'el',
+                                'Introduces data collection, probability, distributions, and statistical inference with real-world applications.',
+                            ],
+                        ],
+                        note: 'Four mathematics credits are required and must include Algebra 1 and Geometry.',
+                    },
+                    {
+                        key: 'sc',
+                        name: 'Science',
+                        icon: 'flask',
+                        req: '3 credits',
+                        courses: [
+                            [
+                                'Biology 1',
+                                'req',
+                                'Explores cell biology, genetics, evolution, ecology, and human body systems through inquiry and laboratory work.',
+                            ],
+                            [
+                                'Chemistry 1',
+                                'el',
+                                'Examines atomic structure, the periodic table, bonding, reactions, and stoichiometry with laboratory investigations.',
+                            ],
+                            [
+                                'Physics 1',
+                                'el',
+                                'Studies motion, forces, energy, waves, electricity, and magnetism through problem solving and experimentation.',
+                            ],
+                            [
+                                'Earth/Space Science',
+                                'el',
+                                "Investigates geology, oceanography, meteorology, and astronomy and their impact on Earth's systems.",
+                            ],
+                            [
+                                'Environmental Science',
+                                'el',
+                                'Examines ecosystems, natural resources, human impact, and sustainability.',
+                            ],
+                            [
+                                'Physical Science',
+                                'el',
+                                'Provides a foundation in basic chemistry and physics concepts for further science study.',
+                            ],
+                            [
+                                'Anatomy & Physiology',
+                                'el',
+                                "Studies the structure and function of the human body's major systems.",
+                            ],
+                        ],
+                        note: 'Three science credits are required, including Biology 1; for the standard diploma two must include a laboratory component.',
+                    },
+                    {
+                        key: 'ss',
+                        name: 'Social Studies',
+                        icon: 'globe',
+                        req: '3 credits',
+                        courses: [
+                            [
+                                'World History',
+                                'req',
+                                'Surveys major world civilizations, events, and movements from ancient times to the present.',
+                            ],
+                            [
+                                'United States History',
+                                'req',
+                                'Examines U.S. history from Reconstruction to the present.',
+                            ],
+                            [
+                                'United States Government',
+                                'req',
+                                'Studies the principles, structure, and functions of American government and the rights and responsibilities of citizens. (0.5 credit)',
+                            ],
+                            [
+                                'Economics with Financial Literacy',
+                                'req',
+                                'Covers economic principles, markets, and personal financial literacy including budgeting, credit, and saving. (0.5 credit)',
+                            ],
+                            [
+                                'World Cultural Geography',
+                                'el',
+                                "Explores the world's regions, cultures, and human-environment interactions.",
+                            ],
+                            ['Psychology 1', 'el', 'Introduces the scientific study of behavior and mental processes.'],
+                        ],
+                        note: 'Three social studies credits are required: World History, U.S. History, and one-half credit each of U.S. Government and Economics with Financial Literacy.',
+                    },
+                    {
+                        key: 'el',
+                        name: 'General Electives',
+                        icon: 'puzzle',
+                        req: '8 credits',
+                        elective: true,
+                        courses: [
+                            [
+                                'Personal Financial Literacy',
+                                'el',
+                                'Focuses on money management, budgeting, credit, saving, investing, and consumer skills. (0.5 credit)',
+                            ],
+                            [
+                                'HOPE: Health Opportunities through Physical Education',
+                                'el',
+                                'Integrates health education and physical fitness; satisfies the physical education requirement for the 24-credit diploma.',
+                            ],
+                            [
+                                'Spanish 1',
+                                'el',
+                                'Introduces listening, speaking, reading, and writing in Spanish along with cultural understanding.',
+                            ],
+                            [
+                                'Spanish 2',
+                                'el',
+                                'Continues developing Spanish language proficiency and cultural knowledge.',
+                            ],
+                            [
+                                'Two-Dimensional Studio Art 1',
+                                'el',
+                                'Develops skills in drawing, design, and composition; satisfies the fine arts requirement.',
+                            ],
+                            [
+                                'Music Appreciation',
+                                'el',
+                                'Explores music history, styles, and active listening; satisfies the fine arts requirement.',
+                            ],
+                            [
+                                'Digital Information Technology',
+                                'el',
+                                'Builds foundational computing, productivity, and digital communication skills.',
+                            ],
+                            [
+                                'Career Research & Decision Making',
+                                'el',
+                                'Guides students in exploring careers, setting goals, and planning postsecondary paths.',
+                            ],
+                            [
+                                'SAT & ACT Preparation Tutoring',
+                                'tut',
+                                'College admission test preparation offered as tutoring support, not a for-credit class. Available to Honors College Preparatory students and college-bound 24-credit students.',
+                            ],
+                        ],
+                        note: 'Electives let students explore interests and satisfy the Fine/Practical Arts and (standard diploma) Physical Education requirements. SAT and ACT preparation is provided as tutoring support (not a for-credit class) for Honors College Preparatory and college-bound 24-credit students. The number of elective credits needed depends on the diploma path selected above.',
+                    },
+                ];
+
+                var list = $('catList');
+                CATS.forEach(function (c) {
+                    var wrap = document.createElement('div');
+                    wrap.className = 'cat';
+                    var crBadge = '<span class="cat-cr"' + (c.elective ? ' data-el' : '') + '>' + c.req + '</span>';
+                    var body = c.courses
+                        .map(function (x) {
+                            var tag = x[1] ? '<span class="tag ' + x[1] + '">' + TAGS[x[1]] + '</span>' : '';
+                            return (
+                                '<div class="course"><button class="course-btn" type="button"><span class="cn">' +
+                                x[0] +
+                                '</span>' +
+                                tag +
+                                '<span class="cplus">+</span></button><div class="course-desc">' +
+                                x[2] +
+                                '</div></div>'
+                            );
+                        })
+                        .join('');
+                    wrap.innerHTML =
+                        '<button class="cat-btn" type="button" aria-expanded="false">' +
+                        '<span class="cat-ico"><svg viewBox="0 0 24 24">' +
+                        ICONS[c.icon] +
+                        '</svg></span>' +
+                        '<span class="cat-name">' +
+                        c.name +
+                        '</span>' +
+                        '<span class="cat-meta">' +
+                        crBadge +
+                        '<svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>' +
+                        '</button>' +
+                        '<div class="cat-body">' +
+                        body +
+                        '<div class="cat-note">' +
+                        c.note +
+                        '</div></div>';
+                    wrap.querySelector('.cat-btn').addEventListener('click', function () {
+                        var open = wrap.classList.toggle('open');
+                        this.setAttribute('aria-expanded', open ? 'true' : 'false');
+                    });
+                    wrap.querySelectorAll('.course-btn').forEach(function (b) {
+                        b.addEventListener('click', function () {
+                            b.parentElement.classList.toggle('open');
+                        });
+                    });
+                    list.appendChild(wrap);
+                });
+
+                /* ---- enrollment path picker ---- */
+                $('pathPick').addEventListener('click', function (e) {
+                    var l = e.target.closest('label[data-d]');
+                    if (!l) return;
+                    renderDiploma(l.dataset.d);
+                });
+
+                /* ---- payment option ---- */
+                var payOpt = 'full';
+                $('payopts').addEventListener('click', function (e) {
+                    var l = e.target.closest('.payopt');
+                    if (!l) return;
+                    payOpt = l.dataset.opt;
+                    document.querySelectorAll('.payopt').forEach(function (x) {
+                        x.classList.toggle('sel', x === l);
+                        x.querySelector('input').checked = x === l;
+                    });
+                    updatePay();
+                });
+                function amounts() {
+                    var t = DIPLOMAS[currentPath].tuition;
+                    if (payOpt === 'full') return { due: t + ENROLL_FEE, label: 'Tuition in full + enrollment fee' };
+                    if (payOpt === 'deposit') return { due: ENROLL_FEE, label: 'Enrollment fee (reserve seat)' };
+                    return { due: 0, label: 'No payment, registrar review' };
+                }
+                function updatePay() {
+                    $('amtFull').textContent = money(DIPLOMAS[currentPath].tuition + ENROLL_FEE);
+                    var a = amounts();
+                    $('cardbox').classList.toggle('hide', a.due === 0);
+                    var d = DIPLOMAS[currentPath];
+                    var rows = '<div class="sr"><span>Diploma path</span><b>' + d.title + '</b></div>';
+                    if (payOpt === 'full') {
+                        rows +=
+                            '<div class="sr"><span>Program tuition</span><b>' +
+                            money(d.tuition) +
+                            '</b></div>' +
+                            '<div class="sr"><span>Enrollment fee</span><b>' +
+                            money(ENROLL_FEE) +
+                            '</b></div>';
+                    } else if (payOpt === 'deposit') {
+                        rows +=
+                            '<div class="sr"><span>Enrollment fee</span><b>' +
+                            money(ENROLL_FEE) +
+                            '</b></div>' +
+                            '<div class="sr"><span>Tuition</span><b>Billed by registrar</b></div>';
+                    } else {
+                        rows += '<div class="sr"><span>Payment</span><b>None due now</b></div>';
+                    }
+                    rows += '<div class="sr tot"><span>Due today</span><span>' + money(a.due) + '</span></div>';
+                    $('summ').innerHTML = rows;
+                    $('submitBtn').textContent = a.due > 0 ? 'Pay ' + money(a.due) + ' & enroll' : 'Submit enrollment';
+                }
+
+                /* ---- step nav + validation ---- */
+                function showStep(s) {
+                    for (var i = 1; i <= 4; i++) $('ep' + i).classList.toggle('on', i === s);
+                    document.querySelectorAll('.stp').forEach(function (x) {
+                        var n = +x.dataset.s;
+                        x.classList.toggle('active', n === s);
+                        x.classList.toggle('done', n < s);
+                    });
+                    $('enroll').scrollIntoView();
+                    if (s === 3) updatePay();
+                }
+                document.querySelector('.enroll-card').addEventListener('click', function (e) {
+                    var b = e.target.closest('[data-back]');
+                    if (b) {
+                        showStep(+b.dataset.back);
+                        return;
+                    }
+                    var n = e.target.closest('[data-next]');
+                    if (!n) return;
+                    var from = +n.dataset.next;
+                    if (from === 1) showStep(2);
+                    else if (from === 2) {
+                        if (validateStudent()) showStep(3);
+                    } else if (from === 3) {
+                        if (validatePay()) finish();
+                    }
+                });
+
+                function mark(el, bad) {
+                    el.classList.toggle('err', bad);
+                    var m = el.parentElement.querySelector('.err-msg');
+                    if (m) m.classList.toggle('show', bad);
+                    return !bad;
+                }
+                var emailOk = function (v) {
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+                };
+                function validateStudent() {
+                    var ok = true;
+                    ['fname', 'lname', 'school', 'street', 'city', 'state', 'zip'].forEach(function (id) {
+                        ok = mark($(id), !$(id).value.trim()) && ok;
+                    });
+                    ok = mark($('email'), !emailOk($('email').value.trim())) && ok;
+                    ok = mark($('dob'), !$('dob').value) && ok;
+                    ok = mark($('grade'), !$('grade').value) && ok;
+                    ok = mark($('term'), !$('term').value) && ok;
+                    // guardian required if under 18
+                    var minor = isMinor($('dob').value);
+                    if (minor) {
+                        ok = mark($('gname'), !$('gname').value.trim()) && ok;
+                        ok = mark($('gemail'), !emailOk($('gemail').value.trim())) && ok;
+                    } else {
+                        mark($('gname'), false);
+                        mark($('gemail'), false);
+                    }
+                    if (!ok) {
+                        var f = document.querySelector('#ep2 .err');
+                        if (f) f.focus();
+                    }
+                    return ok;
+                }
+                function isMinor(dob) {
+                    if (!dob) return true;
+                    var d = new Date(dob),
+                        n = new Date();
+                    var a = n.getFullYear() - d.getFullYear();
+                    var m = n.getMonth() - d.getMonth();
+                    if (m < 0 || (m === 0 && n.getDate() < d.getDate())) a--;
+                    return a < 18;
+                }
+                function validatePay() {
+                    if (amounts().due === 0) return true;
+                    var ok = true;
+                    ok = mark($('cardname'), !$('cardname').value.trim()) && ok;
+                    ok = mark($('cardnum'), $('cardnum').value.replace(/\s/g, '').length < 16) && ok;
+                    ok = mark($('exp'), !/^\d{2}\/\d{2}$/.test($('exp').value)) && ok;
+                    ok = mark($('cvc'), $('cvc').value.replace(/\D/g, '').length < 3) && ok;
+                    ok = mark($('bzip'), !$('bzip').value.trim()) && ok;
+                    return ok;
+                }
+                $('cardnum').addEventListener('input', function (e) {
+                    var v = e.target.value.replace(/\D/g, '').slice(0, 16);
+                    e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+                });
+                $('exp').addEventListener('input', function (e) {
+                    var v = e.target.value.replace(/\D/g, '').slice(0, 4);
+                    if (v.length >= 3) v = v.slice(0, 2) + '/' + v.slice(2);
+                    e.target.value = v;
+                });
+                ['cvc', 'bzip', 'zip', 'credits'].forEach(function (id) {
+                    $(id).addEventListener('input', function (e) {
+                        if (id === 'credits') return;
+                        e.target.value = e.target.value.replace(/\D/g, '');
+                    });
+                });
+
+                function finish() {
+                    var a = amounts(),
+                        d = DIPLOMAS[currentPath];
+                    $('cRef').textContent = 'BBPA-2026-' + String(Math.floor(100000 + Math.random() * 900000));
+                    var nm = $('fname').value.trim() || 'student';
+                    if (a.due > 0) {
+                        $('cHead').textContent = 'Enrollment confirmed, ' + nm;
+                        $('cMsg').innerHTML =
+                            'Your enrollment in the <b>' +
+                            d.title +
+                            '</b> has been submitted to the registrar and your payment of <b>' +
+                            money(a.due) +
+                            '</b> was received. A welcome email with your student login and start date will follow.';
+                    } else {
+                        $('cHead').textContent = 'Enrollment request received, ' + nm;
+                        $('cMsg').innerHTML =
+                            'Your information for the <b>' +
+                            d.title +
+                            '</b> has been submitted to the registrar, who will contact you at <b>' +
+                            ($('email').value.trim() || 'your email') +
+                            '</b> regarding tuition and next steps.';
+                    }
+                    $('cSumm').innerHTML =
+                        '<div class="sr"><span>Diploma path</span><b>' +
+                        d.title +
+                        '</b></div>' +
+                        '<div class="sr"><span>Intended start</span><b>' +
+                        ($('term').value || 'Not selected') +
+                        '</b></div>' +
+                        '<div class="sr tot"><span>Paid today</span><span>' +
+                        money(a.due) +
+                        '</span></div>';
+                    showStep(4);
+                }
+
+                renderDiploma('std');
+                updatePay();
+            })();
+        </script>
+    </body>
+</html>
