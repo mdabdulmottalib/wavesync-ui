@@ -1,9 +1,7 @@
 <div
-    class="hero-media-bg w-full flex flex-col py-6 min-h-[38vh] sm:min-h-[42vh] md:min-h-[46vh] lg:min-h-[50vh]"
+    class="hero-media-bg w-full flex flex-col pt-23 pb-6 min-h-[38vh] sm:min-h-[42vh] md:min-h-[46vh] lg:min-h-[50vh]"
     style="background-image: url('/images/wavesync_hero_bg.png')"
 >
-    <x-site-header />
-
     <div class="text-cream flex flex-col items-start justify-center gap-5 sm:gap-6 w-11/12 mx-auto flex-1" data-reveal>
         <div
             class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"

@@ -10,28 +10,43 @@ Route::get('/', function () {
     return view('public.home');
 })->name('home');
 
-// Individual service pages temporarily disabled — running without them for
-// now. Route stays registered (name unchanged) purely so route('services.show', ...)
-// calls elsewhere don't fatal error; every visit just 404s. Nothing below
-// was deleted — uncomment the closure to bring the pages back.
-Route::get('/services/{slug}', fn () => abort(404))->name('services.show');
-// Route::get('/services/{slug}', function (string $slug) {
-//     $services = collect(config('service_offerings.services'));
-//     $service = $services->firstWhere('slug', $slug);
-//
-//     abort_unless($service, 404);
-//
-//     $relatedCaseStudies = collect(config('portfolio.case_studies'))
-//         ->filter(fn (array $caseStudy) => in_array($caseStudy['category'], $service['portfolio_categories'], true))
-//         ->values()
-//         ->all();
-//
-//     return view('public.service', [
-//         'service' => $service,
-//         'otherServices' => $services->reject(fn (array $s) => $s['slug'] === $slug)->values()->all(),
-//         'relatedCaseStudies' => $relatedCaseStudies,
-//     ]);
-// })->name('services.show');
+// Serves two tiers from the same template: the 4 broad category pages in
+// 'services' (still linked from the homepage, About page, sitemap, and the
+// contact form — untouched by the mega menu redesign), and the granular
+// 'highlights' pages the mega menu links to instead. 'otherServices' means
+// something different for each tier — sibling categories for the former,
+// sibling highlights in the same mega-menu category for the latter — so
+// each branch builds its own list rather than sharing one query.
+Route::get('/services/{slug}', function (string $slug) {
+    $services = collect(config('service_offerings.services'));
+    $service = $services->firstWhere('slug', $slug);
+
+    if ($service) {
+        $otherServices = $services->reject(fn (array $s) => $s['slug'] === $slug)->values()->all();
+    } else {
+        $highlights = collect(config('service_offerings.highlights'));
+        $service = $highlights->firstWhere('slug', $slug);
+
+        abort_unless($service, 404);
+
+        $otherServices = $highlights
+            ->reject(fn (array $h) => $h['slug'] === $slug)
+            ->filter(fn (array $h) => $h['category'] === $service['category'])
+            ->values()
+            ->all();
+    }
+
+    $relatedCaseStudies = collect(config('portfolio.case_studies'))
+        ->filter(fn (array $caseStudy) => in_array($caseStudy['category'], $service['portfolio_categories'], true))
+        ->values()
+        ->all();
+
+    return view('public.service', [
+        'service' => $service,
+        'otherServices' => $otherServices,
+        'relatedCaseStudies' => $relatedCaseStudies,
+    ]);
+})->name('services.show');
 
 Route::get('/about', function () {
     return view('public.about');
@@ -51,23 +66,24 @@ Route::get('/contact', function () {
 })->name('contact.page');
 
 // Generated from the same routes/config as the rest of the site rather than
-// a static file, so it can't go stale when a service slug changes. Service
-// URLs left out while /services/{slug} 404s — no point telling crawlers to
-// index pages that don't resolve. Restore the ->concat(...) below alongside
-// the route closure above once single service pages are back.
+// a static file, so it can't go stale when a service slug changes.
 Route::get('/sitemap.xml', function () {
     $urls = collect([
         ['loc' => route('home'), 'priority' => '1.0'],
         ['loc' => route('about'), 'priority' => '0.8'],
         ['loc' => route('portfolio'), 'priority' => '0.8'],
         ['loc' => route('contact.page'), 'priority' => '0.8'],
-    ]);
-    // ->concat(
-    //     collect(config('service_offerings.services'))->map(fn (array $service) => [
-    //         'loc' => route('services.show', $service['slug']),
-    //         'priority' => '0.9',
-    //     ]),
-    // );
+    ])->concat(
+        collect(config('service_offerings.services'))->map(fn (array $service) => [
+            'loc' => route('services.show', $service['slug']),
+            'priority' => '0.9',
+        ]),
+    )->concat(
+        collect(config('service_offerings.highlights'))->map(fn (array $highlight) => [
+            'loc' => route('services.show', $highlight['slug']),
+            'priority' => '0.8',
+        ]),
+    );
 
     return response()
         ->view('sitemap', ['urls' => $urls])

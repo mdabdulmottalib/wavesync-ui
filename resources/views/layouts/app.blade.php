@@ -19,6 +19,8 @@
     @stack ('styles')
 </head>
 <body class="font-sans antialiased">
+    <x-site-header />
+
     @yield ('content')
 
     @include ('layouts.footer')

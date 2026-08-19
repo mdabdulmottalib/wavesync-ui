@@ -1,9 +1,7 @@
 <div
-    class="hero-media-bg w-full flex flex-col py-6 min-h-[45vh] sm:min-h-[50vh] md:min-h-[55vh] lg:min-h-[62vh]"
+    class="hero-media-bg w-full flex flex-col pt-23 pb-6 min-h-[45vh] sm:min-h-[50vh] md:min-h-[55vh] lg:min-h-[62vh]"
     style="background-image: url('/images/wavesync_hero_bg.png')"
 >
-    <x-site-header />
-
     <div class="text-cream flex flex-col items-start justify-center gap-5 sm:gap-6 w-11/12 mx-auto flex-1" data-reveal>
         <div
             class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"
@@ -145,11 +143,9 @@
         </div>
     </div>
 
-    {{-- What We Do: not currently shown anywhere on the About page — the
-         homepage covers services, but a visitor landing directly on /about
-         has no summary of what Wavesync actually does. Cards link to the
-         homepage's #services anchor rather than individual service pages,
-         since those are temporarily disabled (see routes/web.php). --}}
+    {{-- What We Do: a visitor landing directly on /about has no summary of
+         what Wavesync actually does, so each card links through to its own
+         /services/{slug} page. --}}
     @php
         $aboutServices = config('service_offerings.services');
     @endphp
@@ -169,15 +165,18 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             @foreach ($aboutServices as $service)
-                <div class="flex flex-col gap-4 rounded-3xl bg-white border border-forest/10 p-6 sm:p-7">
+                <a
+                    href="{{ route('services.show', $service['slug']) }}"
+                    class="group flex flex-col gap-4 rounded-3xl bg-white border border-forest/10 p-6 sm:p-7 hover:border-forest/30 transition-colors duration-300"
+                >
                     <div
                         class="flex items-center justify-center size-11 sm:size-12 shrink-0 rounded-xl bg-forest/5 text-forest text-lg"
                     >
                         <i class="fi {{ $service['icon'] }} flex"></i>
                     </div>
-                    <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">{{ $service['title'] }}</h4>
+                    <h4 class="font-agency font-bold text-forest text-lg sm:text-xl group-hover:text-forest-deep transition-colors duration-300">{{ $service['title'] }}</h4>
                     <p class="text-forest/70 text-sm leading-relaxed line-clamp-4">{{ $service['desc'] }}</p>
-                </div>
+                </a>
             @endforeach
         </div>
 

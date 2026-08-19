@@ -131,3 +131,63 @@
         transform: translateX(-50%);
     }
 }
+
+/*
+   Used by the "Technology We Use" orbital visual on service pages (see
+   service-page.blade.php). Each icon wrapper sets --start-angle (its fixed
+   position on the ring) via an inline style, and orbit-cw/orbit-ccw read
+   that variable inside calc() — one shared keyframe animates every icon
+   regardless of its individual starting angle, rather than needing a
+   separate keyframe per angle. The wrapper itself is positioned via
+   `origin-bottom` pivoting at the ring's own center (see the Blade
+   template), so rotating it carries the icon around the ring's
+   circumference. counter-cw/counter-ccw apply to the icon badge nested
+   one level deeper, using --counter-offset (the negative of that same
+   start angle) at the matching speed but the opposite direction, so the
+   badge orbits the ring without spinning upside down itself. Respects
+   prefers-reduced-motion via the global rule above, no extra handling
+   needed here.
+*/
+@keyframes orbit-cw {
+    from {
+        transform: rotate(var(--start-angle));
+    }
+    to {
+        transform: rotate(calc(var(--start-angle) + 360deg));
+    }
+}
+@keyframes orbit-ccw {
+    from {
+        transform: rotate(var(--start-angle));
+    }
+    to {
+        transform: rotate(calc(var(--start-angle) - 360deg));
+    }
+}
+@keyframes counter-cw {
+    from {
+        transform: rotate(var(--counter-offset, 0deg));
+    }
+    to {
+        transform: rotate(calc(var(--counter-offset, 0deg) - 360deg));
+    }
+}
+@keyframes counter-ccw {
+    from {
+        transform: rotate(var(--counter-offset, 0deg));
+    }
+    to {
+        transform: rotate(calc(var(--counter-offset, 0deg) + 360deg));
+    }
+}
+
+/* Subtle breathing glow on the central "globe" in the same section. */
+@keyframes globe-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 50px rgba(22, 50, 47, 0.12);
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(22, 50, 47, 0.22);
+    }
+}

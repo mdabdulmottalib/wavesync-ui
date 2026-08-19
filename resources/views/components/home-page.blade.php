@@ -1,9 +1,7 @@
 <div
-    class="hero-media-bg w-full flex flex-col py-6 min-h-[50vh] sm:min-h-[60vh] md:min-h-[80vh] lg:min-h-[88vh]"
+    class="hero-media-bg w-full flex flex-col pt-23 pb-6 min-h-[50vh] sm:min-h-[60vh] md:min-h-[80vh] lg:min-h-[88vh]"
     style="background-image: url('/images/wavesync_hero_bg.png')"
 >
-    <x-site-header />
-
     <div
         class="text-cream flex flex-col items-start justify-center gap-5 sm:gap-6 md:gap-8 w-11/12 mx-auto flex-1"
         data-reveal
@@ -357,11 +355,11 @@
 
                                 <div class="flex flex-col gap-2">
                                     <div>
-                                        {{-- Plain text, not a link — individual service pages are
-                                             temporarily disabled (see routes/web.php). --}}
-                                        <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl">
-                                            {{ $service['title'] }}
-                                        </h3>
+                                        <a href="{{ route('services.show', $service['slug']) }}">
+                                            <h3 class="font-agency font-bold text-2xl sm:text-3xl md:text-4xl hover:text-lime transition-colors duration-300">
+                                                {{ $service['title'] }}
+                                            </h3>
+                                        </a>
                                     </div>
                                     <div>
                                         <p class="text-sm sm:text-base md:text-lg">{{ $service['desc'] }}</p>
