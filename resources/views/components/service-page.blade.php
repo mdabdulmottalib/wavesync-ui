@@ -145,18 +145,26 @@
     @if (!empty($service['why_wavesync']))
         {{-- Why Wavesync section --}}
         @php
+            // Ordered as a narrative: scale/track record first, then
+            // reputation/trust, then service guarantees last.
             $glanceStats = [
-                ['value' => '4.9/5', 'label' => 'Average rating, real reviews'],
-                ['value' => '85+', 'label' => 'Verified reviews'],
                 ['value' => '5+', 'label' => 'Years in business'],
                 ['value' => '450+', 'label' => 'Projects delivered'],
                 ['value' => '150+', 'label' => 'Clients worldwide'],
                 ['value' => '15+', 'label' => 'Countries served'],
+                ['value' => '4.9/5', 'label' => 'Average rating, real reviews'],
+                ['value' => '85+', 'label' => 'Verified reviews'],
                 ['value' => '95%+', 'label' => 'Client satisfaction'],
                 ['value' => '80%+', 'label' => 'Repeat clients'],
                 ['value' => 'Unlimited', 'label' => 'Revisions on every project'],
                 ['value' => 'Lifetime', 'label' => 'Support after launch'],
             ];
+
+            // Exactly 2 copies — the animate-scroll keyframe (app.css)
+            // translates the track by exactly -50%, which only loops
+            // seamlessly when the track is two identical halves back to
+            // back (see logo-carousel.blade.php for the same convention).
+            $glanceStatsLooped = collect($glanceStats)->concat($glanceStats);
         @endphp
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
             <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
@@ -204,20 +212,25 @@
             </div>
 
             {{-- Supporting proof for the checklist above, not a new topic —
-                 no eyebrow/heading of its own, just numbers set in type
-                 under a hairline rule. --}}
-            <div
-                class="mt-12 sm:mt-14 md:mt-16 pt-8 sm:pt-10 border-t border-forest/10 flex flex-wrap gap-x-10 sm:gap-x-14 md:gap-x-16 gap-y-8 sm:gap-y-10"
-            >
-                @foreach ($glanceStats as $stat)
-                    <div class="flex flex-col gap-1.5">
-                        <span
-                            class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none"
-                            >{{ $stat['value'] }}</span
-                        >
-                        <span class="text-forest/50 text-xs sm:text-sm font-medium">{{ $stat['label'] }}</span>
+                 no eyebrow/heading of its own, a marquee rather than a
+                 static wrap since 10 stats is too much to land on all at
+                 once (same animate-scroll technique as the logo carousel). --}}
+            <div class="mt-12 sm:mt-14 md:mt-16 pt-8 sm:pt-10 border-t border-forest/10">
+                <div
+                    class="relative w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_5%_95%,transparent)]"
+                >
+                    <div class="flex w-max will-change-transform animate-scroll">
+                        @foreach ($glanceStatsLooped as $stat)
+                            <div class="flex flex-col gap-1.5 shrink-0 mr-12 sm:mr-16 md:mr-20">
+                                <span
+                                    class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none whitespace-nowrap"
+                                    >{{ $stat['value'] }}</span
+                                >
+                                <span class="text-forest/50 text-xs sm:text-sm font-medium whitespace-nowrap">{{ $stat['label'] }}</span>
+                            </div>
+                        @endforeach
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     @endif
