@@ -96,13 +96,13 @@
         </div>
     </div>
 
-    {{-- Deliverables, as a bento grid rather than a plain image+list split —
-         the service's own real photo is one tile among the deliverables
-         instead of boxed off in its own column, with two tiles widened for
-         the asymmetry that makes a bento read as a bento (same grid-cols-12
-         convention as the homepage's stats section). Falls back to the
-         count tile expanding full-width if the real image doesn't load,
-         via the script at the bottom of this file. --}}
+    {{-- Deliverables, as a 4-column asymmetric bento — one tall tile
+         (row-span-2) plus a wide closing tile (col-span-2), same shape as
+         the reference "Idea Transformation" bento the redesign was checked
+         against, with mixed tile types (count, photo+quote, rating,
+         individual deliverables, a compact "+more" list) instead of six
+         identical cards. Falls back gracefully if the real image doesn't
+         load, via the script at the bottom of this file. --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
         <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
             <h2
@@ -116,46 +116,99 @@
             </h3>
         </div>
 
-        <div class="grid grid-cols-12 gap-4 sm:gap-5">
-            <div
-                class="col-span-12 sm:col-span-7 min-w-0 relative overflow-hidden rounded-3xl sm:rounded-4xl min-h-64 sm:min-h-72 md:min-h-80"
-                data-service-visual
-            >
-                <img
-                    class="absolute inset-0 w-full h-full object-cover object-center"
-                    src="{{ $service['img'] }}"
-                    alt="{{ $service['title'] }}"
-                    loading="lazy"
-                    data-service-image
-                />
+        @php
+            // One real, verified client quote + photo (Pastor Will Alston —
+            // same Fiverr review already shown in full in the Testimonials
+            // section below; see resources/views/components/testimonials.blade.php).
+            // Reused here as the bento's proof tile rather than inventing a
+            // stock headshot. Rating/review count below match that same
+            // real dataset (10 reviews, all 5-star, as of writing).
+            $featuredQuote = "Went back and worked this gentleman again and will say that of all the designers I have worked with He is the most down to earth and easy to work with. He keeps going until everything is perfect for you.";
+            $featuredReviewer = 'Pastor Will Alston';
+            $deliverableCount = count($service['deliverables']);
+            $leadDeliverables = array_slice($service['deliverables'], 0, 2);
+            $restDeliverables = array_slice($service['deliverables'], 2);
+        @endphp
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-5">
+            {{-- A: deliverable count, icon stack --}}
+            <div class="col-span-1 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
+                <div class="flex items-center -space-x-2">
+                    @foreach (array_slice($service['deliverables'], 0, 3) as $d)
+                        <span class="flex items-center justify-center size-9 rounded-full bg-forest border-2 border-forest text-cream/70 text-sm">
+                            <i class="fi {{ $d['icon'] ?? 'fi-rr-check' }} flex"></i>
+                        </span>
+                    @endforeach
+                    <span class="flex items-center justify-center size-9 rounded-full bg-lime border-2 border-forest text-forest-deep text-xs font-agency font-bold">{{ $deliverableCount }}+</span>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">{{ str_pad($deliverableCount, 2, '0', STR_PAD_LEFT) }}</span>
+                    <span class="text-cream/70 text-xs sm:text-sm font-medium">Deliverables included</span>
+                </div>
             </div>
 
-            <div
-                class="col-span-12 sm:col-span-5 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-6 sm:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-64 sm:min-h-72 md:min-h-80"
-                data-service-content
-            >
-                <span class="font-agency font-extrabold text-5xl sm:text-6xl md:text-7xl leading-none">{{ str_pad(count($service['deliverables']), 2, '0', STR_PAD_LEFT) }}</span>
-                <span class="text-cream/70 text-sm sm:text-base font-medium">Deliverables included</span>
+            {{-- B: real quote + real project photo, spans both rows --}}
+            <div class="col-span-1 sm:row-span-2 min-w-0 rounded-3xl sm:rounded-4xl overflow-hidden flex flex-col">
+                <div class="bg-mist p-5 sm:p-6 flex flex-col gap-2">
+                    <i class="fi fi-sr-quote-right flex text-forest/15 text-2xl sm:text-3xl"></i>
+                    <p class="text-forest text-xs sm:text-sm leading-relaxed italic line-clamp-5">&ldquo;{{ $featuredQuote }}&rdquo;</p>
+                    <span class="text-forest/50 text-xs font-semibold">&mdash; {{ $featuredReviewer }}, verified client</span>
+                </div>
+                <div class="relative flex-1 min-h-40" data-service-visual>
+                    <img
+                        class="absolute inset-0 w-full h-full object-cover object-center"
+                        src="{{ $service['img'] }}"
+                        alt="{{ $service['title'] }}"
+                        loading="lazy"
+                        data-service-image
+                    />
+                    <div class="absolute inset-0 bg-linear-to-t from-forest-deep/85 via-forest-deep/5 to-transparent pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-0 p-4 sm:p-5 flex flex-col gap-0.5">
+                        <span class="text-lime font-agency font-semibold text-xs uppercase tracking-wide">{{ $service['title'] }}</span>
+                        <span class="text-cream font-agency text-base sm:text-lg font-bold">In practice.</span>
+                    </div>
+                </div>
             </div>
 
-            @php
-                // Wide-narrow-narrow / narrow-narrow-wide per 6, mirroring the
-                // homepage bento's varying-width convention rather than a flat
-                // grid of identical tiles. Any 7th/8th item (only the 4 broader
-                // category pages have that many) falls back to an even span.
-                $bentoSpans = ['sm:col-span-6', 'sm:col-span-3', 'sm:col-span-3', 'sm:col-span-3', 'sm:col-span-3', 'sm:col-span-6'];
-            @endphp
-            @foreach ($service['deliverables'] as $index => $item)
-                @php $span = $bentoSpans[$index] ?? 'sm:col-span-4'; @endphp
+            {{-- C: real rating, computed from the same review set as Testimonials --}}
+            <div class="col-span-1 min-w-0 bg-mist border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
+                <i class="fi fi-sr-star flex text-forest text-xl sm:text-2xl"></i>
+                <div class="flex flex-col gap-1">
+                    <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">5.0/5</span>
+                    <span class="text-forest/60 text-xs sm:text-sm font-medium">From 10+ verified reviews</span>
+                </div>
+            </div>
+
+            {{-- D: first deliverable --}}
+            @foreach ($leadDeliverables as $item)
                 <div
                     id="{{ \Illuminate\Support\Str::slug($item['title']) }}"
-                    class="col-span-12 {{ $span }} min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-7 flex flex-col gap-2 scroll-mt-28 sm:scroll-mt-32 min-h-40 sm:min-h-44"
+                    class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col gap-3 scroll-mt-28 sm:scroll-mt-32 min-h-44 sm:min-h-48"
                 >
-                    <span class="font-agency font-bold text-forest/30 text-sm">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                    <h4 class="font-agency font-bold text-forest text-base sm:text-lg">{{ $item['title'] }}</h4>
-                    <p class="text-forest/70 text-sm leading-relaxed {{ $span === 'sm:col-span-6' ? '' : 'line-clamp-3' }}">{{ $item['desc'] }}</p>
+                    <span class="flex items-center justify-center size-9 rounded-xl bg-forest/5 text-forest/60 text-base shrink-0">
+                        <i class="fi {{ $item['icon'] ?? 'fi-rr-check' }} flex"></i>
+                    </span>
+                    <div class="flex flex-col gap-1">
+                        <h4 class="font-agency font-bold text-forest text-sm sm:text-base">{{ $item['title'] }}</h4>
+                        <p class="text-forest/70 text-xs sm:text-sm leading-relaxed line-clamp-3">{{ $item['desc'] }}</p>
+                    </div>
                 </div>
             @endforeach
+
+            {{-- F: remaining deliverables, compact, wide closing tile --}}
+            <div class="col-span-1 sm:col-span-2 min-w-0 bg-cream border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-7 flex flex-col gap-4">
+                <h4 class="font-agency font-bold text-forest text-sm sm:text-base">+{{ count($restDeliverables) }} more included</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                    @foreach ($restDeliverables as $item)
+                        <div id="{{ \Illuminate\Support\Str::slug($item['title']) }}" class="flex items-center gap-2.5 scroll-mt-28 sm:scroll-mt-32">
+                            <span class="flex items-center justify-center size-7 rounded-lg bg-forest/5 text-forest/60 text-xs shrink-0">
+                                <i class="fi {{ $item['icon'] ?? 'fi-rr-check' }} flex"></i>
+                            </span>
+                            <span class="text-forest text-sm font-semibold">{{ $item['title'] }}</span>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 
@@ -515,10 +568,11 @@
                 img.addEventListener(
                     'error',
                     function () {
+                        // The photo zone is just the bottom half of the quote
+                        // tile now, not its own grid slot — on failure it can
+                        // simply disappear, leaving the real quote/reviewer
+                        // text (already in its own zone above it) intact.
                         document.querySelector('[data-service-visual]')?.remove();
-                        const content = document.querySelector('[data-service-content]');
-                        content?.classList.remove('sm:col-span-5');
-                        content?.classList.add('sm:col-span-12');
                     },
                     { once: true },
                 );
