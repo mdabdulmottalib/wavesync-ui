@@ -144,6 +144,20 @@
 
     @if (!empty($service['why_wavesync']))
         {{-- Why Wavesync section --}}
+        @php
+            $glanceStats = [
+                ['value' => '4.9/5', 'label' => 'Average rating, real reviews'],
+                ['value' => '85+', 'label' => 'Verified reviews'],
+                ['value' => '5+', 'label' => 'Years in business'],
+                ['value' => '450+', 'label' => 'Projects delivered'],
+                ['value' => '150+', 'label' => 'Clients worldwide'],
+                ['value' => '15+', 'label' => 'Countries served'],
+                ['value' => '95%+', 'label' => 'Client satisfaction'],
+                ['value' => '80%+', 'label' => 'Repeat clients'],
+                ['value' => 'Unlimited', 'label' => 'Revisions on every project'],
+                ['value' => 'Lifetime', 'label' => 'Support after launch'],
+            ];
+        @endphp
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
             <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
                 <div class="md:col-span-3 col-span-full flex flex-col gap-6 sm:gap-7">
@@ -188,44 +202,25 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Supporting proof for the checklist above, not a new topic —
+                 no eyebrow/heading of its own, just numbers set in type
+                 under a hairline rule. --}}
+            <div
+                class="mt-12 sm:mt-14 md:mt-16 pt-8 sm:pt-10 border-t border-forest/10 flex flex-wrap gap-x-10 sm:gap-x-14 md:gap-x-16 gap-y-8 sm:gap-y-10"
+            >
+                @foreach ($glanceStats as $stat)
+                    <div class="flex flex-col gap-1.5">
+                        <span
+                            class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none"
+                            >{{ $stat['value'] }}</span
+                        >
+                        <span class="text-forest/50 text-xs sm:text-sm font-medium">{{ $stat['label'] }}</span>
+                    </div>
+                @endforeach
+            </div>
         </div>
     @endif
-
-    {{-- At A Glance section --}}
-    @php
-        $glanceStats = [
-            ['value' => '4.9/5', 'label' => 'Average rating, real reviews'],
-            ['value' => '85+', 'label' => 'Verified reviews'],
-            ['value' => '5+', 'label' => 'Years in business'],
-            ['value' => '450+', 'label' => 'Projects delivered'],
-            ['value' => '150+', 'label' => 'Clients worldwide'],
-            ['value' => '15+', 'label' => 'Countries served'],
-            ['value' => '95%+', 'label' => 'Client satisfaction'],
-            ['value' => '80%+', 'label' => 'Repeat clients'],
-            ['value' => 'Unlimited', 'label' => 'Revisions on every project'],
-            ['value' => 'Lifetime', 'label' => 'Support after launch'],
-        ];
-    @endphp
-    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-        <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
-            <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">At A Glance</span>
-            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                Wavesync at a glance.
-            </h3>
-        </div>
-
-        {{-- Deliberately not another bento of cards — Track Record below
-             already owns that shape. This is just numbers set in type,
-             wrapping naturally, no borders or backgrounds per tile. --}}
-        <div class="flex flex-wrap gap-x-10 sm:gap-x-14 md:gap-x-16 gap-y-8 sm:gap-y-10 pt-8 sm:pt-10 border-t border-forest/10">
-            @foreach ($glanceStats as $stat)
-                <div class="flex flex-col gap-1.5">
-                    <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">{{ $stat['value'] }}</span>
-                    <span class="text-forest/50 text-xs sm:text-sm font-medium">{{ $stat['label'] }}</span>
-                </div>
-            @endforeach
-        </div>
-    </div>
 
     {{-- How We Work section --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
@@ -269,77 +264,6 @@
                     </div>
                 </div>
             @endforeach
-        </div>
-    </div>
-
-    {{-- Track Record section --}}
-    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-        <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
-            <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">Track Record</span>
-            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                Numbers instead of promises.
-            </h3>
-        </div>
-
-        @php $processStepCount = count($service['process_steps']); @endphp
-
-        <div class="grid grid-cols-12 gap-4 sm:gap-5">
-            {{-- Real rating, computed from the same review set as Testimonials --}}
-            <div
-                class="col-span-6 sm:col-span-5 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-44 sm:min-h-52 md:min-h-60"
-            >
-                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none">4.9/5</span>
-                <span class="text-cream/70 text-xs sm:text-sm font-medium">Average rating, real client reviews</span>
-            </div>
-
-            <div
-                class="col-span-6 sm:col-span-4 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-44 sm:min-h-52 md:min-h-60"
-            >
-                <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl md:text-5xl leading-none"
-                    >85+</span
-                >
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Verified reviews</span>
-            </div>
-
-            <div
-                class="col-span-12 sm:col-span-3 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex sm:flex-col flex-row items-center sm:items-start justify-between sm:justify-end gap-1 sm:gap-2 min-h-28 sm:min-h-52 md:min-h-60"
-            >
-                <span
-                    class="font-agency font-extrabold text-forest text-3xl sm:text-4xl md:text-5xl leading-none"
-                    >{{ str_pad($processStepCount, 2, '0', STR_PAD_LEFT) }}</span
-                >
-                <span class="text-forest/60 text-xs sm:text-sm font-medium sm:mt-0">Clear steps, start to finish</span>
-            </div>
-
-            <div
-                class="col-span-6 sm:col-span-4 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-36 sm:min-h-44"
-            >
-                <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">5+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Years in business</span>
-            </div>
-
-            {{-- Deliverables count, ties to "What You Get" above --}}
-            <div
-                class="col-span-6 sm:col-span-4 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-36 sm:min-h-44"
-            >
-                <span
-                    class="font-agency font-extrabold text-3xl sm:text-4xl leading-none"
-                    >{{ str_pad(count($service['deliverables']), 2, '0', STR_PAD_LEFT) }}</span
-                >
-                <span class="text-cream/70 text-xs sm:text-sm font-medium">Deliverables included</span>
-            </div>
-
-            {{-- Projects delivered, same verified stat as the homepage bento —
-                 lime closer --}}
-            <div
-                class="col-span-12 sm:col-span-4 min-w-0 bg-lime rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex items-center justify-between gap-4 min-h-36 sm:min-h-44"
-            >
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">450+</span>
-                    <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Projects delivered</span>
-                </div>
-                <i class="fi fi-rr-rocket-lunch flex text-forest-deep/30 text-3xl sm:text-4xl"></i>
-            </div>
         </div>
     </div>
 
@@ -402,7 +326,7 @@
                 ></div>
 
                 @foreach ($ringGroups as $ringIndex => $ringTools)
-                    @continue(empty($ringTools))
+                    @continue (empty($ringTools))
                     @php
                         $config = $ringConfig[$ringIndex];
                         $ringToolCount = count($ringTools);
