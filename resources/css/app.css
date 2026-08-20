@@ -131,3 +131,43 @@
         transform: translateX(-50%);
     }
 }
+
+/*
+   Used by the "Technology We Use" orbit on service pages (see
+   service-page.blade.php). Each icon's pivot wrapper sits dead-center in
+   the container and sets --start-angle (its fixed position around the
+   circle) via an inline style; orbit-spin reads that variable inside
+   calc() so one shared keyframe animates every icon regardless of its
+   own starting angle. The icon badge nested one level deeper runs
+   counter-spin at the same speed in the opposite direction, so it orbits
+   the center without spinning upside down itself.
+*/
+@keyframes orbit-spin {
+    from {
+        transform: rotate(var(--start-angle));
+    }
+    to {
+        transform: rotate(calc(var(--start-angle) + 360deg));
+    }
+}
+@keyframes counter-spin {
+    from {
+        transform: rotate(calc(var(--start-angle) * -1));
+    }
+    to {
+        transform: rotate(calc(var(--start-angle) * -1 - 360deg));
+    }
+}
+
+/* Soft breathing glow behind the orbit's central hub. */
+@keyframes hub-pulse {
+    0%,
+    100% {
+        opacity: 0.55;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.08);
+    }
+}

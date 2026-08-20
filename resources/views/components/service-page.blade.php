@@ -336,15 +336,18 @@
     </div>
 
     @if (!empty($service['tech_stack']))
-        {{-- Technology We Use: a clean tech-card grid instead of the older
-             floating-orbit animation — each card pairs a verified, real
-             brand logo (Simple Icons / devicon CDNs, not a placeholder)
-             with an honest one-line reason it's actually used, so the
-             section carries real content even with only 2-3 tools rather
-             than relying on motion to fill the space. Column count and
-             max-width adapt to how many tools a given page actually has. --}}
+        {{-- Technology We Use: a single orbit ring around a glowing central
+             hub — icon-first, no per-tool description text. Pure CSS
+             (custom-property-driven keyframes in app.css), no canvas — each
+             icon's pivot sits dead-center in the container and rotates at
+             a shared, constant speed so spacing between icons never drifts;
+             the badge one level deeper counter-rotates to stay upright.
+             Every logo is a verified, real brand asset (Simple Icons /
+             devicon / Iconify CDNs), never a placeholder. Tool name shows
+             on hover via the native title tooltip rather than always-on
+             text, keeping the ring uncluttered. --}}
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-            <div class="flex flex-col gap-3 sm:gap-4 items-center text-center mb-8 sm:mb-10 max-w-2xl mx-auto">
+            <div class="flex flex-col gap-3 sm:gap-4 items-center text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
                 <h2
                     class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
                 >
@@ -357,52 +360,43 @@
                 <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Real, industry-standard tools — not a stack picked to sound impressive, but the ones that actually get this kind of work done properly.</p>
             </div>
 
-            @php
-                $techCount = count($service['tech_stack']);
-                $techGridCols = $techCount <= 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3';
-                $techMaxWidth = match (true) {
-                    $techCount <= 2 => 'max-w-2xl',
-                    $techCount <= 3 => 'max-w-4xl',
-                    default => 'max-w-5xl',
-                };
-            @endphp
-            <div class="grid grid-cols-1 {{ $techGridCols }} gap-4 sm:gap-5 mx-auto {{ $techMaxWidth }}">
-                @foreach ($service['tech_stack'] as $tool)
-                    @php $isMono = !empty($tool['icon_mono']); @endphp
+            @php $toolCount = count($service['tech_stack']); @endphp
+            <div class="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square">
+                {{-- glowing hub: soft blurred glow + a solid gradient core, both plain CSS --}}
+                <div
+                    class="absolute inset-[30%] rounded-full bg-forest blur-2xl pointer-events-none"
+                    style="animation: hub-pulse 4s ease-in-out infinite;"
+                ></div>
+                <div class="absolute inset-[38%] rounded-full bg-linear-to-br from-forest to-forest-deep shadow-lg pointer-events-none"></div>
+
+                {{-- faint guide ring at the same radius the icons orbit on --}}
+                <div class="absolute inset-[8%] rounded-full border border-forest/10 pointer-events-none"></div>
+
+                @foreach ($service['tech_stack'] as $index => $tool)
+                    @php
+                        $angle = round($index * (360 / $toolCount));
+                        $isMono = !empty($tool['icon_mono']);
+                        $badgeStyle = "--start-angle: {$angle}deg; animation: counter-spin 32s linear infinite;";
+                        if ($isMono) {
+                            $badgeStyle .= " background-color: {$tool['icon_bg']};";
+                        }
+                    @endphp
                     <div
-                        class="group relative overflow-hidden rounded-3xl border border-forest/10 bg-white p-6 sm:p-7 flex flex-col gap-4 hover:border-forest/25 hover:-translate-y-1 transition-all duration-300"
+                        class="absolute top-1/2 left-1/2 h-[42%] w-0 origin-top"
+                        style="--start-angle: {{ $angle }}deg; animation: orbit-spin 32s linear infinite;"
                     >
-                        {{-- oversized, faint watermark of the tool's own logo — reuses the
-                             same verified asset rather than a separate decorative image. --}}
-                        <img
-                            src="{{ $tool['icon_url'] }}"
-                            alt=""
-                            aria-hidden="true"
-                            class="absolute -right-5 -bottom-5 size-28 sm:size-32 object-contain opacity-[0.05] pointer-events-none"
-                            loading="lazy"
-                        />
-                        {{-- Most tool icons are already full-color brand logos, so a plain
-                             bg-forest/5 badge behind them is enough. A couple of real tools
-                             (Acrobat) only have a verified single-color (currentColor) SVG
-                             available, not a colored brand mark — those get icon_mono in
-                             config and render on their own brand-color badge with the icon
-                             inverted to white instead, rather than a flat, out-of-place
-                             black glyph next to everyone else's real logo colors. --}}
-                        <span
-                            class="relative flex items-center justify-center size-14 sm:size-16 rounded-2xl {{ $isMono ? '' : 'bg-forest/5' }}"
-                            @if ($isMono) style="background-color: {{ $tool['icon_bg'] }}" @endif
+                        <div
+                            class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex items-center justify-center size-12 sm:size-14 rounded-full bg-white shadow-lg {{ $isMono ? '' : 'p-2.5' }}"
+                            style="{{ $badgeStyle }}"
+                            title="{{ $tool['name'] }}"
                         >
                             <img
                                 src="{{ $tool['icon_url'] }}"
                                 alt="{{ $tool['name'] }}"
-                                class="size-7 sm:size-8 object-contain"
+                                class="{{ $isMono ? 'size-6' : 'w-full h-full' }} object-contain"
                                 @if ($isMono) style="filter: brightness(0) invert(1);" @endif
                                 loading="lazy"
                             />
-                        </span>
-                        <div class="relative flex flex-col gap-1.5">
-                            <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">{{ $tool['name'] }}</h4>
-                            <p class="text-forest/60 text-sm leading-relaxed">{{ $tool['desc'] ?? '' }}</p>
                         </div>
                     </div>
                 @endforeach
