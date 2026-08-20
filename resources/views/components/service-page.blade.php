@@ -243,14 +243,16 @@
         </div>
     @endif
 
-    {{-- Track Record: a bento grid — the shape genuinely fits this content
-         (mixed proof: a rating, a real testimonial, and a few hard numbers)
-         where it didn't fit "What You Get" (a plain deliverables list,
-         restored to its original non-grid form above). 4-column asymmetric
-         layout — one tall tile (row-span-2), one wide closing tile
-         (col-span-2) — same convention as the homepage's stats bento.
-         Falls back gracefully if the real photo doesn't load, via the
-         script at the bottom of this file. --}}
+    {{-- Track Record: a pure numbers grid — every tile is an actual stat,
+         nothing qualitative mixed in. An earlier version put a full client
+         quote + photo tile in here too, which fought the section's own
+         "Numbers instead of promises" headline (a quote is a promise, not
+         a number) and read especially oddly on mobile, stacked plainly
+         between stat cards. The real testimonial already gets its full
+         due in the dedicated Testimonials section below — no need to
+         preview it here. Same 12-col varying-width convention as the
+         homepage's own stats bento (one dark opener, a mixed row of
+         light/dark, one lime closer). --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
         <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
             <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">Track Record</span>
@@ -259,91 +261,44 @@
             </h3>
         </div>
 
-        @php
-            // One real, verified client quote + photo (Pastor Will Alston —
-            // same Fiverr review shown in full in the Testimonials section
-            // below; see resources/views/components/testimonials.blade.php).
-            // Rating/review count match that same real dataset (10 reviews,
-            // all 5-star, as of writing). "5+ years" and "450+ projects"
-            // are the same verified facts already used elsewhere on the
-            // site (About page / homepage stats), not new claims.
-            $trackRecordQuote = "Went back and worked this gentleman again and will say that of all the designers I have worked with He is the most down to earth and easy to work with. He keeps going until everything is perfect for you.";
-            $trackRecordReviewer = 'Pastor Will Alston';
-            $processStepCount = count($service['process_steps']);
-        @endphp
+        @php $processStepCount = count($service['process_steps']); @endphp
 
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-5">
+        <div class="grid grid-cols-12 gap-4 sm:gap-5">
             {{-- Real rating, computed from the same review set as Testimonials --}}
-            <div class="col-span-1 min-w-0 bg-mist border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
-                <i class="fi fi-sr-star flex text-forest text-xl sm:text-2xl"></i>
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">5.0/5</span>
-                    <span class="text-forest/60 text-xs sm:text-sm font-medium">From 10+ verified reviews</span>
-                </div>
+            <div class="col-span-6 sm:col-span-5 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-44 sm:min-h-52 md:min-h-60">
+                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none">5.0/5</span>
+                <span class="text-cream/70 text-xs sm:text-sm font-medium">Average rating, real client reviews</span>
             </div>
 
-            {{-- Real quote + real project photo, spans both rows --}}
-            <div class="col-span-1 sm:row-span-2 min-w-0 rounded-3xl sm:rounded-4xl overflow-hidden flex flex-col">
-                <div class="bg-mist p-5 sm:p-6 flex flex-col gap-2">
-                    <i class="fi fi-sr-quote-right flex text-forest/15 text-2xl sm:text-3xl"></i>
-                    <p class="text-forest text-xs sm:text-sm leading-relaxed italic line-clamp-5">&ldquo;{{ $trackRecordQuote }}&rdquo;</p>
-                    <span class="text-forest/50 text-xs font-semibold">&mdash; {{ $trackRecordReviewer }}, verified client</span>
-                </div>
-                <div class="relative flex-1 min-h-40" data-track-record-visual>
-                    <img
-                        class="absolute inset-0 w-full h-full object-cover object-center"
-                        src="{{ $service['img'] }}"
-                        alt="{{ $service['title'] }}"
-                        loading="lazy"
-                        data-track-record-image
-                    />
-                    <div class="absolute inset-0 bg-linear-to-t from-forest-deep/85 via-forest-deep/5 to-transparent pointer-events-none"></div>
-                    <div class="absolute bottom-0 left-0 p-4 sm:p-5 flex flex-col gap-0.5">
-                        <span class="text-lime font-agency font-semibold text-xs uppercase tracking-wide">{{ $service['title'] }}</span>
-                        <span class="text-cream font-agency text-base sm:text-lg font-bold">In practice.</span>
-                    </div>
-                </div>
+            <div class="col-span-6 sm:col-span-4 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-44 sm:min-h-52 md:min-h-60">
+                <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl md:text-5xl leading-none">10+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Verified reviews</span>
             </div>
 
-            {{-- Process step count, ties to the Process section above --}}
-            <div class="col-span-1 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
-                <i class="fi fi-rr-diagram-project flex text-lime text-xl sm:text-2xl"></i>
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">{{ str_pad($processStepCount, 2, '0', STR_PAD_LEFT) }}</span>
-                    <span class="text-cream/70 text-xs sm:text-sm font-medium">Clear steps, start to finish</span>
-                </div>
+            <div class="col-span-12 sm:col-span-3 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex sm:flex-col flex-row items-center sm:items-start justify-between sm:justify-end gap-1 sm:gap-2 min-h-28 sm:min-h-52 md:min-h-60">
+                <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl md:text-5xl leading-none">{{ str_pad($processStepCount, 2, '0', STR_PAD_LEFT) }}</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium sm:mt-0">Clear steps, start to finish</span>
             </div>
 
-            {{-- Years in business, same verified fact used on the About page --}}
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
-                <i class="fi fi-rr-time-past flex text-forest/60 text-xl sm:text-2xl"></i>
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">5+</span>
-                    <span class="text-forest/60 text-xs sm:text-sm font-medium">Years in business</span>
-                </div>
+            <div class="col-span-6 sm:col-span-4 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-36 sm:min-h-44">
+                <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">5+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Years in business</span>
             </div>
 
-            {{-- Deliverables count, ties to "What You Get" above — this and
-                 the process-step tile sit diagonally opposite each other as
-                 the grid's two dark tiles. Without this tile the row below
-                 the rating tile (col 1) has nothing in it and the grid
-                 auto-placement leaves a visible gap there. --}}
-            <div class="col-span-1 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
-                <i class="fi fi-rr-clipboard-list-check flex text-lime text-xl sm:text-2xl"></i>
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">{{ str_pad(count($service['deliverables']), 2, '0', STR_PAD_LEFT) }}</span>
-                    <span class="text-cream/70 text-xs sm:text-sm font-medium">Deliverables included</span>
-                </div>
+            {{-- Deliverables count, ties to "What You Get" above --}}
+            <div class="col-span-6 sm:col-span-4 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-36 sm:min-h-44">
+                <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">{{ str_pad(count($service['deliverables']), 2, '0', STR_PAD_LEFT) }}</span>
+                <span class="text-cream/70 text-xs sm:text-sm font-medium">Deliverables included</span>
             </div>
 
             {{-- Projects delivered, same verified stat as the homepage bento —
-                 wide closing tile --}}
-            <div class="col-span-1 sm:col-span-2 min-w-0 bg-lime rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-7 flex items-center justify-between gap-4">
+                 lime closer --}}
+            <div class="col-span-12 sm:col-span-4 min-w-0 bg-lime rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex items-center justify-between gap-4 min-h-36 sm:min-h-44">
                 <div class="flex flex-col gap-1">
                     <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">450+</span>
                     <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Projects delivered</span>
                 </div>
-                <i class="fi fi-rr-rocket-lunch flex text-forest-deep/30 text-4xl sm:text-5xl"></i>
+                <i class="fi fi-rr-rocket-lunch flex text-forest-deep/30 text-3xl sm:text-4xl"></i>
             </div>
         </div>
     </div>
@@ -596,18 +551,6 @@
                         const content = document.querySelector('[data-service-content]');
                         content?.classList.remove('md:col-span-3');
                         content?.classList.add('md:col-span-5');
-                    },
-                    { once: true },
-                );
-
-                // Track Record bento's photo half — if it 404s, just drop
-                // that half of the tile; the real quote/reviewer text above
-                // it is a separate zone and stays intact either way.
-                const trackRecordImg = document.querySelector('[data-track-record-image]');
-                trackRecordImg?.addEventListener(
-                    'error',
-                    function () {
-                        document.querySelector('[data-track-record-visual]')?.remove();
                     },
                     { once: true },
                 );
