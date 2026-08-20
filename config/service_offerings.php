@@ -287,8 +287,8 @@ return [
                 ['title' => 'Honest fit assessment', 'desc' => "If a project doesn't actually need custom development, that gets said upfront rather than recommending the more expensive option anyway."],
             ],
             'tech_stack' => [
-                ['name' => 'Laravel', 'icon_url' => 'https://cdn.simpleicons.org/laravel'],
-                ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php'],
+                ['name' => 'Laravel', 'icon_url' => 'https://cdn.simpleicons.org/laravel', 'desc' => 'The framework behind the real application logic — logins, dashboards, custom workflows.'],
+                ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-diagram-cells', 'title' => 'Application Architecture', 'desc' => 'Database structure and application logic planned before development starts, so the system holds up as it grows.'],
@@ -329,9 +329,9 @@ return [
                 ['title' => 'Speed taken seriously', 'desc' => "Most \"slow WordPress\" complaints come from bloated themes and stacked plugins — both get avoided from the start."],
             ],
             'tech_stack' => [
-                ['name' => 'WordPress', 'icon_url' => 'https://cdn.simpleicons.org/wordpress'],
-                ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php'],
-                ['name' => 'MySQL', 'icon_url' => 'https://cdn.simpleicons.org/mysql'],
+                ['name' => 'WordPress', 'icon_url' => 'https://cdn.simpleicons.org/wordpress', 'desc' => 'The CMS behind sites your team can actually edit, without calling a developer for every change.'],
+                ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
+                ['name' => 'MySQL', 'icon_url' => 'https://cdn.simpleicons.org/mysql', 'desc' => 'The database holding content and structured data behind the scenes.'],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-palette', 'title' => 'Custom Theme Development', 'desc' => "A theme built specifically for your site, not a heavily modified template carrying code you'll never use."],
@@ -372,9 +372,9 @@ return [
                 ['title' => 'A usable system, not just files', 'desc' => 'Guidelines and templates ship alongside the logo, so the identity stays consistent no matter who applies it later.'],
             ],
             'tech_stack' => [
-                ['name' => 'Figma', 'icon_url' => 'https://cdn.simpleicons.org/figma'],
-                ['name' => 'Photoshop', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg'],
-                ['name' => 'Illustrator', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg'],
+                ['name' => 'Figma', 'icon_url' => 'https://cdn.simpleicons.org/figma', 'desc' => 'Where every design happens — easy to hand off, review, and iterate on with your team.'],
+                ['name' => 'Photoshop', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg', 'desc' => 'For photo editing, image compositing, and pixel-level retouching.'],
+                ['name' => 'Illustrator', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg', 'desc' => "For vector work — logos, icons, anything that needs to scale without losing quality."],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-pen-nib', 'title' => 'Logo Design', 'desc' => 'A mark built to hold up at every size, from a browser tab to a storefront, not just the large hero version.'],
@@ -415,9 +415,9 @@ return [
                 ['title' => 'Consistent output, not one-off pieces', 'desc' => 'A social post and a printed flyer read as the same business, every time.'],
             ],
             'tech_stack' => [
-                ['name' => 'Figma', 'icon_url' => 'https://cdn.simpleicons.org/figma'],
-                ['name' => 'Photoshop', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg'],
-                ['name' => 'Illustrator', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg'],
+                ['name' => 'Figma', 'icon_url' => 'https://cdn.simpleicons.org/figma', 'desc' => 'Where every design happens — easy to hand off, review, and iterate on with your team.'],
+                ['name' => 'Photoshop', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg', 'desc' => 'For photo editing, image compositing, and pixel-level retouching.'],
+                ['name' => 'Illustrator', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg', 'desc' => "For vector work — logos, icons, anything that needs to scale without losing quality."],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-grid-alt', 'title' => 'Social Media Templates', 'desc' => "A reusable set of templates so every post looks like it belongs to the same brand, without redesigning from scratch each time."],

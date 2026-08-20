@@ -224,9 +224,8 @@
                             <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
                                 {{-- Lime text/icons read poorly straight on this section's near-white
                                      background (low contrast) — lime works here as a filled badge behind
-                                     a dark icon instead, same fix as the particle-globe color and the
-                                     established bg-lime + text-forest-deep icon-badge convention used in
-                                     "How We Work" below. --}}
+                                     a dark icon instead, the established bg-lime + text-forest-deep
+                                     icon-badge convention used in "How We Work" below. --}}
                                 <span class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-lime text-forest-deep text-xs mt-0.5 shrink-0">
                                     <i class="fi fi-rr-check flex"></i>
                                 </span>
@@ -337,10 +336,13 @@
     </div>
 
     @if (!empty($service['tech_stack']))
-        {{-- Technology We Use: an orbital visual instead of another logo
-             row — a central globe with each real tool circling it on its
-             own ring. Every icon URL is a verified, real brand logo
-             (Simple Icons / devicon CDNs), not a placeholder. --}}
+        {{-- Technology We Use: a clean tech-card grid instead of the older
+             floating-orbit animation — each card pairs a verified, real
+             brand logo (Simple Icons / devicon CDNs, not a placeholder)
+             with an honest one-line reason it's actually used, so the
+             section carries real content even with only 2-3 tools rather
+             than relying on motion to fill the space. Column count and
+             max-width adapt to how many tools a given page actually has. --}}
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
             <div class="flex flex-col gap-3 sm:gap-4 items-center text-center mb-8 sm:mb-10 max-w-2xl mx-auto">
                 <h2
@@ -355,92 +357,34 @@
                 <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Real, industry-standard tools — not a stack picked to sound impressive, but the ones that actually get this kind of work done properly.</p>
             </div>
 
-            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-12">
+            @php
+                $techCount = count($service['tech_stack']);
+                $techGridCols = $techCount <= 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3';
+                $techMaxWidth = $techCount <= 2 ? 'max-w-2xl' : 'max-w-4xl';
+            @endphp
+            <div class="grid grid-cols-1 {{ $techGridCols }} gap-4 sm:gap-5 mx-auto {{ $techMaxWidth }}">
                 @foreach ($service['tech_stack'] as $tool)
-                    <span
-                        class="inline-flex items-center gap-2 rounded-full border border-forest/15 bg-white px-3.5 py-2 text-sm font-semibold text-forest"
-                    >
-                        <img src="{{ $tool['icon_url'] }}" alt="" class="size-4 object-contain" loading="lazy" />
-                        {{ $tool['name'] }}
-                    </span>
-                @endforeach
-            </div>
-
-            {{--
-                "Horizon" composition: the globe and every ring share the
-                same anchor point (bottom-center, pushed down by half their
-                own height), so only the upper arc of each shows above the
-                section's bottom edge — like a planet's curve rather than a
-                full flat circle. Always 3 rings for visual consistency
-                across every page, even when a page only has 2 real tools —
-                the 3rd ring then renders as a plain empty orbit path with
-                no icon, rather than fabricating a 3rd tool. Ring width is
-                min(percentage, px-cap): scales up to fill more of a wide
-                section, capped so it never blows out a narrow one — the
-                outermost is allowed up to 80% of the container's width.
-            --}}
-            <div class="relative w-full h-105 sm:h-115 md:h-140 overflow-hidden flex justify-center">
-                @php
-                    $ringSizeClasses = [
-                        'w-[min(55%,460px)] h-[min(55%,460px)]',
-                        'w-[min(68%,600px)] h-[min(68%,600px)]',
-                        'w-[min(80%,760px)] h-[min(80%,760px)]',
-                    ];
-                @endphp
-
-                {{-- central globe: a real rotating particle sphere drawn on
-                     canvas (see the script below), not a static gradient. --}}
-                <div
-                    class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 aspect-square w-[min(38%,340px)] h-[min(38%,340px)] rounded-full z-10 pointer-events-none"
-                    style="animation: globe-pulse 4s ease-in-out infinite;"
-                >
-                    <canvas data-particle-globe class="w-full h-full"></canvas>
-                </div>
-
-                {{-- Each ring's real tool (if it has one) is mirrored to the
-                     opposite side (angle + 180°) — same technique as the
-                     reference component — so a populated ring never reads
-                     as a single lonely dot. --}}
-                @for ($index = 0; $index < 3; $index++)
-                    @php
-                        // Cycle back through the real tools rather than
-                        // leaving a ring empty when there are fewer than 3
-                        // — an empty outer ring read as unfinished, not
-                        // "consistent". Never invents a tool that isn't
-                        // real, just repeats one that already appears.
-                        $tool = $service['tech_stack'][$index % count($service['tech_stack'])];
-                        $isCw = $index % 2 === 0;
-                        $orbitAnim = $isCw ? 'orbit-cw' : 'orbit-ccw';
-                        $counterAnim = $isCw ? 'counter-cw' : 'counter-ccw';
-                        $duration = 18 + $index * 6;
-                        // Stagger each ring's starting angle so all 3 icons
-                        // aren't stacked at the same "12 o'clock" spot on
-                        // first paint, before rotation has spread them out.
-                        $baseAngle = $index * 60;
-                    @endphp
                     <div
-                        class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border border-forest/15 {{ $ringSizeClasses[$index] }}"
+                        class="group relative overflow-hidden rounded-3xl border border-forest/10 bg-white p-6 sm:p-7 flex flex-col gap-4 hover:border-forest/25 hover:-translate-y-1 transition-all duration-300"
                     >
-                        @foreach ([$baseAngle, $baseAngle + 180] as $angleOffset)
-                                <div
-                                    class="absolute top-0 left-1/2 h-1/2 -ml-7 origin-bottom flex flex-col justify-start items-center"
-                                    style="--start-angle: {{ $angleOffset }}deg; animation: {{ $orbitAnim }} {{ $duration }}s linear infinite;"
-                                >
-                                    <div
-                                        class="flex items-center justify-center size-10 sm:size-12 -mt-5 sm:-mt-6 rounded-full bg-white border border-forest/15 shadow-lg p-2.5 relative z-10"
-                                        style="--counter-offset: {{ -$angleOffset }}deg; animation: {{ $counterAnim }} {{ $duration }}s linear infinite;"
-                                    >
-                                        <img
-                                            src="{{ $tool['icon_url'] }}"
-                                            alt="{{ $tool['name'] }}"
-                                            class="w-full h-full object-contain"
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                </div>
-                            @endforeach
+                        {{-- oversized, faint watermark of the tool's own logo — reuses the
+                             same verified asset rather than a separate decorative image. --}}
+                        <img
+                            src="{{ $tool['icon_url'] }}"
+                            alt=""
+                            aria-hidden="true"
+                            class="absolute -right-5 -bottom-5 size-28 sm:size-32 object-contain opacity-[0.05] pointer-events-none"
+                            loading="lazy"
+                        />
+                        <span class="relative flex items-center justify-center size-14 sm:size-16 rounded-2xl bg-forest/5">
+                            <img src="{{ $tool['icon_url'] }}" alt="{{ $tool['name'] }}" class="size-7 sm:size-8 object-contain" loading="lazy" />
+                        </span>
+                        <div class="relative flex flex-col gap-1.5">
+                            <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">{{ $tool['name'] }}</h4>
+                            <p class="text-forest/60 text-sm leading-relaxed">{{ $tool['desc'] ?? '' }}</p>
+                        </div>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     @endif
@@ -612,77 +556,6 @@
                     },
                     { once: true },
                 );
-            });
-
-            // "Technology We Use" particle globe: points distributed evenly
-            // over a sphere (Fibonacci lattice) and rotated each frame, with
-            // depth-based size/opacity for a pseudo-3D look. Plain canvas —
-            // no WebGL/Three.js, no external library.
-            document.addEventListener('DOMContentLoaded', function () {
-                const canvases = document.querySelectorAll('[data-particle-globe]');
-                if (!canvases.length) return;
-
-                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-                canvases.forEach(function (canvas) {
-                    const dpr = window.devicePixelRatio || 1;
-                    const size = canvas.clientWidth || canvas.parentElement.clientWidth;
-                    canvas.width = size * dpr;
-                    canvas.height = size * dpr;
-                    const ctx = canvas.getContext('2d');
-                    ctx.scale(dpr, dpr);
-
-                    const radius = size / 2;
-                    const pointCount = 520;
-                    const goldenAngle = Math.PI * (3 - Math.sqrt(5));
-                    const points = [];
-
-                    for (let i = 0; i < pointCount; i++) {
-                        const y = 1 - (i / (pointCount - 1)) * 2;
-                        const r = Math.sqrt(Math.max(0, 1 - y * y));
-                        const theta = goldenAngle * i;
-                        points.push({ x: Math.cos(theta) * r, y: y, z: Math.sin(theta) * r });
-                    }
-
-                    let angle = 0;
-
-                    function draw() {
-                        ctx.clearRect(0, 0, size, size);
-
-                        const cos = Math.cos(angle);
-                        const sin = Math.sin(angle);
-
-                        const projected = points
-                            .map(function (p) {
-                                return { x: p.x * cos - p.z * sin, y: p.y, z: p.x * sin + p.z * cos };
-                            })
-                            .sort(function (a, b) {
-                                return a.z - b.z;
-                            });
-
-                        projected.forEach(function (p) {
-                            const depth = (p.z + 1) / 2;
-                            const screenX = radius + p.x * radius * 0.92;
-                            const screenY = radius + p.y * radius * 0.92;
-                            const dotSize = 0.7 + depth * 1.8;
-                            const opacity = 0.35 + depth * 0.6;
-
-                            ctx.beginPath();
-                            ctx.arc(screenX, screenY, dotSize, 0, Math.PI * 2);
-                            // forest-deep, not lime — lime dots read weak
-                            // against this section's near-white background.
-                            ctx.fillStyle = 'rgba(22, 50, 47, ' + opacity.toFixed(3) + ')';
-                            ctx.fill();
-                        });
-
-                        if (!prefersReducedMotion) {
-                            angle += 0.006;
-                            requestAnimationFrame(draw);
-                        }
-                    }
-
-                    draw();
-                });
             });
         </script>
     @endpush
