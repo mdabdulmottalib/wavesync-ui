@@ -286,13 +286,47 @@ return [
                 ['title' => 'Tests included, not bolted on', 'desc' => "Automated tests get written for the logic that actually needs to be correct, as part of the build."],
                 ['title' => 'Honest fit assessment', 'desc' => "If a project doesn't actually need custom development, that gets said upfront rather than recommending the more expensive option anyway."],
             ],
+            // 'category' controls which of the three orbit rings a tool
+            // lands on (see the "Technology We Use" section in
+            // service-page.blade.php): 'language' -> outer/largest ring,
+            // 'infra' -> middle ring, 'collab' -> inner/smallest ring.
             'tech_stack' => [
-                ['name' => 'Laravel', 'icon_url' => 'https://cdn.simpleicons.org/laravel', 'desc' => 'The framework behind the real application logic — logins, dashboards, custom workflows.'],
-                ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
-                ['name' => 'React', 'icon_url' => 'https://cdn.simpleicons.org/react', 'desc' => 'For interactive, component-based interfaces layered on top of Laravel.'],
-                ['name' => 'Tailwind CSS', 'icon_url' => 'https://cdn.simpleicons.org/tailwindcss', 'desc' => 'The utility-first CSS framework behind fast, consistent styling.'],
-                ['name' => 'Inertia.js', 'icon_url' => 'https://cdn.simpleicons.org/inertia', 'desc' => "The bridge that lets Laravel and React work together as one app, no separate API needed."],
-                ['name' => 'Next.js', 'icon_url' => 'https://cdn.simpleicons.org/nextdotjs', 'desc' => "For fully decoupled frontends, when a project calls for its own dedicated app layer."],
+                ['name' => 'Laravel', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/laravel', 'desc' => 'The framework behind the real application logic — logins, dashboards, custom workflows.'],
+                ['name' => 'PHP', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
+                ['name' => 'React', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/react', 'desc' => 'For interactive, component-based interfaces layered on top of Laravel.'],
+                ['name' => 'Tailwind CSS', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/tailwindcss', 'desc' => 'The utility-first CSS framework behind fast, consistent styling.'],
+                ['name' => 'Inertia.js', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/inertia', 'desc' => "The bridge that lets Laravel and React work together as one app, no separate API needed."],
+                ['name' => 'Next.js', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/nextdotjs', 'desc' => "For fully decoupled frontends, when a project calls for its own dedicated app layer."],
+                ['name' => 'Livewire', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/livewire'],
+                ['name' => 'Redux', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/redux'],
+                ['name' => 'Node.js', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/nodedotjs'],
+                ['name' => 'Vite', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/vite'],
+                ['name' => 'Composer', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/composer'],
+
+                // Better Auth's real brand color is pure white (#FFFFFF) —
+                // invisible on the light badge every other icon uses, same
+                // problem as Acrobat Pro elsewhere on this page. Same fix:
+                // its own dark badge instead of a washed-out glyph.
+                ['name' => 'Better Auth', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/betterauth', 'icon_bg' => '#000000', 'icon_mono' => true],
+                ['name' => 'Supabase', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/supabase'],
+                ['name' => 'PostgreSQL', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/postgresql'],
+                ['name' => 'MongoDB', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/mongodb'],
+                ['name' => 'MySQL', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/mysql'],
+                ['name' => 'Redis', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/redis'],
+                ['name' => 'GitHub', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/github'],
+                ['name' => 'GitLab', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/gitlab'],
+                ['name' => 'Vercel', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/vercel'],
+                ['name' => 'Lovable', 'category' => 'infra', 'icon_url' => 'https://api.iconify.design/devicon/lovable.svg'],
+                ['name' => 'v0', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/v0'],
+                ['name' => 'Claude', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/claude'],
+                ['name' => 'OpenAI', 'category' => 'infra', 'icon_url' => 'https://api.iconify.design/logos/openai-icon.svg'],
+
+                ['name' => 'Figma', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/figma'],
+                ['name' => 'Slack', 'category' => 'collab', 'icon_url' => 'https://api.iconify.design/logos/slack-icon.svg'],
+                ['name' => 'Asana', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/asana'],
+                ['name' => 'Miro', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/miro'],
+                ['name' => 'Notion', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/notion'],
+                ['name' => 'ClickUp', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/clickup'],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-diagram-cells', 'title' => 'Application Architecture', 'desc' => 'Database structure and application logic planned before development starts, so the system holds up as it grows.'],
@@ -332,12 +366,39 @@ return [
                 ['title' => 'Editable without a developer', 'desc' => "The CMS setup is built around what your team actually needs to update, so you're not stuck calling for every text change."],
                 ['title' => 'Speed taken seriously', 'desc' => "Most \"slow WordPress\" complaints come from bloated themes and stacked plugins — both get avoided from the start."],
             ],
+            // Rank Math and a generic "Schema" markup tool were both asked
+            // for but have no real icon anywhere (Simple Icons, devicon,
+            // Iconify) as of writing — skipped rather than guessed/faked.
             'tech_stack' => [
-                ['name' => 'WordPress', 'icon_url' => 'https://cdn.simpleicons.org/wordpress', 'desc' => 'The CMS behind sites your team can actually edit, without calling a developer for every change.'],
-                ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
-                ['name' => 'MySQL', 'icon_url' => 'https://cdn.simpleicons.org/mysql', 'desc' => 'The database holding content and structured data behind the scenes.'],
-                ['name' => 'Elementor', 'icon_url' => 'https://cdn.simpleicons.org/elementor', 'desc' => 'The page builder behind sites your team can update without touching code.'],
-                ['name' => 'WooCommerce', 'icon_url' => 'https://cdn.simpleicons.org/woocommerce', 'desc' => 'For WordPress sites that need to sell — products, cart, and checkout, built in.'],
+                ['name' => 'WordPress', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/wordpress', 'desc' => 'The CMS behind sites your team can actually edit, without calling a developer for every change.'],
+                ['name' => 'PHP', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
+                ['name' => 'jQuery', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/jquery'],
+                ['name' => 'Gutenberg', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/gutenberg'],
+                ['name' => 'Elementor', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/elementor', 'desc' => 'The page builder behind sites your team can update without touching code.'],
+                ['name' => 'WooCommerce', 'category' => 'language', 'icon_url' => 'https://cdn.simpleicons.org/woocommerce', 'desc' => 'For WordPress sites that need to sell — products, cart, and checkout, built in.'],
+                ['name' => 'WPForms', 'category' => 'language', 'icon_url' => 'https://api.iconify.design/fa6-brands/wpforms.svg'],
+
+                ['name' => 'MySQL', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/mysql', 'desc' => 'The database holding content and structured data behind the scenes.'],
+                ['name' => 'Yoast SEO', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/yoast'],
+                ['name' => 'WP Rocket', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/wprocket'],
+                ['name' => 'Cloudflare', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/cloudflare'],
+                ['name' => 'phpMyAdmin', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/phpmyadmin'],
+                ['name' => 'cPanel', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/cpanel'],
+                ['name' => 'Mailchimp', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/mailchimp'],
+                ['name' => 'Google Analytics', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/googleanalytics'],
+                ['name' => 'Stripe', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/stripe'],
+                ['name' => 'PayPal', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/paypal'],
+                ['name' => 'Redis', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/redis'],
+                ['name' => 'Composer', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/composer'],
+                ['name' => 'Node.js', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/nodedotjs'],
+                ['name' => 'GitHub', 'category' => 'infra', 'icon_url' => 'https://cdn.simpleicons.org/github'],
+
+                ['name' => 'Figma', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/figma'],
+                ['name' => 'Slack', 'category' => 'collab', 'icon_url' => 'https://api.iconify.design/logos/slack-icon.svg'],
+                ['name' => 'Asana', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/asana'],
+                ['name' => 'Miro', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/miro'],
+                ['name' => 'Notion', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/notion'],
+                ['name' => 'ClickUp', 'category' => 'collab', 'icon_url' => 'https://cdn.simpleicons.org/clickup'],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-palette', 'title' => 'Custom Theme Development', 'desc' => "A theme built specifically for your site, not a heavily modified template carrying code you'll never use."],

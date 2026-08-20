@@ -321,7 +321,24 @@
             </div>
 
             @php
-                $ringGroups = array_chunk($service['tech_stack'], (int) ceil(count($service['tech_stack']) / 3));
+                // Tools with a 'category' land on a fixed ring by meaning
+                // (0 = inner/smallest = collaboration & planning tools,
+                // 1 = middle = data/infra/AI tools, 2 = outer/largest =
+                // languages & frameworks) instead of just being split by
+                // their position in the config array. Pages whose tools
+                // have no 'category' (Branding/Graphic Design) fall back
+                // to the old even three-way split.
+                $categoryToRingIndex = ['collab' => 0, 'infra' => 1, 'language' => 2];
+                $ringGroups = [[], [], []];
+                if (collect($service['tech_stack'])->contains(fn ($tool) => !empty($tool['category']))) {
+                    foreach ($service['tech_stack'] as $tool) {
+                        $ringGroups[$categoryToRingIndex[$tool['category'] ?? ''] ?? 1][] = $tool;
+                    }
+                } else {
+                    foreach (array_chunk($service['tech_stack'], (int) ceil(count($service['tech_stack']) / 3)) as $i => $chunk) {
+                        $ringGroups[$i] = $chunk;
+                    }
+                }
                 // diameterClass sizes each ring's guide circle (and, via
                 // spokeClass at half that, the pivot spoke's length/radius).
                 // Both are literal strings (not built from interpolated
@@ -346,6 +363,7 @@
                 ></div>
 
                 @foreach ($ringGroups as $ringIndex => $ringTools)
+                    @continue(empty($ringTools))
                     @php
                         $config = $ringConfig[$ringIndex];
                         $ringToolCount = count($ringTools);
