@@ -96,52 +96,66 @@
         </div>
     </div>
 
-    {{-- Deliverables, paired with the service's own real image rather than
-         a stock photo — falls back to a full-width list if that image
-         doesn't load, via initServiceImageFallback() below. --}}
+    {{-- Deliverables, as a bento grid rather than a plain image+list split —
+         the service's own real photo is one tile among the deliverables
+         instead of boxed off in its own column, with two tiles widened for
+         the asymmetry that makes a bento read as a bento (same grid-cols-12
+         convention as the homepage's stats section). Falls back to the
+         count tile expanding full-width if the real image doesn't load,
+         via the script at the bottom of this file. --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
-            <div class="md:col-span-2 col-span-full order-1" data-service-visual>
-                <div class="relative w-full aspect-square overflow-hidden rounded-3xl sm:rounded-4xl">
-                    <img
-                        class="absolute inset-0 w-full h-full object-cover object-center"
-                        src="{{ $service['img'] }}"
-                        alt="{{ $service['title'] }}"
-                        loading="lazy"
-                        data-service-image
-                    />
-                </div>
+        <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
+            <h2
+                class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
+            >
+                <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
+                What You Get
+            </h2>
+            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                Every deliverable, explained.
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-12 gap-4 sm:gap-5">
+            <div
+                class="col-span-12 sm:col-span-7 min-w-0 relative overflow-hidden rounded-3xl sm:rounded-4xl min-h-64 sm:min-h-72 md:min-h-80"
+                data-service-visual
+            >
+                <img
+                    class="absolute inset-0 w-full h-full object-cover object-center"
+                    src="{{ $service['img'] }}"
+                    alt="{{ $service['title'] }}"
+                    loading="lazy"
+                    data-service-image
+                />
             </div>
 
-            <div class="md:col-span-3 col-span-full order-2 flex flex-col gap-6 sm:gap-7" data-service-content>
-                <div class="flex flex-col gap-3 sm:gap-4">
-                    <h2
-                        class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
-                    >
-                        <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                        What You Get
-                    </h2>
-                    <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                        Every deliverable, explained.
-                    </h3>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-6 sm:gap-y-7">
-                    @foreach ($service['deliverables'] as $index => $item)
-                        <div
-                            id="{{ \Illuminate\Support\Str::slug($item['title']) }}"
-                            class="flex flex-col gap-1.5 scroll-mt-28 sm:scroll-mt-32"
-                        >
-                            <span
-                                class="font-agency font-bold text-forest/30 text-sm"
-                                >{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span
-                            >
-                            <h4 class="font-agency font-bold text-forest text-base sm:text-lg">{{ $item['title'] }}</h4>
-                            <p class="text-forest/70 text-sm leading-relaxed">{{ $item['desc'] }}</p>
-                        </div>
-                    @endforeach
-                </div>
+            <div
+                class="col-span-12 sm:col-span-5 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-6 sm:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-64 sm:min-h-72 md:min-h-80"
+                data-service-content
+            >
+                <span class="font-agency font-extrabold text-5xl sm:text-6xl md:text-7xl leading-none">{{ str_pad(count($service['deliverables']), 2, '0', STR_PAD_LEFT) }}</span>
+                <span class="text-cream/70 text-sm sm:text-base font-medium">Deliverables included</span>
             </div>
+
+            @php
+                // Wide-narrow-narrow / narrow-narrow-wide per 6, mirroring the
+                // homepage bento's varying-width convention rather than a flat
+                // grid of identical tiles. Any 7th/8th item (only the 4 broader
+                // category pages have that many) falls back to an even span.
+                $bentoSpans = ['sm:col-span-6', 'sm:col-span-3', 'sm:col-span-3', 'sm:col-span-3', 'sm:col-span-3', 'sm:col-span-6'];
+            @endphp
+            @foreach ($service['deliverables'] as $index => $item)
+                @php $span = $bentoSpans[$index] ?? 'sm:col-span-4'; @endphp
+                <div
+                    id="{{ \Illuminate\Support\Str::slug($item['title']) }}"
+                    class="col-span-12 {{ $span }} min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-7 flex flex-col gap-2 scroll-mt-28 sm:scroll-mt-32 min-h-40 sm:min-h-44"
+                >
+                    <span class="font-agency font-bold text-forest/30 text-sm">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                    <h4 class="font-agency font-bold text-forest text-base sm:text-lg">{{ $item['title'] }}</h4>
+                    <p class="text-forest/70 text-sm leading-relaxed {{ $span === 'sm:col-span-6' ? '' : 'line-clamp-3' }}">{{ $item['desc'] }}</p>
+                </div>
+            @endforeach
         </div>
     </div>
 
@@ -180,7 +194,7 @@
                     class="group flex flex-col md:flex-row md:items-center gap-4 md:gap-10 py-8 sm:py-10 border-b border-forest/10"
                 >
                     <span
-                        class="font-agency font-extrabold text-lg sm:text-xl text-forest/25 group-hover:text-lime transition-colors duration-500 md:w-12 shrink-0"
+                        class="font-agency font-extrabold text-lg sm:text-xl text-forest/25 group-hover:text-forest-deep transition-colors duration-500 md:w-12 shrink-0"
                     >
                         {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                     </span>
@@ -222,7 +236,14 @@
                     <div class="flex flex-col divide-y divide-forest/10 border-t border-forest/10">
                         @foreach ($service['why_wavesync'] as $point)
                             <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
-                                <i class="fi fi-rr-check flex text-lime text-lg mt-0.5 sm:mt-1 shrink-0"></i>
+                                {{-- Lime text/icons read poorly straight on this section's near-white
+                                     background (low contrast) — lime works here as a filled badge behind
+                                     a dark icon instead, same fix as the particle-globe color and the
+                                     established bg-lime + text-forest-deep icon-badge convention used in
+                                     "How We Work" below. --}}
+                                <span class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-lime text-forest-deep text-xs mt-0.5 shrink-0">
+                                    <i class="fi fi-rr-check flex"></i>
+                                </span>
                                 <p class="text-forest text-sm sm:text-base leading-relaxed"><span class="font-agency font-bold">{{ $point['title'] }} —</span> {{ $point['desc'] }}</p>
                             </div>
                         @endforeach
@@ -496,8 +517,8 @@
                     function () {
                         document.querySelector('[data-service-visual]')?.remove();
                         const content = document.querySelector('[data-service-content]');
-                        content?.classList.remove('md:col-span-3');
-                        content?.classList.add('md:col-span-5');
+                        content?.classList.remove('sm:col-span-5');
+                        content?.classList.add('sm:col-span-12');
                     },
                     { once: true },
                 );

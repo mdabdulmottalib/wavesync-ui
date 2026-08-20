@@ -214,8 +214,12 @@
 
                                     <div class="flex flex-col gap-3 sm:gap-4 relative">
                                         <div class="flex items-center gap-1.5">
+                                            {{-- text-forest, not text-lime — this card is bg-white, and lime
+                                                 reads too faint directly against it (see the rating summary
+                                                 tile above, which keeps text-lime since that one sits on
+                                                 bg-forest). --}}
                                             @for ($i = 0; $i < ($testimonial['rating'] ?? 5); $i++)
-                                                <i class="fi fi-sr-star flex text-sm sm:text-base text-lime"></i>
+                                                <i class="fi fi-sr-star flex text-sm sm:text-base text-forest"></i>
                                             @endfor
                                             <span class="ml-1 font-agency font-bold text-forest text-sm sm:text-base">{{ number_format($testimonial['rating'] ?? 5, 1) }}</span>
                                         </div>

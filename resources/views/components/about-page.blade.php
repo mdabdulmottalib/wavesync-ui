@@ -338,7 +338,7 @@
                     class="group flex flex-col md:flex-row md:items-center gap-4 md:gap-10 py-8 sm:py-10 md:py-12 border-b border-forest/10"
                 >
                     <span
-                        class="font-agency font-extrabold text-lg sm:text-xl text-forest/25 group-hover:text-lime transition-colors duration-500 md:w-12 shrink-0"
+                        class="font-agency font-extrabold text-lg sm:text-xl text-forest/25 group-hover:text-forest-deep transition-colors duration-500 md:w-12 shrink-0"
                     >
                         {{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}
                     </span>
