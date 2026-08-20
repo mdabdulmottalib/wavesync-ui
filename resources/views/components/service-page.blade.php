@@ -70,7 +70,7 @@
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
         <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
             <div class="md:col-span-2 col-span-full order-1" data-service-visual>
-                <div class="relative w-full aspect-square overflow-hidden rounded-3xl sm:rounded-4xl">
+                <div class="relative w-full aspect-4/3 overflow-hidden rounded-3xl sm:rounded-4xl">
                     <img
                         class="absolute inset-0 w-full h-full object-cover object-center"
                         src="{{ $service['img'] }}"
@@ -174,45 +174,91 @@
                     </div>
                 </div>
 
-                {{-- Same real, verified stats as the homepage's own bento —
-                     a wide dark opener + a 2-col grid, scaled down to fit
-                     this narrower sidebar rather than the full-width 12-col
-                     layout that section uses. --}}
-                <div class="md:col-span-2 col-span-full flex flex-col justify-center md:border-l md:border-forest/10 md:pl-10">
-                    <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
-                        <div class="col-span-2 min-w-0 bg-forest text-cream rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex items-center justify-between gap-3">
-                            <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">450+</span>
-                            <span class="text-cream/70 text-xs sm:text-sm font-medium text-right">Projects Delivered</span>
-                        </div>
-                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
-                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">150+</span>
-                            <span class="text-forest/60 text-xs font-medium">Clients Worldwide</span>
-                        </div>
-                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
-                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">15+</span>
-                            <span class="text-forest/60 text-xs font-medium">Countries Served</span>
-                        </div>
-                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
-                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">95%+</span>
-                            <span class="text-forest/60 text-xs font-medium">Client Satisfaction</span>
-                        </div>
-                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
-                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">80%+</span>
-                            <span class="text-forest/60 text-xs font-medium">Repeat Clients</span>
-                        </div>
-                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
-                            <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Unlimited</span>
-                            <span class="text-forest/60 text-xs font-medium">Revisions On Every Project</span>
-                        </div>
-                        <div class="min-w-0 bg-lime rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
-                            <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Lifetime</span>
-                            <span class="text-forest-deep/70 text-xs font-medium">Support After Launch</span>
-                        </div>
+                {{-- Same real photo + image treatment as "What You Get"
+                     above (aspect-square, rounded-3xl/4xl, object-cover) —
+                     just on the right instead of the left this time. --}}
+                <div class="md:col-span-2 col-span-full">
+                    <div class="relative w-full aspect-4/3 overflow-hidden rounded-3xl sm:rounded-4xl">
+                        <img
+                            class="absolute inset-0 w-full h-full object-cover object-center"
+                            src="{{ $service['img'] }}"
+                            alt="{{ $service['title'] }}"
+                            loading="lazy"
+                        />
                     </div>
                 </div>
             </div>
         </div>
     @endif
+
+    {{-- At A Glance section --}}
+    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+        <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
+            <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">At A Glance</span>
+            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                Wavesync at a glance.
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+            <div class="col-span-2 md:row-span-2 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-36 sm:min-h-44 md:min-h-0">
+                <i class="fi fi-rr-star flex text-cream/30 text-2xl sm:text-3xl mb-2"></i>
+                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none">4.9/5</span>
+                <span class="text-cream/70 text-xs sm:text-sm font-medium">Average rating, real client reviews</span>
+            </div>
+
+            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">85+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Verified reviews</span>
+            </div>
+
+            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">5+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Years in business</span>
+            </div>
+
+            <div class="col-span-2 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex items-center justify-between gap-4 min-h-32 sm:min-h-36">
+                <div class="flex flex-col gap-1">
+                    <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">450+</span>
+                    <span class="text-cream/70 text-xs sm:text-sm font-medium">Projects Delivered</span>
+                </div>
+                <i class="fi fi-rr-rocket-lunch flex text-cream/30 text-3xl sm:text-4xl"></i>
+            </div>
+
+            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">150+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Clients Worldwide</span>
+            </div>
+
+            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">15+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Countries Served</span>
+            </div>
+
+            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">95%+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Client Satisfaction</span>
+            </div>
+
+            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">80%+</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Repeat Clients</span>
+            </div>
+
+            <div class="col-span-2 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
+                <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Unlimited</span>
+                <span class="text-forest/60 text-xs sm:text-sm font-medium">Revisions On Every Project</span>
+            </div>
+
+            <div class="col-span-2 min-w-0 bg-lime rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex items-center justify-between gap-4 min-h-32 sm:min-h-36">
+                <div class="flex flex-col gap-1">
+                    <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Lifetime</span>
+                    <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Support After Launch</span>
+                </div>
+                <i class="fi fi-rr-shield-check flex text-forest-deep/30 text-3xl sm:text-4xl"></i>
+            </div>
+        </div>
+    </div>
 
     {{-- How We Work section --}}
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
