@@ -323,6 +323,19 @@
                 </div>
             </div>
 
+            {{-- Deliverables count, ties to "What You Get" above — this and
+                 the process-step tile sit diagonally opposite each other as
+                 the grid's two dark tiles. Without this tile the row below
+                 the rating tile (col 1) has nothing in it and the grid
+                 auto-placement leaves a visible gap there. --}}
+            <div class="col-span-1 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-between gap-6 min-h-44 sm:min-h-48">
+                <i class="fi fi-rr-clipboard-list-check flex text-lime text-xl sm:text-2xl"></i>
+                <div class="flex flex-col gap-1">
+                    <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">{{ str_pad(count($service['deliverables']), 2, '0', STR_PAD_LEFT) }}</span>
+                    <span class="text-cream/70 text-xs sm:text-sm font-medium">Deliverables included</span>
+                </div>
+            </div>
+
             {{-- Projects delivered, same verified stat as the homepage bento —
                  wide closing tile --}}
             <div class="col-span-1 sm:col-span-2 min-w-0 bg-lime rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-7 flex items-center justify-between gap-4">
@@ -336,16 +349,22 @@
     </div>
 
     @if (!empty($service['tech_stack']))
-        {{-- Technology We Use: a single orbit ring around a glowing central
-             hub — icon-first, no per-tool description text. Pure CSS
-             (custom-property-driven keyframes in app.css), no canvas — each
-             icon's pivot sits dead-center in the container and rotates at
-             a shared, constant speed so spacing between icons never drifts;
+        {{-- Technology We Use: three concentric orbit rings around a glowing
+             central hub — icon-first, no per-tool description text. Pure
+             CSS (custom-property-driven keyframes in app.css), no canvas.
+             Tools split into up to 3 roughly-even rings; within a ring,
+             icons are evenly spaced and each ring gets its own speed and
+             direction (inner rings spin faster, alternating clockwise/
+             counter-clockwise) for a layered feel rather than one flat
+             wheel. Each icon's pivot sits dead-center in the container;
              the badge one level deeper counter-rotates to stay upright.
              Every logo is a verified, real brand asset (Simple Icons /
              devicon / Iconify CDNs), never a placeholder. Tool name shows
              on hover via the native title tooltip rather than always-on
-             text, keeping the ring uncluttered. --}}
+             text, keeping the rings uncluttered. Container is deliberately
+             larger than a single-ring layout would need, so the first
+             (innermost) ring keeps roughly its old size instead of
+             shrinking to make room for the two added around it. --}}
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
             <div class="flex flex-col gap-3 sm:gap-4 items-center text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
                 <h2
@@ -360,45 +379,68 @@
                 <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Real, industry-standard tools — not a stack picked to sound impressive, but the ones that actually get this kind of work done properly.</p>
             </div>
 
-            @php $toolCount = count($service['tech_stack']); @endphp
-            <div class="relative mx-auto w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square">
+            @php
+                $ringGroups = array_chunk($service['tech_stack'], (int) ceil(count($service['tech_stack']) / 3));
+                // spokeClass sets each ring's radius (as the pivot spoke's
+                // height); insetClass draws its guide circle at that same
+                // radius (inset = 50% - radius). Both must be literal
+                // strings (not built from interpolated numbers) so
+                // Tailwind's build-time class scanner can actually see and
+                // compile them — it can't evaluate PHP, so a class name
+                // assembled at runtime like h-[{{ $radius }}%] would never
+                // match any generated CSS rule.
+                $ringConfig = [
+                    ['spokeClass' => 'h-[26%]', 'insetClass' => 'inset-[24%]', 'duration' => 26, 'stagger' => 0, 'reverse' => false],
+                    ['spokeClass' => 'h-[37%]', 'insetClass' => 'inset-[13%]', 'duration' => 34, 'stagger' => 30, 'reverse' => true],
+                    ['spokeClass' => 'h-[47%]', 'insetClass' => 'inset-[3%]', 'duration' => 42, 'stagger' => 15, 'reverse' => false],
+                ];
+            @endphp
+            <div class="relative mx-auto w-full max-w-sm sm:max-w-lg md:max-w-2xl aspect-square">
                 {{-- glowing hub: soft blurred glow + a solid gradient core, both plain CSS --}}
                 <div
-                    class="absolute inset-[30%] rounded-full bg-forest blur-2xl pointer-events-none"
+                    class="absolute inset-[28%] rounded-full bg-forest blur-2xl pointer-events-none"
                     style="animation: hub-pulse 4s ease-in-out infinite;"
                 ></div>
-                <div class="absolute inset-[38%] rounded-full bg-linear-to-br from-forest to-forest-deep shadow-lg pointer-events-none"></div>
+                <div class="absolute inset-[36%] rounded-full bg-linear-to-br from-forest to-forest-deep shadow-lg pointer-events-none"></div>
 
-                {{-- faint guide ring at the same radius the icons orbit on --}}
-                <div class="absolute inset-[8%] rounded-full border border-forest/10 pointer-events-none"></div>
-
-                @foreach ($service['tech_stack'] as $index => $tool)
+                @foreach ($ringGroups as $ringIndex => $ringTools)
                     @php
-                        $angle = round($index * (360 / $toolCount));
-                        $isMono = !empty($tool['icon_mono']);
-                        $badgeStyle = "--start-angle: {$angle}deg; animation: counter-spin 32s linear infinite;";
-                        if ($isMono) {
-                            $badgeStyle .= " background-color: {$tool['icon_bg']};";
-                        }
+                        $config = $ringConfig[$ringIndex];
+                        $ringToolCount = count($ringTools);
+                        $direction = $config['reverse'] ? ' reverse' : '';
                     @endphp
-                    <div
-                        class="absolute top-1/2 left-1/2 h-[42%] w-0 origin-top"
-                        style="--start-angle: {{ $angle }}deg; animation: orbit-spin 32s linear infinite;"
-                    >
+
+                    {{-- faint guide ring at this ring's radius --}}
+                    <div class="absolute {{ $config['insetClass'] }} rounded-full border border-forest/10 pointer-events-none"></div>
+
+                    @foreach ($ringTools as $toolIndex => $tool)
+                        @php
+                            $angle = round($config['stagger'] + $toolIndex * (360 / $ringToolCount));
+                            $isMono = !empty($tool['icon_mono']);
+                            $badgeStyle = "--start-angle: {$angle}deg; animation: counter-spin {$config['duration']}s linear infinite{$direction};";
+                            if ($isMono) {
+                                $badgeStyle .= " background-color: {$tool['icon_bg']};";
+                            }
+                        @endphp
                         <div
-                            class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex items-center justify-center size-12 sm:size-14 rounded-full bg-white shadow-lg {{ $isMono ? '' : 'p-2.5' }}"
-                            style="{{ $badgeStyle }}"
-                            title="{{ $tool['name'] }}"
+                            class="absolute top-1/2 left-1/2 {{ $config['spokeClass'] }} w-0 origin-top"
+                            style="--start-angle: {{ $angle }}deg; animation: orbit-spin {{ $config['duration'] }}s linear infinite{{ $direction }};"
                         >
-                            <img
-                                src="{{ $tool['icon_url'] }}"
-                                alt="{{ $tool['name'] }}"
-                                class="{{ $isMono ? 'size-6' : 'w-full h-full' }} object-contain"
-                                @if ($isMono) style="filter: brightness(0) invert(1);" @endif
-                                loading="lazy"
-                            />
+                            <div
+                                class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex items-center justify-center size-12 sm:size-14 md:size-16 rounded-full bg-white shadow-lg {{ $isMono ? '' : 'p-2.5' }}"
+                                style="{{ $badgeStyle }}"
+                                title="{{ $tool['name'] }}"
+                            >
+                                <img
+                                    src="{{ $tool['icon_url'] }}"
+                                    alt="{{ $tool['name'] }}"
+                                    class="{{ $isMono ? 'size-6 sm:size-7' : 'w-full h-full' }} object-contain"
+                                    @if ($isMono) style="filter: brightness(0) invert(1);" @endif
+                                    loading="lazy"
+                                />
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 @endforeach
             </div>
         </div>
