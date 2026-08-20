@@ -352,19 +352,18 @@
         {{-- Technology We Use: three concentric orbit rings around a glowing
              central hub — icon-first, no per-tool description text. Pure
              CSS (custom-property-driven keyframes in app.css), no canvas.
-             Tools split into up to 3 roughly-even rings; within a ring,
-             icons are evenly spaced and each ring gets its own speed and
-             direction (inner rings spin faster, alternating clockwise/
-             counter-clockwise) for a layered feel rather than one flat
-             wheel. Each icon's pivot sits dead-center in the container;
-             the badge one level deeper counter-rotates to stay upright.
-             Every logo is a verified, real brand asset (Simple Icons /
-             devicon / Iconify CDNs), never a placeholder. Tool name shows
-             on hover via the native title tooltip rather than always-on
-             text, keeping the rings uncluttered. Container is deliberately
-             larger than a single-ring layout would need, so the first
-             (innermost) ring keeps roughly its old size instead of
-             shrinking to make room for the two added around it. --}}
+             "Horizon" composition: the hub and every ring share one anchor
+             point (bottom-center of the container, pushed down by half
+             their own height), so only the upper half shows above the
+             section's bottom edge — a big, cropped planet-curve rather
+             than a small full circle. Tools split into up to 3 roughly-
+             even rings; within a ring, icons are evenly spaced and each
+             ring gets its own speed and direction (inner rings spin
+             faster, alternating clockwise/counter-clockwise) for a
+             layered feel. Every logo is a verified, real brand asset
+             (Simple Icons / devicon / Iconify CDNs), never a placeholder.
+             Tool name shows on hover via the native title tooltip rather
+             than always-on text, keeping the rings uncluttered. --}}
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
             <div class="flex flex-col gap-3 sm:gap-4 items-center text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
                 <h2
@@ -381,27 +380,26 @@
 
             @php
                 $ringGroups = array_chunk($service['tech_stack'], (int) ceil(count($service['tech_stack']) / 3));
-                // spokeClass sets each ring's radius (as the pivot spoke's
-                // height); insetClass draws its guide circle at that same
-                // radius (inset = 50% - radius). Both must be literal
-                // strings (not built from interpolated numbers) so
-                // Tailwind's build-time class scanner can actually see and
-                // compile them — it can't evaluate PHP, so a class name
-                // assembled at runtime like h-[{{ $radius }}%] would never
-                // match any generated CSS rule.
+                // diameterClass sizes each ring's guide circle (and, via
+                // spokeClass at half that, the pivot spoke's length/radius).
+                // Both are literal strings (not built from interpolated
+                // numbers) so Tailwind's build-time class scanner can
+                // actually see and compile them — it can't evaluate PHP, so
+                // a class assembled at runtime like h-[{{ $radius }}rem]
+                // would never match any generated CSS rule.
                 $ringConfig = [
-                    ['spokeClass' => 'h-[26%]', 'insetClass' => 'inset-[24%]', 'duration' => 26, 'stagger' => 0, 'reverse' => false],
-                    ['spokeClass' => 'h-[37%]', 'insetClass' => 'inset-[13%]', 'duration' => 34, 'stagger' => 30, 'reverse' => true],
-                    ['spokeClass' => 'h-[47%]', 'insetClass' => 'inset-[3%]', 'duration' => 42, 'stagger' => 15, 'reverse' => false],
+                    ['diameterClass' => 'w-80 h-80 sm:w-96 sm:h-96 md:w-[30rem] md:h-[30rem] lg:w-[34rem] lg:h-[34rem]', 'spokeClass' => 'h-40 sm:h-48 md:h-60 lg:h-[17rem]', 'duration' => 26, 'stagger' => 0, 'reverse' => false],
+                    ['diameterClass' => 'w-[28rem] h-[28rem] sm:w-[34rem] sm:h-[34rem] md:w-[42rem] md:h-[42rem] lg:w-[48rem] lg:h-[48rem]', 'spokeClass' => 'h-56 sm:h-[17rem] md:h-[21rem] lg:h-96', 'duration' => 34, 'stagger' => 30, 'reverse' => true],
+                    ['diameterClass' => 'w-[36rem] h-[36rem] sm:w-[44rem] sm:h-[44rem] md:w-[54rem] md:h-[54rem] lg:w-[62rem] lg:h-[62rem]', 'spokeClass' => 'h-72 sm:h-[22rem] md:h-[27rem] lg:h-[31rem]', 'duration' => 42, 'stagger' => 15, 'reverse' => false],
                 ];
             @endphp
-            <div class="relative mx-auto w-full max-w-sm sm:max-w-lg md:max-w-2xl aspect-square">
+            <div class="relative w-full h-96 sm:h-112 md:h-136 lg:h-160 overflow-hidden flex justify-center">
                 {{-- glowing hub: soft blurred glow + a solid gradient core, both plain CSS --}}
                 <div
-                    class="absolute inset-[28%] rounded-full bg-forest blur-2xl pointer-events-none"
+                    class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full bg-forest blur-2xl pointer-events-none w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80"
                     style="animation: hub-pulse 4s ease-in-out infinite;"
                 ></div>
-                <div class="absolute inset-[36%] rounded-full bg-linear-to-br from-forest to-forest-deep shadow-lg pointer-events-none"></div>
+                <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full bg-linear-to-br from-forest to-forest-deep shadow-lg pointer-events-none w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-60 lg:h-60"></div>
 
                 @foreach ($ringGroups as $ringIndex => $ringTools)
                     @php
@@ -411,7 +409,7 @@
                     @endphp
 
                     {{-- faint guide ring at this ring's radius --}}
-                    <div class="absolute {{ $config['insetClass'] }} rounded-full border border-forest/10 pointer-events-none"></div>
+                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full border border-forest/10 pointer-events-none {{ $config['diameterClass'] }}"></div>
 
                     @foreach ($ringTools as $toolIndex => $tool)
                         @php
@@ -423,11 +421,11 @@
                             }
                         @endphp
                         <div
-                            class="absolute top-1/2 left-1/2 {{ $config['spokeClass'] }} w-0 origin-top"
+                            class="absolute bottom-0 left-1/2 {{ $config['spokeClass'] }} w-0 origin-bottom"
                             style="--start-angle: {{ $angle }}deg; animation: orbit-spin {{ $config['duration'] }}s linear infinite{{ $direction }};"
                         >
                             <div
-                                class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex items-center justify-center size-12 sm:size-14 md:size-16 rounded-full bg-white shadow-lg {{ $isMono ? '' : 'p-2.5' }}"
+                                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center size-12 sm:size-14 md:size-16 rounded-full bg-white shadow-lg {{ $isMono ? '' : 'p-2.5' }}"
                                 style="{{ $badgeStyle }}"
                                 title="{{ $tool['name'] }}"
                             >
