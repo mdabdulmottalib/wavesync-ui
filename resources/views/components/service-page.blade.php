@@ -360,10 +360,15 @@
             @php
                 $techCount = count($service['tech_stack']);
                 $techGridCols = $techCount <= 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3';
-                $techMaxWidth = $techCount <= 2 ? 'max-w-2xl' : 'max-w-4xl';
+                $techMaxWidth = match (true) {
+                    $techCount <= 2 => 'max-w-2xl',
+                    $techCount <= 3 => 'max-w-4xl',
+                    default => 'max-w-5xl',
+                };
             @endphp
             <div class="grid grid-cols-1 {{ $techGridCols }} gap-4 sm:gap-5 mx-auto {{ $techMaxWidth }}">
                 @foreach ($service['tech_stack'] as $tool)
+                    @php $isMono = !empty($tool['icon_mono']); @endphp
                     <div
                         class="group relative overflow-hidden rounded-3xl border border-forest/10 bg-white p-6 sm:p-7 flex flex-col gap-4 hover:border-forest/25 hover:-translate-y-1 transition-all duration-300"
                     >
@@ -376,8 +381,24 @@
                             class="absolute -right-5 -bottom-5 size-28 sm:size-32 object-contain opacity-[0.05] pointer-events-none"
                             loading="lazy"
                         />
-                        <span class="relative flex items-center justify-center size-14 sm:size-16 rounded-2xl bg-forest/5">
-                            <img src="{{ $tool['icon_url'] }}" alt="{{ $tool['name'] }}" class="size-7 sm:size-8 object-contain" loading="lazy" />
+                        {{-- Most tool icons are already full-color brand logos, so a plain
+                             bg-forest/5 badge behind them is enough. A couple of real tools
+                             (Acrobat) only have a verified single-color (currentColor) SVG
+                             available, not a colored brand mark — those get icon_mono in
+                             config and render on their own brand-color badge with the icon
+                             inverted to white instead, rather than a flat, out-of-place
+                             black glyph next to everyone else's real logo colors. --}}
+                        <span
+                            class="relative flex items-center justify-center size-14 sm:size-16 rounded-2xl {{ $isMono ? '' : 'bg-forest/5' }}"
+                            @if ($isMono) style="background-color: {{ $tool['icon_bg'] }}" @endif
+                        >
+                            <img
+                                src="{{ $tool['icon_url'] }}"
+                                alt="{{ $tool['name'] }}"
+                                class="size-7 sm:size-8 object-contain"
+                                @if ($isMono) style="filter: brightness(0) invert(1);" @endif
+                                loading="lazy"
+                            />
                         </span>
                         <div class="relative flex flex-col gap-1.5">
                             <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">{{ $tool['name'] }}</h4>

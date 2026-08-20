@@ -289,6 +289,10 @@ return [
             'tech_stack' => [
                 ['name' => 'Laravel', 'icon_url' => 'https://cdn.simpleicons.org/laravel', 'desc' => 'The framework behind the real application logic — logins, dashboards, custom workflows.'],
                 ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
+                ['name' => 'React', 'icon_url' => 'https://cdn.simpleicons.org/react', 'desc' => 'For interactive, component-based interfaces layered on top of Laravel.'],
+                ['name' => 'Tailwind CSS', 'icon_url' => 'https://cdn.simpleicons.org/tailwindcss', 'desc' => 'The utility-first CSS framework behind fast, consistent styling.'],
+                ['name' => 'Inertia.js', 'icon_url' => 'https://cdn.simpleicons.org/inertia', 'desc' => "The bridge that lets Laravel and React work together as one app, no separate API needed."],
+                ['name' => 'Next.js', 'icon_url' => 'https://cdn.simpleicons.org/nextdotjs', 'desc' => "For fully decoupled frontends, when a project calls for its own dedicated app layer."],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-diagram-cells', 'title' => 'Application Architecture', 'desc' => 'Database structure and application logic planned before development starts, so the system holds up as it grows.'],
@@ -332,6 +336,8 @@ return [
                 ['name' => 'WordPress', 'icon_url' => 'https://cdn.simpleicons.org/wordpress', 'desc' => 'The CMS behind sites your team can actually edit, without calling a developer for every change.'],
                 ['name' => 'PHP', 'icon_url' => 'https://cdn.simpleicons.org/php', 'desc' => 'The language every request runs through, chosen for its maturity and universal hosting support.'],
                 ['name' => 'MySQL', 'icon_url' => 'https://cdn.simpleicons.org/mysql', 'desc' => 'The database holding content and structured data behind the scenes.'],
+                ['name' => 'Elementor', 'icon_url' => 'https://cdn.simpleicons.org/elementor', 'desc' => 'The page builder behind sites your team can update without touching code.'],
+                ['name' => 'WooCommerce', 'icon_url' => 'https://cdn.simpleicons.org/woocommerce', 'desc' => 'For WordPress sites that need to sell — products, cart, and checkout, built in.'],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-palette', 'title' => 'Custom Theme Development', 'desc' => "A theme built specifically for your site, not a heavily modified template carrying code you'll never use."],
@@ -375,6 +381,9 @@ return [
                 ['name' => 'Figma', 'icon_url' => 'https://cdn.simpleicons.org/figma', 'desc' => 'Where every design happens — easy to hand off, review, and iterate on with your team.'],
                 ['name' => 'Photoshop', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg', 'desc' => 'For photo editing, image compositing, and pixel-level retouching.'],
                 ['name' => 'Illustrator', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg', 'desc' => "For vector work — logos, icons, anything that needs to scale without losing quality."],
+                ['name' => 'InDesign', 'icon_url' => 'https://api.iconify.design/logos/adobe-indesign.svg', 'desc' => 'For multi-page layouts — brochures, guideline documents, anything print-length.'],
+                ['name' => 'Canva', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg', 'desc' => "For quick, on-brand social and marketing pieces that don't need a full design file."],
+                ['name' => 'Acrobat Pro', 'icon_url' => 'https://api.iconify.design/cib/adobe-acrobat-reader.svg', 'desc' => 'For preparing and marking up print-ready PDFs.', 'icon_bg' => '#EC1C24', 'icon_mono' => true],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-pen-nib', 'title' => 'Logo Design', 'desc' => 'A mark built to hold up at every size, from a browser tab to a storefront, not just the large hero version.'],
@@ -418,6 +427,9 @@ return [
                 ['name' => 'Figma', 'icon_url' => 'https://cdn.simpleicons.org/figma', 'desc' => 'Where every design happens — easy to hand off, review, and iterate on with your team.'],
                 ['name' => 'Photoshop', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-plain.svg', 'desc' => 'For photo editing, image compositing, and pixel-level retouching.'],
                 ['name' => 'Illustrator', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-plain.svg', 'desc' => "For vector work — logos, icons, anything that needs to scale without losing quality."],
+                ['name' => 'InDesign', 'icon_url' => 'https://api.iconify.design/logos/adobe-indesign.svg', 'desc' => 'For multi-page layouts — brochures, guideline documents, anything print-length.'],
+                ['name' => 'Canva', 'icon_url' => 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg', 'desc' => "For quick, on-brand social and marketing pieces that don't need a full design file."],
+                ['name' => 'Acrobat Pro', 'icon_url' => 'https://api.iconify.design/cib/adobe-acrobat-reader.svg', 'desc' => 'For preparing and marking up print-ready PDFs.', 'icon_bg' => '#EC1C24', 'icon_mono' => true],
             ],
             'deliverables' => [
                 ['icon' => 'fi-rr-grid-alt', 'title' => 'Social Media Templates', 'desc' => "A reusable set of templates so every post looks like it belongs to the same brand, without redesigning from scratch each time."],
