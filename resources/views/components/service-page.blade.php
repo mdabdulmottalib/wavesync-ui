@@ -275,7 +275,7 @@
             <div
                 class="col-span-6 sm:col-span-5 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-44 sm:min-h-52 md:min-h-60"
             >
-                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none">5.0/5</span>
+                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none">4.9/5</span>
                 <span class="text-cream/70 text-xs sm:text-sm font-medium">Average rating, real client reviews</span>
             </div>
 
@@ -283,7 +283,7 @@
                 class="col-span-6 sm:col-span-4 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-44 sm:min-h-52 md:min-h-60"
             >
                 <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl md:text-5xl leading-none"
-                    >10+</span
+                    >85+</span
                 >
                 <span class="text-forest/60 text-xs sm:text-sm font-medium">Verified reviews</span>
             </div>

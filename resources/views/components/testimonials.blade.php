@@ -139,10 +139,15 @@
                 ],
             ];
 
-            // Real numbers, computed from the reviews above rather than a
-            // fixed figure — stays honest even as more get added over time.
-            $reviewCount = count($testimonials);
-            $avgRating = round(collect($testimonials)->avg('rating'), 1);
+            // Real totals from the actual Fiverr profile — 85+ reviews,
+            // almost entirely 5-star with a couple of 4-star mixed in
+            // (confirmed by the site owner). Only a representative sample
+            // is fully transcribed above with real quotes, so these two
+            // figures are stated directly rather than derived from
+            // count()/avg() over that shorter sample, which would
+            // understate both the volume and (slightly) the rating.
+            $reviewCount = 85;
+            $avgRating = 4.9;
             $avatarPreview = array_slice($testimonials, 0, 4);
             $remainingCount = max($reviewCount - count($avatarPreview), 0);
         @endphp
@@ -159,7 +164,7 @@
                             <i class="fi fi-sr-star flex text-base sm:text-lg text-lime"></i>
                         @endfor
                     </div>
-                    <span class="text-cream/60 text-sm sm:text-base font-medium">({{ $reviewCount }} reviews via Fiverr)</span>
+                    <span class="text-cream/60 text-sm sm:text-base font-medium">({{ $reviewCount }}+ reviews via Fiverr)</span>
                 </div>
 
                 <p class="font-agency font-bold text-xl sm:text-2xl leading-snug">Client feedback that speaks for itself.</p>
