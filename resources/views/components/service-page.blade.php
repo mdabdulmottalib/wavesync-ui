@@ -192,6 +192,20 @@
     @endif
 
     {{-- At A Glance section --}}
+    @php
+        $glanceStats = [
+            ['value' => '4.9/5', 'label' => 'Average rating, real reviews'],
+            ['value' => '85+', 'label' => 'Verified reviews'],
+            ['value' => '5+', 'label' => 'Years in business'],
+            ['value' => '450+', 'label' => 'Projects delivered'],
+            ['value' => '150+', 'label' => 'Clients worldwide'],
+            ['value' => '15+', 'label' => 'Countries served'],
+            ['value' => '95%+', 'label' => 'Client satisfaction'],
+            ['value' => '80%+', 'label' => 'Repeat clients'],
+            ['value' => 'Unlimited', 'label' => 'Revisions on every project'],
+            ['value' => 'Lifetime', 'label' => 'Support after launch'],
+        ];
+    @endphp
     <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
         <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
             <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">At A Glance</span>
@@ -200,63 +214,16 @@
             </h3>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
-            <div class="col-span-2 md:row-span-2 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 md:p-8 flex flex-col justify-end gap-1 sm:gap-2 min-h-36 sm:min-h-44 md:min-h-0">
-                <i class="fi fi-rr-star flex text-cream/30 text-2xl sm:text-3xl mb-2"></i>
-                <span class="font-agency font-extrabold text-4xl sm:text-5xl md:text-6xl leading-none">4.9/5</span>
-                <span class="text-cream/70 text-xs sm:text-sm font-medium">Average rating, real client reviews</span>
-            </div>
-
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">85+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Verified reviews</span>
-            </div>
-
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">5+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Years in business</span>
-            </div>
-
-            <div class="col-span-2 min-w-0 bg-forest text-cream rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex items-center justify-between gap-4 min-h-32 sm:min-h-36">
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">450+</span>
-                    <span class="text-cream/70 text-xs sm:text-sm font-medium">Projects Delivered</span>
+        {{-- Deliberately not another bento of cards — Track Record below
+             already owns that shape. This is just numbers set in type,
+             wrapping naturally, no borders or backgrounds per tile. --}}
+        <div class="flex flex-wrap gap-x-10 sm:gap-x-14 md:gap-x-16 gap-y-8 sm:gap-y-10 pt-8 sm:pt-10 border-t border-forest/10">
+            @foreach ($glanceStats as $stat)
+                <div class="flex flex-col gap-1.5">
+                    <span class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none">{{ $stat['value'] }}</span>
+                    <span class="text-forest/50 text-xs sm:text-sm font-medium">{{ $stat['label'] }}</span>
                 </div>
-                <i class="fi fi-rr-rocket-lunch flex text-cream/30 text-3xl sm:text-4xl"></i>
-            </div>
-
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">150+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Clients Worldwide</span>
-            </div>
-
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">15+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Countries Served</span>
-            </div>
-
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">95%+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Client Satisfaction</span>
-            </div>
-
-            <div class="col-span-1 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">80%+</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Repeat Clients</span>
-            </div>
-
-            <div class="col-span-2 min-w-0 bg-white border border-forest/10 rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex flex-col justify-end gap-1 sm:gap-2 min-h-32 sm:min-h-36">
-                <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Unlimited</span>
-                <span class="text-forest/60 text-xs sm:text-sm font-medium">Revisions On Every Project</span>
-            </div>
-
-            <div class="col-span-2 min-w-0 bg-lime rounded-3xl sm:rounded-4xl p-5 sm:p-6 flex items-center justify-between gap-4 min-h-32 sm:min-h-36">
-                <div class="flex flex-col gap-1">
-                    <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Lifetime</span>
-                    <span class="text-forest-deep/70 text-xs sm:text-sm font-medium">Support After Launch</span>
-                </div>
-                <i class="fi fi-rr-shield-check flex text-forest-deep/30 text-3xl sm:text-4xl"></i>
-            </div>
+            @endforeach
         </div>
     </div>
 
