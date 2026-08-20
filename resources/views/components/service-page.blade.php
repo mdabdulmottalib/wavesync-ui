@@ -174,15 +174,41 @@
                     </div>
                 </div>
 
-                <div
-                    class="md:col-span-2 col-span-full flex flex-col justify-center gap-2 sm:gap-3 md:border-l md:border-forest/10 md:pl-10"
-                >
-                    <span class="font-agency font-extrabold text-forest text-6xl sm:text-7xl md:text-8xl leading-none"
-                        >150+</span
-                    >
-                    <span class="text-forest/60 text-sm sm:text-base font-medium max-w-xs"
-                        >Clients worldwide who've been through this exact process, on this exact kind of work.</span
-                    >
+                {{-- Same real, verified stats as the homepage's own bento —
+                     a wide dark opener + a 2-col grid, scaled down to fit
+                     this narrower sidebar rather than the full-width 12-col
+                     layout that section uses. --}}
+                <div class="md:col-span-2 col-span-full flex flex-col justify-center md:border-l md:border-forest/10 md:pl-10">
+                    <div class="grid grid-cols-2 gap-2.5 sm:gap-3">
+                        <div class="col-span-2 min-w-0 bg-forest text-cream rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex items-center justify-between gap-3">
+                            <span class="font-agency font-extrabold text-3xl sm:text-4xl leading-none">450+</span>
+                            <span class="text-cream/70 text-xs sm:text-sm font-medium text-right">Projects Delivered</span>
+                        </div>
+                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
+                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">150+</span>
+                            <span class="text-forest/60 text-xs font-medium">Clients Worldwide</span>
+                        </div>
+                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
+                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">15+</span>
+                            <span class="text-forest/60 text-xs font-medium">Countries Served</span>
+                        </div>
+                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
+                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">95%+</span>
+                            <span class="text-forest/60 text-xs font-medium">Client Satisfaction</span>
+                        </div>
+                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
+                            <span class="font-agency font-extrabold text-forest text-2xl sm:text-3xl leading-none">80%+</span>
+                            <span class="text-forest/60 text-xs font-medium">Repeat Clients</span>
+                        </div>
+                        <div class="min-w-0 bg-white border border-forest/10 rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
+                            <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Unlimited</span>
+                            <span class="text-forest/60 text-xs font-medium">Revisions On Every Project</span>
+                        </div>
+                        <div class="min-w-0 bg-lime rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col gap-1">
+                            <span class="font-agency font-extrabold text-forest text-xl sm:text-2xl leading-none">Lifetime</span>
+                            <span class="text-forest-deep/70 text-xs font-medium">Support After Launch</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
