@@ -34,7 +34,7 @@
     </div>
 </div>
 
-<div class="my-12 sm:my-16 md:my-24 lg:my-36">
+<div class="my-12 sm:my-16 md:my-12 lg:my-12">
     <p class="text-center text-forest/50 uppercase text-xs sm:text-sm font-bold tracking-widest mb-6 sm:mb-8">Clients we've worked with</p>
     <x-logo-carousel />
 </div>
@@ -297,6 +297,133 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+    </div>
+
+    {{-- Idea Transformation section --}}
+    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+        <div class="flex flex-col gap-3 sm:gap-4 items-center text-center mb-10 sm:mb-12 max-w-2xl mx-auto">
+            <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">Idea Transformation</span>
+            <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                Your ideas, our expertise, real results.
+            </h3>
+        </div>
+
+        @php
+            // Same shape as the reference bento, but the content underneath
+            // is swapped for Wavesync's own real, verified facts rather than
+            // another agency's client testimonial/photo/stats:
+            // - the Pastor Will Alston quote + photo is a real Fiverr
+            //   testimonial already used in testimonials.blade.php, not a
+            //   fabricated one;
+            // - 4.9/5 and 150+ clients are the same verified figures used
+            //   everywhere else on this page;
+            // - the "creative minds" headcount and office-location map from
+            //   the reference don't have a true Wavesync equivalent (this is
+            //   a small/solo-led studio, not a 60-person team with offices
+            //   across 6 countries), so those two tiles are reframed around
+            //   facts that are actually true instead.
+            $trustAvatarPreview = [
+                ['name' => 'Pastor Will Alston', 'avatar' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/clients/pastor.jpeg'],
+                ['name' => '@buzzconrad', 'avatar_initial' => 'B'],
+                ['name' => '@alessiobav', 'avatar_initial' => 'A'],
+            ];
+            $trustClientLogos = [
+                ['name' => 'Biscayne Bay Preparatory Academy', 'logo' => '/clients/bbpa.svg'],
+                ['name' => 'Karmic', 'logo' => '/clients/karmic.svg'],
+                ['name' => 'Dope Queens', 'logo' => '/clients/dopequeens.svg'],
+                ['name' => 'LearnFX Trading', 'logo' => '/clients/learnfxtrading.svg'],
+            ];
+        @endphp
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-5">
+            {{-- 85+ verified reviews, real avatar/initial preview --}}
+            <div class="rounded-3xl sm:rounded-4xl border border-forest/10 bg-white p-5 sm:p-6 flex flex-col gap-4 sm:gap-5">
+                <div class="flex items-center">
+                    @foreach ($trustAvatarPreview as $person)
+                        <div class="size-9 sm:size-10 rounded-full border-2 border-white -ml-3 first:ml-0 overflow-hidden shrink-0 relative bg-lime/15">
+                            @if (!empty($person['avatar']))
+                                <img class="absolute inset-0 w-full h-full object-cover object-center" src="{{ $person['avatar'] }}" alt="{{ $person['name'] }}" />
+                            @else
+                                <div class="absolute inset-0 flex items-center justify-center text-lime font-agency font-bold text-xs" aria-hidden="true">{{ $person['avatar_initial'] }}</div>
+                            @endif
+                        </div>
+                    @endforeach
+                    <div class="size-9 sm:size-10 rounded-full border-2 border-white -ml-3 bg-forest text-cream flex items-center justify-center font-agency font-bold text-xs shrink-0">85+</div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">85+ Verified Reviews</h4>
+                    <p class="text-forest/60 text-sm leading-relaxed">Real feedback, not written for the website.</p>
+                </div>
+            </div>
+
+            {{-- Real testimonial + real photo, spans both rows on desktop --}}
+            <div class="md:row-span-2 rounded-3xl sm:rounded-4xl bg-forest-deep p-6 sm:p-8 flex flex-col gap-5 sm:gap-6 relative overflow-hidden min-h-96 md:min-h-0">
+                <i class="fi fi-sr-quote-right absolute -top-3 right-5 sm:right-7 text-6xl sm:text-7xl text-white/5 pointer-events-none" aria-hidden="true"></i>
+                <p class="text-cream font-agency text-base sm:text-lg leading-relaxed relative">"Was great to work with. He may be new but what he offers he does very well. Easy to communicate with, and hardworking. He beats a lot of competitions price yet delivers exceptional service."</p>
+                <div class="relative w-full flex-1 min-h-40 rounded-2xl overflow-hidden mt-auto">
+                    <img
+                        class="absolute inset-0 w-full h-full object-cover object-center"
+                        src="https://ik.imagekit.io/eoweeomen/mdabdulmottalib/clients/pastor.jpeg"
+                        alt="Pastor Will Alston"
+                    />
+                    <div class="absolute inset-x-0 bottom-0 bg-linear-to-t from-forest-deep/90 to-transparent p-4 sm:p-5">
+                        <h4 class="text-cream font-agency font-bold text-sm sm:text-base">Pastor Will Alston</h4>
+                        <p class="text-cream/60 text-xs sm:text-sm">United States &middot; via Fiverr</p>
+                    </div>
+                </div>
+            </div>
+
+            {{-- 4.9/5, same verified rating used across the page --}}
+            <div class="rounded-3xl sm:rounded-4xl bg-lime/10 border border-lime/20 p-5 sm:p-6 flex flex-col justify-end gap-2 sm:gap-3 min-h-44 sm:min-h-0">
+                <i class="fi fi-sr-star flex text-forest text-2xl sm:text-3xl"></i>
+                <span class="font-agency font-extrabold text-forest text-4xl sm:text-5xl leading-none">4.9/5</span>
+                <p class="text-forest/60 text-sm leading-relaxed">Backed by real client reviews on Fiverr.</p>
+            </div>
+
+            {{-- Reframed from the reference's office-location map (no real
+                 Wavesync office footprint to show) into the real reach
+                 stat used elsewhere on this page. --}}
+            <div class="rounded-3xl sm:rounded-4xl border border-forest/10 bg-white p-5 sm:p-6 flex flex-col gap-3 sm:gap-4 justify-between min-h-44 sm:min-h-0">
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-agency font-bold text-forest text-lg sm:text-xl">Clients Worldwide</h4>
+                    <p class="text-forest/60 text-sm leading-relaxed">Serving businesses across 15+ countries.</p>
+                </div>
+                <i class="fi fi-rr-globe flex text-forest/15 text-4xl sm:text-5xl self-end"></i>
+            </div>
+
+            {{-- Real Wavesync deliverable names, reframed from the
+                 reference's "Design Token" flow --}}
+            <div class="rounded-3xl sm:rounded-4xl border border-forest/10 bg-white p-5 sm:p-6 flex flex-col gap-3 sm:gap-4 justify-center">
+                <div class="flex items-center gap-2">
+                    <span class="rounded-full border border-forest/15 px-3.5 py-1.5 text-forest text-xs sm:text-sm font-semibold">Brand Guidelines</span>
+                    <span class="flex items-center justify-center size-6 sm:size-7 rounded-full border border-forest/15 text-forest/40 text-xs shrink-0"><i class="fi fi-rr-plus-small flex"></i></span>
+                </div>
+                <div class="flex items-center gap-2 pl-6 sm:pl-8">
+                    <span class="flex items-center justify-center size-6 sm:size-7 rounded-full border border-forest/15 text-forest/40 text-xs shrink-0"><i class="fi fi-rr-plus-small flex"></i></span>
+                    <span class="rounded-full bg-lime px-3.5 py-1.5 text-forest-deep text-xs sm:text-sm font-semibold">Design System</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="rounded-full border border-forest/15 px-3.5 py-1.5 text-forest text-xs sm:text-sm font-semibold">Component Library</span>
+                    <span class="flex items-center justify-center size-6 sm:size-7 rounded-full border border-forest/15 text-forest/40 text-xs shrink-0"><i class="fi fi-rr-plus-small flex"></i></span>
+                </div>
+            </div>
+
+            {{-- 150+ real clients, real client logos in place of the
+                 reference's stock avatar cluster --}}
+            <div class="md:col-span-2 rounded-3xl sm:rounded-4xl bg-linear-to-br from-lime/20 to-mist border border-forest/10 p-6 sm:p-8 flex items-center justify-between gap-6 min-h-40 sm:min-h-0">
+                <div class="flex flex-col gap-1">
+                    <h4 class="font-agency font-bold text-forest text-xl sm:text-2xl">150+ Global Clients</h4>
+                    <p class="text-forest/60 text-sm sm:text-base leading-relaxed">Worldwide trust. Proven results.</p>
+                </div>
+                <div class="hidden sm:flex items-center shrink-0">
+                    @foreach ($trustClientLogos as $client)
+                        <div class="size-12 sm:size-14 rounded-full bg-white border-2 border-mist -ml-4 first:ml-0 shrink-0 flex items-center justify-center overflow-hidden shadow-sm">
+                            <img src="{{ $client['logo'] }}" alt="{{ $client['name'] }}" class="w-7 h-7 sm:w-8 sm:h-8 object-contain" />
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 
