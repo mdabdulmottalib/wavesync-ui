@@ -30,6 +30,14 @@ return [
             'title' => 'Web Design',
             'desc' => "Get a website that looks great and actually brings in customers — responsive, fast, and built around how people decide who to trust and who to call. From landing pages to full custom builds on WordPress or Laravel, every page is designed to turn a visit into an inquiry.",
             'tags' => ['Conversion-Focused Design', 'Mobile-First Development', 'SEO-Ready Structure', 'E-Commerce Integration', 'Performance Optimization', 'Ongoing Maintenance', 'Custom CMS Builds'],
+            'who_its_for' => [
+                'fits' => [
+                    "You need a site that's actually built to convert, not just filled in from a template.",
+                    "You're weighing a fully custom build against a faster, easily-editable CMS site.",
+                    "Your current site loads slowly, looks dated, or doesn't make the next step obvious.",
+                ],
+                'not_fit' => "If you just need a one-page flyer site up by tomorrow with no strategy behind it, a template builder will get you there faster than we will.",
+            ],
             'menu_highlights' => ['UX/UI Design', 'Laravel Development', 'WordPress Development'],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Biscayne-bay-prep.jpg',
             'href' => '/services/web-design-development',
@@ -74,6 +82,14 @@ return [
             'title' => 'Branding Identity',
             'desc' => "Getting picked over the next tab usually comes down to how put-together you look — we build the visual identity, marketing collateral, and product design that make a business look like the obvious choice, from brand guidelines and social content to full product systems mapped around real user journeys.",
             'tags' => ['Logo & Visual Identity', 'Brand Positioning', 'Marketing Collateral', 'Packaging Design', 'Brand Voice & Messaging'],
+            'who_its_for' => [
+                'fits' => [
+                    'Your business looks different depending on which channel someone finds you through.',
+                    "You're launching and need a visual identity, marketing collateral, and product design under one system.",
+                    'You want brand guidelines that hold up as your team grows, not a one-off logo file.',
+                ],
+                'not_fit' => "If you only need a quick logo with nothing built around it, this is more system than you're looking for — Brand Identity alone is the better fit.",
+            ],
             'menu_highlights' => ['Brand Guidelines', 'Print Materials', 'Graphic Design'],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/branding-identity',
@@ -117,6 +133,14 @@ return [
             'title' => 'SEO & Digital Marketing',
             'desc' => "None of this works if people can't find you — technical SEO, GEO/AEO for AI answer engines, and full-funnel paid and outreach campaigns that put your business in front of people already searching for what you offer, and keep the pipeline full while they do.",
             'tags' => ['Keyword Strategy', 'Content Optimization', 'Local SEO', 'Conversion Rate Optimization', 'Email Sequences', 'Analytics & Reporting', 'Competitor Analysis', 'Landing Page Design'],
+            'who_its_for' => [
+                'fits' => [
+                    "Your best work is invisible because nobody's finding you in search or AI tools.",
+                    'You want SEO, paid, and outreach working as one coordinated plan instead of separate vendors.',
+                    "You're prepared for a compounding effort, not a 30-day ranking promise.",
+                ],
+                'not_fit' => "If you're looking for a guaranteed page-one ranking by a fixed date, that's not something anyone can honestly promise — including us.",
+            ],
             'menu_highlights' => ['Technical SEO', 'Social Media Marketing', 'AEO', 'GEO'],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
             'href' => '/services/seo-digital-marketing',
@@ -162,6 +186,14 @@ return [
             'title' => 'Automation & Integration',
             'desc' => 'We automate the work that slows your business down — connecting your tools into custom workflows, automating lead follow-up and outreach, and adding AI agents or live chat only where they genuinely help. Not every automation needs AI behind it; the goal is systems that run without someone doing the work by hand, not AI for its own sake.',
             'tags' => ['Process Mapping', 'Tool Integrations', 'Chatbot Deployment', 'Data Pipeline Automation', 'CRM Automation', 'API Connections'],
+            'who_its_for' => [
+                'fits' => [
+                    'Your team is doing repetitive, pattern-based work by hand — follow-ups, data entry, lead routing.',
+                    "You want automation connected to tools you already use, not a forced platform migration.",
+                    "You're open to AI where it genuinely helps, not chasing \"AI\" as a checkbox.",
+                ],
+                'not_fit' => "If the process changes shape every time depending on judgment calls a person needs to make, that's not a good automation candidate yet.",
+            ],
             'menu_highlights' => ['Custom LLM Agents', 'Workflow Automation', 'n8n Workflows'],
             'img' => 'https://ik.imagekit.io/eoweeomen/WavesyncAgency/ai-automation.png',
             'href' => '/services/ai-automation-integration',
@@ -240,6 +272,14 @@ return [
             'title' => 'UX/UI Design',
             'desc' => 'Wireframes and interface design built around how people actually decide, click, and scroll — not just what looks good in a still image.',
             'tags' => ['Usability Testing', 'Accessibility Standards', 'Responsive Layouts', 'Component Libraries', 'User Research'],
+            'who_its_for' => [
+                'fits' => [
+                    'You have a product or site that needs real interface design, not just a visual skin.',
+                    'Your team hands off to developers and specs keep getting lost in translation.',
+                    'You want testing before a decision ships, not after launch.',
+                ],
+                'not_fit' => 'If you just need a quick logo or a single graphic, this is a bigger engagement than that.',
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Biscayne-bay-prep.jpg',
             'href' => '/services/ux-ui-design',
             'portfolio_categories' => ['Web Design'],
@@ -278,6 +318,14 @@ return [
             'title' => 'Laravel Development',
             'desc' => "Custom web applications built on Laravel when a page builder isn't enough — logins, dashboards, booking systems, and the application logic behind them.",
             'tags' => ['Custom Web Apps', 'Laravel', 'RESTful APIs', 'Queue & Job Processing', 'Role-Based Permissions'],
+            'who_its_for' => [
+                'fits' => [
+                    'The project needs actual logins, dashboards, bookings, or custom workflows — not a page builder.',
+                    'You want automated tests written for the logic that has to be correct.',
+                    "You've outgrown what WordPress or a no-code tool can reasonably do.",
+                ],
+                'not_fit' => 'If a content-driven site with no real application logic is all you need, WordPress Development will get you there for less.',
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Biscayne-bay-prep.jpg',
             'href' => '/services/laravel-development-service',
             'portfolio_categories' => ['Web Design'],
@@ -358,6 +406,14 @@ return [
             'title' => 'WordPress Development',
             'desc' => 'Content-driven sites built on WordPress when easy self-editing and a faster build make more sense than a fully custom application.',
             'tags' => ['WordPress', 'Custom Themes', 'Content Management', 'Page Speed', 'Multisite Setup'],
+            'who_its_for' => [
+                'fits' => [
+                    'You want a site your own team can update without calling a developer for every text change.',
+                    'Your current WordPress site feels slow or bloated from stacked plugins.',
+                    'Content management matters more than custom application logic.',
+                ],
+                'not_fit' => 'If the project needs real logins, dashboards, or custom business logic, Laravel Development is the better fit.',
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/Biscayne-bay-prep.jpg',
             'href' => '/services/wordpress-development-service',
             'portfolio_categories' => ['Web Design'],
@@ -430,6 +486,14 @@ return [
             'title' => 'Brand Identity',
             'desc' => 'Logo, color palette, and typography system — the core visual language a business uses everywhere, designed to work as well on a favicon as it does on a sign.',
             'tags' => ['Color Systems', 'Typography', 'Visual Identity', 'Mockup Presentation', 'Brand Strategy'],
+            'who_its_for' => [
+                'fits' => [
+                    'You need a logo, color system, and typography that hold up at every size.',
+                    "You're starting a business (or rebranding) and want strategy behind the visuals, not just a mark.",
+                    'You want documented guidelines so the identity stays consistent as other people apply it.',
+                ],
+                'not_fit' => 'If you already have a solid identity and just need ongoing marketing pieces, Graphic Design is the better fit.',
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/brand-identity',
             'portfolio_categories' => ['Branding & Marketing'],
@@ -476,6 +540,14 @@ return [
             'title' => 'Graphic Design',
             'desc' => 'Social templates, ad creative, and one-off marketing pieces designed to stay consistent with the wider brand instead of looking like they came from a different business each time.',
             'tags' => ['Packaging Design', 'Infographics', 'Signage & Displays', 'Merchandise Design', 'Brand Photography Direction'],
+            'who_its_for' => [
+                'fits' => [
+                    'You already have a brand system and need ongoing social, print, or presentation pieces built inside it.',
+                    'You want format-aware design, not the same graphic resized for every channel.',
+                    'Consistency across pieces matters more than one-off creative experiments.',
+                ],
+                'not_fit' => "If you don't have a brand system yet to design inside, Brand Identity comes first.",
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/graphic-design-service',
             'portfolio_categories' => ['Branding & Marketing'],
@@ -522,6 +594,14 @@ return [
             'title' => 'Digital Product Design',
             'desc' => 'Interfaces and design systems for software products — app screens, dashboards, and onboarding flows — held to the same design standard as a marketing site.',
             'tags' => ['Interaction Design', 'Micro-interactions', 'Usability Testing', 'Accessibility', 'Cross-Platform Consistency'],
+            'who_its_for' => [
+                'fits' => [
+                    "You're designing a software product's screens, not a marketing site.",
+                    'You need a reusable design system so new features stay visually consistent.',
+                    'You want real users walked through flows before (and after) design changes.',
+                ],
+                'not_fit' => 'If this is a marketing website rather than a software product with logins and flows, Web Design is the better fit.',
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/digital-product-design',
             'portfolio_categories' => ['Branding & Marketing'],
@@ -560,6 +640,14 @@ return [
             'title' => 'Social Media Marketing',
             'desc' => 'Facebook and Instagram campaigns and audience targeting that put a business in front of the right people, even before they start actively searching.',
             'tags' => ['Retargeting Campaigns', 'Influencer Partnerships', 'Content Calendars', 'Community Management', 'Budget Optimization'],
+            'who_its_for' => [
+                'fits' => [
+                    "You want to reach people before they're actively searching, not just after.",
+                    'You need creative and audience targeting built together, not handed between separate teams.',
+                    'You care about leads and conversions in reporting, not just reach and likes.',
+                ],
+                'not_fit' => 'If your buyers only ever find you through search, budget is probably better spent on SEO first.',
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
             'href' => '/services/social-media-marketing-service',
             'portfolio_categories' => [],
@@ -598,6 +686,14 @@ return [
             'title' => 'Search Engine Optimization',
             'desc' => 'Technical SEO, content structure, and schema markup that help search engines find, understand, and rank a site — for the searches that actually turn into business.',
             'tags' => ['Backlink Analysis', 'Local SEO', 'Mobile Optimization', 'Content Gap Analysis', 'Competitor Benchmarking'],
+            'who_its_for' => [
+                'fits' => [
+                    "Most of your buyers start with a search, and you're not showing up in it.",
+                    'You want technical fixes handled before content strategy gets layered on top.',
+                    "You're comfortable with a compounding timeline, not a guaranteed ranking date.",
+                ],
+                'not_fit' => "If you need a guaranteed ranking by a specific date, that's not something anyone can honestly deliver.",
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
             'href' => '/services/search-engine-optimization',
             'portfolio_categories' => [],
@@ -636,6 +732,14 @@ return [
             'title' => 'AEO / GEO / LLMO',
             'desc' => "Structuring content so AI tools like ChatGPT, Perplexity, and Google's AI Overviews can accurately find, understand, and cite a business.",
             'tags' => ['Answer Engine Optimization', 'Generative Engine Optimization', 'LLM Optimization', 'Structured Content', 'AI Search'],
+            'who_its_for' => [
+                'fits' => [
+                    'Your buyers are starting to ask ChatGPT or Perplexity instead of typing a search.',
+                    'You already have solid technical SEO and want to extend it to AI answer engines.',
+                    'You want honest reporting on AI visibility, not vague "AI optimization" promises.',
+                ],
+                'not_fit' => "If your technical SEO foundation isn't solid yet, that needs fixing first — this builds on top of it, not instead of it.",
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
             'href' => '/services/aeo-geo-llmo',
             'portfolio_categories' => [],
@@ -674,6 +778,14 @@ return [
             'title' => 'n8n Workflow Automation',
             'desc' => "Custom automations built on n8n, an open-source workflow platform, connecting a business's tools together instead of locking it into one rigid all-in-one system.",
             'tags' => ['n8n', 'Workflow Automation', 'Tool Integration', 'API Connections', 'Self-Hosted Automation'],
+            'who_its_for' => [
+                'fits' => [
+                    'You want automations running on infrastructure you control, not locked into one vendor.',
+                    'Your process is repetitive and well-defined enough to map into clear triggers and actions.',
+                    "You need error handling and alerts, not a workflow that fails silently.",
+                ],
+                'not_fit' => "If a task changes shape every time depending on judgment calls, it's not ready to automate yet.",
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/WavesyncAgency/ai-automation.png',
             'href' => '/services/n8n',
             'portfolio_categories' => [],
@@ -712,6 +824,14 @@ return [
             'title' => 'Openclaw AI Agents',
             'desc' => "Open-source AI agents built on Openclaw that take real action on a business's behalf — browser automation, email, calendar, and file operations — connected through the messaging apps already in use.",
             'tags' => ['Openclaw', 'AI Agents', 'Custom Agent Workflows', 'Task Automation', 'Multi-Step Task Chains'],
+            'who_its_for' => [
+                'fits' => [
+                    'You have repetitive browser or messaging-based tasks worth automating end to end.',
+                    'You want an agent connected to tools you already use, with access scoped deliberately.',
+                    "You're comfortable monitoring early runs before trusting it unsupervised.",
+                ],
+                'not_fit' => "If the task involves open-ended decisions a person should still be making, this isn't the right use for an agent yet.",
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/WavesyncAgency/ai-automation.png',
             'href' => '/services/openclaw',
             'portfolio_categories' => [],
@@ -750,6 +870,14 @@ return [
             'title' => 'Hermes AI Agents',
             'desc' => 'Multi-agent workflows built on Hermes for extended, autonomous work — research, analysis, and scheduling — with memory that carries across tasks instead of starting from zero each time.',
             'tags' => ['Hermes', 'AI Agents', 'Multi-Agent Workflows', 'Autonomous Tasks', 'Process Automation'],
+            'who_its_for' => [
+                'fits' => [
+                    'You have a recurring, research-heavy, or multi-step task worth building persistent memory around.',
+                    "A single chatbot interaction isn't enough — you need context carried across runs.",
+                    "You want performance reviewed as the agent accumulates experience, not left unattended.",
+                ],
+                'not_fit' => "If it's a simple one-off action, a basic workflow (or n8n) is a better fit than a memory-carrying agent.",
+            ],
             'img' => 'https://ik.imagekit.io/eoweeomen/WavesyncAgency/ai-automation.png',
             'href' => '/services/hermes',
             'portfolio_categories' => [],
