@@ -21,7 +21,7 @@ class SendAdminContactNotification
      */
     public function handle(ContactFormSubmitted $event): void
     {
-        Notification::route('mail', config('mail.mailers.smtp.username'))
+        Notification::route('mail', config('wavesync.contact_email'))
             ->notify(new ContactFormSubmittedNotification($event->contact));
     }
 }

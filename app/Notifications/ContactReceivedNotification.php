@@ -3,15 +3,11 @@
 namespace App\Notifications;
 
 use App\Models\Contact;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ContactReceivedNotification extends Notification implements ShouldQueue
+class ContactReceivedNotification extends Notification
 {
-    use Queueable;
-
     /**
      * Create a new notification instance.
      */
@@ -36,6 +32,7 @@ class ContactReceivedNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject("We've Received Your Inquiry — Thank You for Reaching Out!")
+            ->replyTo(config('wavesync.contact_email'), config('app.name'))
             ->markdown('mail.contact-received-notification', [
                 'contact' => $this->contact,
             ]);

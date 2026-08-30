@@ -677,8 +677,18 @@
         'name' => $service['title'],
         'description' => $service['desc'],
         'url' => url()->current(),
+        'areaServed' => 'Worldwide',
         'provider' => [
             $at . 'id' => config('app.url') . '/#organization',
+        ],
+        // Same verified 4.9/5, 85+ reviews figure shown on-page in the
+        // Idea Transformation and Why Wavesync sections above — see
+        // partials/schema-organization.blade.php for the sourcing note.
+        'aggregateRating' => [
+            $at . 'type' => 'AggregateRating',
+            'ratingValue' => '4.9',
+            'reviewCount' => '85',
+            'bestRating' => '5',
         ],
     ];
 

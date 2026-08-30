@@ -3,15 +3,11 @@
 namespace App\Notifications;
 
 use App\Models\Contact;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ContactFormSubmittedNotification extends Notification implements ShouldQueue
+class ContactFormSubmittedNotification extends Notification
 {
-    use Queueable;
-
     /**
      * Create a new notification instance.
      */
@@ -36,6 +32,7 @@ class ContactFormSubmittedNotification extends Notification implements ShouldQue
     {
         return (new MailMessage)
             ->subject("New Contact Form Submission from {$this->contact->name}")
+            ->replyTo($this->contact->email, $this->contact->name)
             ->markdown('mail.contact-form-submitted-notification', [
                 'contact' => $this->contact,
             ]);

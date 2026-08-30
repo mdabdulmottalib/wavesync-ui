@@ -21,9 +21,7 @@ You've received a new project inquiry through the website contact form. Details 
 </x-mail::panel>
 @endif
 
-<x-mail::button :url="config('app.url') . '/admin/contacts/' . $contact->id">
-View Submission
-</x-mail::button>
+Reply directly to this email to respond to {{ $contact->name }} — it's addressed from their inbox.
 
 Thanks,<br />
 {{ config('app.name') }}
