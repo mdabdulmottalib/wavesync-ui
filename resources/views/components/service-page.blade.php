@@ -212,93 +212,6 @@
             <p class="text-cream font-agency text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-snug sm:leading-tight">&ldquo;{{ $service['approach_statement'] }}&rdquo;</p>
         </div>
     </div>
-    {{-- What You Get section --}}
-    <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-        <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
-            <div class="md:col-span-2 col-span-full order-1" data-service-visual>
-                <div class="relative w-full aspect-4/3 overflow-hidden rounded-3xl sm:rounded-4xl">
-                    <img
-                        class="absolute inset-0 w-full h-full object-cover object-center"
-                        src="{{ $service['img'] }}"
-                        alt="{{ $service['title'] }}"
-                        loading="lazy"
-                        data-service-image
-                    />
-                </div>
-            </div>
-
-            <div class="md:col-span-3 col-span-full order-2 flex flex-col gap-6 sm:gap-7" data-service-content>
-                <div class="flex flex-col gap-3 sm:gap-4">
-                    <h2
-                        class="capitalize text-forest text-lg sm:text-xl md:text-2xl lg:text-3xl font-agency font-semibold flex items-center gap-2"
-                    >
-                        <div class="size-2.5 sm:size-3 rounded-full bg-forest"></div>
-                        What You Get
-                    </h2>
-                    <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                        Every deliverable, explained.
-                    </h3>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 md:gap-x-8 gap-y-6 sm:gap-y-7">
-                    @foreach ($service['deliverables'] as $index => $item)
-                        <div
-                            id="{{ \Illuminate\Support\Str::slug($item['title']) }}"
-                            class="flex flex-col gap-1.5 scroll-mt-28 sm:scroll-mt-32"
-                        >
-                            <span
-                                class="font-agency font-bold text-forest/30 text-sm"
-                                >{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span
-                            >
-                            <h4 class="font-agency font-bold text-forest text-base sm:text-lg">{{ $item['title'] }}</h4>
-                            <p class="text-forest/70 text-sm leading-relaxed">{{ $item['desc'] }}</p>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @if (!empty($service['who_its_for']))
-        {{-- Who This Is For section --}}
-        <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-            <div class="rounded-3xl sm:rounded-4xl bg-forest-deep px-6 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16">
-                <div class="flex flex-col gap-2 sm:gap-3 mb-8 sm:mb-10">
-                    <span class="text-lime font-agency font-semibold text-sm uppercase tracking-wide"
-                        >Who This Is For</span
-                    >
-                    <h3 class="text-cream font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                        Is this the right fit for you?
-                    </h3>
-                </div>
-
-                <div class="flex flex-col divide-y divide-white/10 border-t border-white/10">
-                    @foreach ($service['who_its_for']['fits'] as $point)
-                        <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
-                            <span
-                                class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-lime text-forest-deep text-xs mt-0.5 shrink-0"
-                            >
-                                <i class="fi fi-rr-check flex"></i>
-                            </span>
-                            <p class="text-cream/90 text-sm sm:text-base leading-relaxed">{{ $point }}</p>
-                        </div>
-                    @endforeach
-
-                    {{-- Honest counter-signal, same bg-white/10 text-white/40
-                         "cross" convention as the homepage comparison table
-                         (home-page.blade.php's $tradeoffIconsDark). --}}
-                    <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
-                        <span
-                            class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-white/10 text-white/40 text-xs mt-0.5 shrink-0"
-                        >
-                            <i class="fi fi-rr-cross-small flex"></i>
-                        </span>
-                        <p class="text-cream/50 text-sm sm:text-base leading-relaxed">{{ $service['who_its_for']['not_fit'] }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
 
     @if (!empty($service['benefits']))
         {{-- Benefits section --}}
@@ -312,7 +225,9 @@
             </div>
 
             <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-                <div class="relative w-full aspect-4/3 md:aspect-auto md:h-full overflow-hidden rounded-3xl sm:rounded-4xl order-2 md:order-1">
+                <div
+                    class="relative w-full aspect-4/3 md:aspect-auto md:h-full overflow-hidden rounded-3xl sm:rounded-4xl order-2 md:order-1"
+                >
                     <img
                         class="absolute inset-0 w-full h-full object-cover object-center"
                         src="{{ $service['img'] }}"
@@ -323,23 +238,34 @@
 
                 <div class="w-full flex flex-col gap-4 order-1 md:order-2" id="benefitsAccordion">
                     @foreach ($service['benefits'] as $index => $benefit)
-                        <div class="benefit-item bg-white border border-forest/10 rounded-2xl sm:rounded-3xl overflow-hidden">
+                        <div
+                            class="benefit-item bg-white border border-forest/10 rounded-2xl sm:rounded-3xl overflow-hidden"
+                        >
                             <button
                                 type="button"
                                 class="benefit-trigger flex items-center justify-between gap-4 cursor-pointer w-full p-4 sm:p-5 md:p-6.5 text-left"
                                 aria-expanded="false"
                             >
                                 <div class="flex items-center gap-3 sm:gap-4">
-                                    <span class="font-agency font-extrabold text-forest/25 text-sm shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
-                                    <h4 class="font-agency text-forest text-sm sm:text-base md:text-lg font-bold">{{ $benefit['title'] }}</h4>
+                                    <span
+                                        class="font-agency font-extrabold text-forest/25 text-sm shrink-0"
+                                        >{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span
+                                    >
+                                    <h4 class="font-agency text-forest text-sm sm:text-base md:text-lg font-bold">
+                                        {{ $benefit['title'] }}
+                                    </h4>
                                 </div>
-                                <span class="benefit-icon inline-flex text-forest/40 text-lg sm:text-xl md:text-2xl shrink-0">
+                                <span
+                                    class="benefit-icon inline-flex text-forest/40 text-lg sm:text-xl md:text-2xl shrink-0"
+                                >
                                     <i class="fi fi-rr-angle-small-down flex"></i>
                                 </span>
                             </button>
 
                             <div class="benefit-content h-0 overflow-hidden">
-                                <div class="benefit-inner px-4 sm:px-5 md:px-6.5 pb-4 sm:pb-5 md:pb-6.5 flex flex-col gap-4">
+                                <div
+                                    class="benefit-inner px-4 sm:px-5 md:px-6.5 pb-4 sm:pb-5 md:pb-6.5 flex flex-col gap-4"
+                                >
                                     <p class="text-forest/70 text-sm sm:text-base leading-relaxed">{{ $benefit['desc'] }}</p>
                                     <div class="flex flex-col gap-2.5">
                                         @foreach ($benefit['list'] as $item)
@@ -437,6 +363,62 @@
                 </script>
             @endpush
         @endonce
+    @endif
+
+    @if (!empty($service['who_its_for']))
+        {{-- Who This Is For section --}}
+        <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+            <div class="rounded-3xl sm:rounded-4xl bg-forest-deep px-6 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16">
+                <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12 items-center">
+                    <div class="md:col-span-3 col-span-full flex flex-col gap-6 sm:gap-7">
+                        <div class="flex flex-col gap-2 sm:gap-3">
+                            <span class="text-lime font-agency font-semibold text-sm uppercase tracking-wide"
+                                >Who This Is For</span
+                            >
+                            <h3 class="text-cream font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                                Is this the right fit for you?
+                            </h3>
+                        </div>
+
+                        <div class="flex flex-col divide-y divide-white/10 border-t border-white/10">
+                            @foreach ($service['who_its_for']['fits'] as $point)
+                                <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
+                                    <span
+                                        class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-lime text-forest-deep text-xs mt-0.5 shrink-0"
+                                    >
+                                        <i class="fi fi-rr-check flex"></i>
+                                    </span>
+                                    <p class="text-cream/90 text-sm sm:text-base leading-relaxed">{{ $point }}</p>
+                                </div>
+                            @endforeach
+
+                            {{-- Honest counter-signal, same bg-white/10 text-white/40
+                                 "cross" convention as the homepage comparison table
+                                 (home-page.blade.php's $tradeoffIconsDark). --}}
+                            <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
+                                <span
+                                    class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-white/10 text-white/40 text-xs mt-0.5 shrink-0"
+                                >
+                                    <i class="fi fi-rr-cross-small flex"></i>
+                                </span>
+                                <p class="text-cream/50 text-sm sm:text-base leading-relaxed">{{ $service['who_its_for']['not_fit'] }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:col-span-2 col-span-full">
+                        <div class="relative w-full aspect-4/3 overflow-hidden rounded-2xl sm:rounded-3xl">
+                            <img
+                                class="absolute inset-0 w-full h-full object-cover object-center"
+                                src="{{ $service['img'] }}"
+                                alt="{{ $service['title'] }}"
+                                loading="lazy"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 
     @if (!empty($service['why_wavesync']))
