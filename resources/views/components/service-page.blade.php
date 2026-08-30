@@ -365,44 +365,32 @@
         @endonce
     @endif
 
-    @if (!empty($service['who_its_for']))
-        {{-- Who This Is For section --}}
+    @if (!empty($service['why_wavesync']))
+        {{-- Why Wavesync section --}}
         <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
             <div class="rounded-3xl sm:rounded-4xl bg-forest-deep px-6 sm:px-10 md:px-14 py-10 sm:py-14 md:py-16">
                 <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12 items-center">
                     <div class="md:col-span-3 col-span-full flex flex-col gap-6 sm:gap-7">
                         <div class="flex flex-col gap-2 sm:gap-3">
                             <span class="text-lime font-agency font-semibold text-sm uppercase tracking-wide"
-                                >Who This Is For</span
+                                >Why Wavesync</span
                             >
                             <h3 class="text-cream font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                                Is this the right fit for you?
+                                Why Wavesync for {{ $service['title'] }}.
                             </h3>
                         </div>
 
                         <div class="flex flex-col divide-y divide-white/10 border-t border-white/10">
-                            @foreach ($service['who_its_for']['fits'] as $point)
+                            @foreach ($service['why_wavesync'] as $point)
                                 <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
                                     <span
                                         class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-lime text-forest-deep text-xs mt-0.5 shrink-0"
                                     >
                                         <i class="fi fi-rr-check flex"></i>
                                     </span>
-                                    <p class="text-cream/90 text-sm sm:text-base leading-relaxed">{{ $point }}</p>
+                                    <p class="text-cream/90 text-sm sm:text-base leading-relaxed"><span class="font-agency font-bold">{{ $point['title'] }} —</span> {{ $point['desc'] }}</p>
                                 </div>
                             @endforeach
-
-                            {{-- Honest counter-signal, same bg-white/10 text-white/40
-                                 "cross" convention as the homepage comparison table
-                                 (home-page.blade.php's $tradeoffIconsDark). --}}
-                            <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
-                                <span
-                                    class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-white/10 text-white/40 text-xs mt-0.5 shrink-0"
-                                >
-                                    <i class="fi fi-rr-cross-small flex"></i>
-                                </span>
-                                <p class="text-cream/50 text-sm sm:text-base leading-relaxed">{{ $service['who_its_for']['not_fit'] }}</p>
-                            </div>
                         </div>
                     </div>
 
@@ -415,102 +403,6 @@
                                 loading="lazy"
                             />
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-
-    @if (!empty($service['why_wavesync']))
-        {{-- Why Wavesync section --}}
-        @php
-            // Ordered as a narrative: scale/track record first, then
-            // reputation/trust, then service guarantees last.
-            $glanceStats = [
-                ['value' => '5+', 'label' => 'Years in business'],
-                ['value' => '450+', 'label' => 'Projects delivered'],
-                ['value' => '150+', 'label' => 'Clients worldwide'],
-                ['value' => '15+', 'label' => 'Countries served'],
-                ['value' => '4.9/5', 'label' => 'Average rating, real reviews'],
-                ['value' => '85+', 'label' => 'Verified reviews'],
-                ['value' => '95%+', 'label' => 'Client satisfaction'],
-                ['value' => '80%+', 'label' => 'Repeat clients'],
-                ['value' => 'Unlimited', 'label' => 'Revisions on every project'],
-                ['value' => 'Lifetime', 'label' => 'Support after launch'],
-            ];
-
-            // Exactly 2 copies — the animate-scroll keyframe (app.css)
-            // translates the track by exactly -50%, which only loops
-            // seamlessly when the track is two identical halves back to
-            // back (see logo-carousel.blade.php for the same convention).
-            $glanceStatsLooped = collect($glanceStats)->concat($glanceStats);
-        @endphp
-        <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
-            <div class="w-full grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12">
-                <div class="md:col-span-3 col-span-full flex flex-col gap-6 sm:gap-7">
-                    <div class="flex flex-col gap-3 sm:gap-4">
-                        <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide"
-                            >Why Wavesync</span
-                        >
-                        <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-                            Why Wavesync for {{ $service['title'] }}.
-                        </h3>
-                    </div>
-
-                    <div class="flex flex-col divide-y divide-forest/10 border-t border-forest/10">
-                        @foreach ($service['why_wavesync'] as $point)
-                            <div class="flex items-start gap-3 sm:gap-4 py-4 sm:py-5">
-                                {{-- Lime text/icons read poorly straight on this section's near-white
-                                     background (low contrast) — lime works here as a filled badge behind
-                                     a dark icon instead, the established bg-lime + text-forest-deep
-                                     icon-badge convention used in "How We Work" below. --}}
-                                <span
-                                    class="flex items-center justify-center size-5 sm:size-6 rounded-full bg-lime text-forest-deep text-xs mt-0.5 shrink-0"
-                                >
-                                    <i class="fi fi-rr-check flex"></i>
-                                </span>
-                                <p class="text-forest text-sm sm:text-base leading-relaxed"><span class="font-agency font-bold">{{ $point['title'] }} —</span> {{ $point['desc'] }}</p>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-                {{-- Same real photo + image treatment as "What You Get"
-                     above (aspect-square, rounded-3xl/4xl, object-cover) —
-                     just on the right instead of the left this time. --}}
-                <div class="md:col-span-2 col-span-full">
-                    <div class="relative w-full aspect-4/3 overflow-hidden rounded-3xl sm:rounded-4xl">
-                        <img
-                            class="absolute inset-0 w-full h-full object-cover object-center"
-                            src="{{ $service['img'] }}"
-                            alt="{{ $service['title'] }}"
-                            loading="lazy"
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {{-- Supporting proof for the checklist above, not a new topic —
-                 no eyebrow/heading of its own, a marquee rather than a
-                 static wrap since 10 stats is too much to land on all at
-                 once (same animate-scroll technique as the logo carousel). --}}
-            <div class="mt-12 sm:mt-14 md:mt-16 pt-8 sm:pt-10 border-t border-forest/10">
-                <div
-                    class="relative w-full overflow-hidden mask-[linear-gradient(to_right,transparent,#000_5%_95%,transparent)]"
-                >
-                    <div class="flex w-max will-change-transform animate-scroll">
-                        @foreach ($glanceStatsLooped as $stat)
-                            <div class="flex flex-col gap-1.5 shrink-0 mr-12 sm:mr-16 md:mr-20">
-                                <span
-                                    class="font-agency font-extrabold text-forest text-3xl sm:text-4xl leading-none whitespace-nowrap"
-                                    >{{ $stat['value'] }}</span
-                                >
-                                <span
-                                    class="text-forest/50 text-xs sm:text-sm font-medium whitespace-nowrap"
-                                    >{{ $stat['label'] }}</span
-                                >
-                            </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
