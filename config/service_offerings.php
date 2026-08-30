@@ -160,7 +160,7 @@ return [
                 ['title' => 'Visibility that keeps compounding', 'desc' => 'Technical fixes and content structure keep paying off long after the initial work is done, instead of resetting every time a campaign ends.', 'list' => ['Rankings that build over time', 'Content that keeps working after publishing', 'A foundation for future campaigns']],
             ],
             'menu_highlights' => ['Technical SEO', 'Social Media Marketing', 'AEO', 'GEO'],
-            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
+            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/seo-digital-marketing',
             'portfolio_categories' => [],
             'why_wavesync' => [
@@ -714,7 +714,7 @@ return [
                 ['title' => 'Reporting beyond likes and reach', 'desc' => "Leads and conversions get reported alongside engagement numbers, not instead of them.", 'list' => ['Conversion-focused reporting', 'No vanity metrics standing in for results', 'A clear view of real ROI']],
                 ['title' => 'Campaigns that improve over time', 'desc' => 'Ongoing management means campaigns get adjusted based on real performance data, not left on autopilot after launch.', 'list' => ['Active, ongoing optimization', 'Creative refreshed before it fatigues', 'Targeting refined as data comes in']],
             ],
-            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
+            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/social-media-marketing-service',
             'portfolio_categories' => [],
             'why_wavesync' => [
@@ -766,7 +766,7 @@ return [
                 ['title' => 'Richer results in the search page itself', 'desc' => "Schema markup helps search engines display ratings, FAQs, and business info directly in results, not just a plain blue link.", 'list' => ['Structured data for richer listings', 'Better click-through from search results', 'Business info surfaced directly in search']],
                 ['title' => 'Value that compounds after the work is done', 'desc' => 'Technical SEO and content structure keep paying off well after the initial engagement ends.', 'list' => ['Rankings that build over time', 'No reliance on ongoing ad spend', 'A foundation future content can build on']],
             ],
-            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
+            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/search-engine-optimization',
             'portfolio_categories' => [],
             'why_wavesync' => [
@@ -818,7 +818,7 @@ return [
                 ['title' => 'Works alongside SEO, not against it', 'desc' => 'This builds on solid technical SEO instead of competing with it for the same content and budget.', 'list' => ['Complements existing SEO work', 'No duplicated or conflicting effort', 'One coordinated content strategy']],
                 ['title' => 'Ahead of where search is heading', 'desc' => "As more buying research moves into AI tools, being structured for them now is a head start most competitors don't have yet.", 'list' => ['Early positioning in a growing channel', "Content ready for how search is changing", 'A head start over competitors who wait']],
             ],
-            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/SEO-Digital-Marketing.jpg',
+            'img' => 'https://ik.imagekit.io/eoweeomen/mdabdulmottalib/portfolio/BBPA.jpg',
             'href' => '/services/aeo-geo-llmo',
             'portfolio_categories' => [],
             'why_wavesync' => [
