@@ -52,13 +52,13 @@
                 <p class="text-base font-bold uppercase text-cream mb-4 sm:mb-5 font-agency">Legal</p>
                 <ul class="space-y-3 text-lg font-semibold text-cream/70">
                     <li>
-                        <a href="#" class="hover:text-cream transition-colors duration-300">Privacy Policy</a>
+                        <a href="{{ route('privacy') }}" class="hover:text-cream transition-colors duration-300">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:text-cream transition-colors duration-300">Terms of Service</a>
+                        <a href="{{ route('terms') }}" class="hover:text-cream transition-colors duration-300">Terms of Service</a>
                     </li>
                     <li>
-                        <a href="#" class="hover:text-cream transition-colors duration-300">Cookie Settings</a>
+                        <a href="{{ route('privacy') }}#cookies" class="hover:text-cream transition-colors duration-300">Cookie Settings</a>
                     </li>
                     <li>
                         <a href="{{ route('contact.page') }}" class="hover:text-cream transition-colors duration-300">Contact Support</a>
@@ -72,7 +72,7 @@
                 <ul class="space-y-3 text-lg font-semibold text-cream/70">
                     <li><a href="{{ route('about') }}" class="hover:text-cream transition-colors duration-300">About</a></li>
                     <li>
-                        <a href="#" class="hover:text-cream transition-colors duration-300">Careers</a>
+                        <a href="{{ route('careers') }}" class="hover:text-cream transition-colors duration-300">Careers</a>
                     </li>
                     <li>
                         <a href="{{ route('contact.page') }}" class="hover:text-cream transition-colors duration-300">Contact Us</a>

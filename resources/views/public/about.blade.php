@@ -2,7 +2,7 @@
 
 @section ('title', 'About')
 
-@section ('description', 'Wavesync is a founder-led digital studio — ' . config('wavesync.founded_summary') . ' designing, building, and automating for clients around the world.')
+@section ('description', 'Wavesync is a small, hands-on digital studio — ' . config('wavesync.founded_summary') . ' designing websites, building brands, and automating growth for clients around the world.')
 
 @section ('image', '/images/founder.jpg')
 

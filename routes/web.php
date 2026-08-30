@@ -52,6 +52,18 @@ Route::get('/about', function () {
     return view('public.about');
 })->name('about');
 
+Route::get('/careers', function () {
+    return view('public.careers');
+})->name('careers');
+
+Route::get('/privacy', function () {
+    return view('public.privacy');
+})->name('privacy');
+
+Route::get('/terms', function () {
+    return view('public.terms');
+})->name('terms');
+
 Route::get('/portfolio', function () {
     return view('public.portfolio', [
         'caseStudies' => config('portfolio.case_studies'),
@@ -73,6 +85,9 @@ Route::get('/sitemap.xml', function () {
         ['loc' => route('about'), 'priority' => '0.8'],
         ['loc' => route('portfolio'), 'priority' => '0.8'],
         ['loc' => route('contact.page'), 'priority' => '0.8'],
+        ['loc' => route('careers'), 'priority' => '0.6'],
+        ['loc' => route('privacy'), 'priority' => '0.3'],
+        ['loc' => route('terms'), 'priority' => '0.3'],
     ])->concat(
         collect(config('service_offerings.services'))->map(fn (array $service) => [
             'loc' => route('services.show', $service['slug']),

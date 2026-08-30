@@ -13,11 +13,11 @@
         <h1
             class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold font-agency flex flex-col leading-tight sm:leading-tight md:leading-[1.1]"
         >
-            <span>One person.</span>
+            <span>Small footprint.</span>
             <span>Big <span class="text-lime">waves</span>.</span>
         </h1>
 
-        <p class="text-cream/70 font-medium text-base sm:text-lg md:text-xl max-w-2xl">Every project — <span class="text-cream font-semibold">150+</span> and counting — is shaped personally, start to finish: {{ config('wavesync.founded_summary') }} of hands-on design, development, and automation, with no outsourced hand-offs in between.</p>
+        <p class="text-cream/70 font-medium text-base sm:text-lg md:text-xl max-w-2xl">Every project — <span class="text-cream font-semibold">150+</span> and counting — gets the same hands-on attention: {{ config('wavesync.founded_summary') }} of design, development, and automation built around what the business in front of us actually needs, not a template with the logo swapped.</p>
     </div>
 </div>
 
@@ -160,7 +160,7 @@
             <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
                 The four things. Working as one.
             </h3>
-            <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Most agencies hand you off between departments for this. Wavesync builds all four as a single connected system, shaped by one person.</p>
+            <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Most agencies hand you off between departments for this. Wavesync builds all four as a single connected system, so nothing gets lost translating between teams that don't talk to each other.</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
@@ -319,7 +319,7 @@
         @php
             $aboutValues = [
                 ['icon' => 'fi-rr-diamond', 'title' => 'Craft over templates', 'desc' => "Every project is scoped and built around the business in front of us. Nothing ships from a starter kit with the logo swapped."],
-                ['icon' => 'fi-rr-user', 'title' => 'One person, start to finish', 'desc' => 'The person who scopes your project is the same one who builds it — no handoffs between sales, design, and delivery.'],
+                ['icon' => 'fi-rr-portfolio', 'title' => 'Real work, not stock templates', 'desc' => "Every project in the portfolio is an actual client engagement — not a concept mockup or a template dressed up to look like custom work."],
                 ['icon' => 'fi-rr-time-past', 'title' => 'Considered, not rushed', 'desc' => "Fewer clients, handled properly, beats more clients handled generically. Deadlines matter, but they don't dictate quality."],
                 ['icon' => 'fi-rr-shield-check', 'title' => 'Support doesn\'t end at launch', 'desc' => "A finished site or system still needs someone accountable for it after it ships. That someone stays on."],
             ];

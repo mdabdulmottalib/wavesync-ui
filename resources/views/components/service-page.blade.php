@@ -420,8 +420,8 @@
 
         @php
             $workPoints = [
-                ['icon' => 'fi-rr-comment-alt', 'title' => 'Direct communication', 'desc' => "You're talking to whoever is actually doing the work — not an account manager relaying messages back and forth."],
-                ['icon' => 'fi-rr-user', 'title' => 'One point of contact', 'desc' => 'The same person scopes, builds, and delivers this, so nothing gets rewritten or misunderstood in a handoff.'],
+                ['icon' => 'fi-rr-flag', 'title' => 'Scope fixed before work starts', 'desc' => "What's being built, and what it costs, gets agreed upfront — not renegotiated mid-project once the invoice grows legs."],
+                ['icon' => 'fi-rr-eye', 'title' => 'Progress you can see', 'desc' => 'Work-in-progress gets shared as it happens, not summarized in a status call once a week whether there\'s news or not.'],
                 ['icon' => 'fi-rr-calendar-clock', 'title' => 'Realistic timelines', 'desc' => "Deadlines are set based on what the work genuinely needs, and communicated honestly if anything shifts."],
             ];
         @endphp

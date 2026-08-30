@@ -10,7 +10,7 @@
             class="flex items-center gap-2 text-lime font-agency font-semibold text-sm sm:text-base uppercase tracking-wide"
         >
             <div class="size-2.5 sm:size-3 rounded-full bg-lime"></div>
-            Founder-Led Digital Studio
+            Web, Brand &amp; Growth Studio
         </div>
 
         <h1
@@ -491,7 +491,7 @@
                 >
                     Freelancer, agency, or Wavesync?
                 </h3>
-                <p class="text-forest/70 text-base sm:text-lg font-medium">Pick Wavesync if you want the person who scopes your project to be the same person who builds it — live, working, and still supported after launch, not a folder of files handed off to someone else.</p>
+                <p class="text-forest/70 text-base sm:text-lg font-medium">Every option gets you a website. Only one of them comes with both disciplines under one roof, a defined process every time, and support that doesn't end the day it launches.</p>
             </div>
 
             @php

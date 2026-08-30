@@ -315,7 +315,7 @@ return [
             'portfolio_categories' => ['Web Design'],
             'why_wavesync' => [
                 ['title' => 'Figma-native workflow', 'desc' => 'Design work happens in Figma, the industry standard, so files are easy to hand off, review, and iterate on with your team.'],
-                ['title' => 'Designed by someone who also codes', 'desc' => "Interfaces get designed by someone who understands what's actually feasible to build, not just what looks good in a static frame."],
+                ['title' => 'Designs built to actually ship', 'desc' => "Every screen is checked against what's realistically buildable, not just what looks good in a static frame — so it doesn't need redesigning mid-development."],
                 ['title' => 'Tested before it ships', 'desc' => "Prototypes get walked through with real tasks in mind, catching friction while it's still cheap to fix."],
             ],
             'deliverables' => [
