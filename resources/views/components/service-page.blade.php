@@ -128,7 +128,6 @@
         <div
             class="rounded-3xl sm:rounded-4xl bg-lime/10 border border-lime/20 p-5 sm:p-6 flex flex-col justify-end gap-2 sm:gap-3 min-h-44 sm:min-h-0"
         >
-            <i class="fi fi-rr-refresh flex text-forest text-2xl sm:text-3xl"></i>
             <span class="font-agency font-extrabold text-forest text-4xl sm:text-5xl leading-none">80%+</span>
             <p class="text-forest/60 text-sm leading-relaxed">Repeat Clients</p>
         </div>
@@ -299,6 +298,145 @@
                 </div>
             </div>
         </div>
+    @endif
+
+    @if (!empty($service['benefits']))
+        {{-- Benefits section --}}
+        <div class="w-11/12 mx-auto 2xl:w-10/12 mt-16 sm:mt-20 md:mt-28" data-reveal>
+            <div class="flex flex-col gap-3 sm:gap-4 items-start mb-8 sm:mb-10 max-w-2xl">
+                <span class="text-forest/40 font-agency font-bold text-sm uppercase tracking-wide">Benefits</span>
+                <h3 class="text-forest font-agency text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
+                    Benefits of our {{ $service['title'] }} services.
+                </h3>
+                <p class="text-forest/70 text-sm sm:text-base md:text-lg leading-relaxed">Real advantages this work is meant to produce, not just the deliverables that get you there.</p>
+            </div>
+
+            <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
+                <div class="relative w-full aspect-4/3 md:aspect-auto md:h-full overflow-hidden rounded-3xl sm:rounded-4xl order-2 md:order-1">
+                    <img
+                        class="absolute inset-0 w-full h-full object-cover object-center"
+                        src="{{ $service['img'] }}"
+                        alt="{{ $service['title'] }}"
+                        loading="lazy"
+                    />
+                </div>
+
+                <div class="w-full flex flex-col gap-4 order-1 md:order-2" id="benefitsAccordion">
+                    @foreach ($service['benefits'] as $index => $benefit)
+                        <div class="benefit-item bg-white border border-forest/10 rounded-2xl sm:rounded-3xl overflow-hidden">
+                            <button
+                                type="button"
+                                class="benefit-trigger flex items-center justify-between gap-4 cursor-pointer w-full p-4 sm:p-5 md:p-6.5 text-left"
+                                aria-expanded="false"
+                            >
+                                <div class="flex items-center gap-3 sm:gap-4">
+                                    <span class="font-agency font-extrabold text-forest/25 text-sm shrink-0">{{ str_pad($index + 1, 2, '0', STR_PAD_LEFT) }}</span>
+                                    <h4 class="font-agency text-forest text-sm sm:text-base md:text-lg font-bold">{{ $benefit['title'] }}</h4>
+                                </div>
+                                <span class="benefit-icon inline-flex text-forest/40 text-lg sm:text-xl md:text-2xl shrink-0">
+                                    <i class="fi fi-rr-angle-small-down flex"></i>
+                                </span>
+                            </button>
+
+                            <div class="benefit-content h-0 overflow-hidden">
+                                <div class="benefit-inner px-4 sm:px-5 md:px-6.5 pb-4 sm:pb-5 md:pb-6.5 flex flex-col gap-4">
+                                    <p class="text-forest/70 text-sm sm:text-base leading-relaxed">{{ $benefit['desc'] }}</p>
+                                    <div class="flex flex-col gap-2.5">
+                                        @foreach ($benefit['list'] as $item)
+                                            <div class="flex items-center gap-2.5">
+                                                <span
+                                                    class="flex items-center justify-center size-5 rounded-full bg-lime text-forest-deep text-[10px] shrink-0"
+                                                >
+                                                    <i class="fi fi-rr-check flex"></i>
+                                                </span>
+                                                <span class="text-forest/80 text-sm">{{ $item }}</span>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        @once
+            @push ('scripts')
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const items = gsap.utils.toArray('#benefitsAccordion .benefit-item');
+                        if (!items.length) return;
+
+                        items.forEach(function (item, index) {
+                            const trigger = item.querySelector('.benefit-trigger');
+                            const content = item.querySelector('.benefit-content');
+                            const inner = item.querySelector('.benefit-inner');
+                            const icon = item.querySelector('.benefit-icon');
+
+                            gsap.set(content, { height: 0 });
+                            gsap.set(icon, { rotate: 0, transformOrigin: '50% 50%' });
+
+                            trigger.addEventListener('click', function () {
+                                const isOpen = item.classList.contains('is-open');
+
+                                items.forEach(function (other) {
+                                    if (other !== item && other.classList.contains('is-open')) {
+                                        closeItem(other);
+                                    }
+                                });
+
+                                isOpen ? closeItem(item) : openItem(item);
+                            });
+
+                            // first benefit starts expanded
+                            if (index === 0) openItem(item, true);
+
+                            function openItem(el, instant) {
+                                const c = el.querySelector('.benefit-content');
+                                const i = el.querySelector('.benefit-inner');
+                                const ic = el.querySelector('.benefit-icon');
+                                const btn = el.querySelector('.benefit-trigger');
+
+                                el.classList.add('is-open');
+                                btn.setAttribute('aria-expanded', 'true');
+
+                                if (instant) {
+                                    gsap.set(c, { height: 'auto' });
+                                    gsap.set(ic, { rotate: 180 });
+                                    return;
+                                }
+
+                                gsap.to(c, {
+                                    height: i.offsetHeight,
+                                    duration: 0.6,
+                                    ease: 'power3.inOut',
+                                    onComplete: function () {
+                                        gsap.set(c, { height: 'auto' });
+                                    },
+                                });
+
+                                gsap.to(ic, { rotate: 180, duration: 0.5, ease: 'power3.inOut' });
+                            }
+
+                            function closeItem(el) {
+                                const c = el.querySelector('.benefit-content');
+                                const ic = el.querySelector('.benefit-icon');
+                                const btn = el.querySelector('.benefit-trigger');
+
+                                el.classList.remove('is-open');
+                                btn.setAttribute('aria-expanded', 'false');
+
+                                gsap.set(c, { height: c.offsetHeight });
+
+                                gsap.to(c, { height: 0, duration: 0.5, ease: 'power3.inOut' });
+                                gsap.to(ic, { rotate: 0, duration: 0.5, ease: 'power3.inOut' });
+                            }
+                        });
+                    });
+                </script>
+            @endpush
+        @endonce
     @endif
 
     @if (!empty($service['why_wavesync']))
