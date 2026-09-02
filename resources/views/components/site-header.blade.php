@@ -68,12 +68,6 @@
             >
 
             <a
-                href="{{ route('home') }}#process"
-                class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
-                >Process</a
-            >
-
-            <a
                 href="{{ route('about') }}"
                 class="font-bold hover:bg-[#3C5847] hover:text-lime px-5 py-2 rounded-full transition-colors duration-300"
                 >About</a
@@ -129,22 +123,47 @@
         class="md:hidden absolute left-0 right-0 top-full mt-3 opacity-0 invisible -translate-y-2 transition-all duration-300 ease-[cubic-bezier(.22,1,.36,1)] z-40"
     >
         <div class="bg-forest-deep rounded-3xl border border-white/10 shadow-2xl p-3 flex flex-col gap-1">
-            <a
-                href="{{ route('home') }}#services"
-                class="font-bold text-cream px-4 py-3 rounded-2xl hover:bg-white/5 hover:text-lime transition-colors duration-300"
-                >Services</a
-            >
+            {{-- Services has no hover state on touch devices, so on mobile
+                 it's a disclosure button (tap to expand the same 12
+                 highlight pages the desktop mega menu shows on hover)
+                 rather than a plain link to the homepage anchor. --}}
+            <div class="flex flex-col">
+                <button
+                    type="button"
+                    id="mobileServicesToggle"
+                    aria-expanded="false"
+                    aria-controls="mobileServicesSublist"
+                    class="font-bold text-cream px-4 py-3 rounded-2xl hover:bg-white/5 hover:text-lime transition-colors duration-300 flex items-center justify-between w-full"
+                >
+                    Services
+                    <i
+                        id="mobileServicesIcon"
+                        class="fi fi-rr-angle-small-down flex text-sm transition-transform duration-300"
+                    ></i>
+                </button>
+
+                <div id="mobileServicesSublist" class="hidden pl-2 pb-1">
+                    <div class="flex flex-col gap-0.5 border-l border-white/10 ml-4 pl-3">
+                        @foreach ($navCategories as $categoryKey => $category)
+                            @php $categoryHighlights = $navHighlightsByCategory->get($categoryKey, []); @endphp
+                            @continue ($categoryHighlights->isEmpty())
+                            <span class="text-cream/40 text-xs font-bold uppercase tracking-wide px-3 pt-3 pb-1">{{ $category['label'] }}</span>
+                            @foreach ($categoryHighlights as $highlight)
+                                <a
+                                    href="{{ route('services.show', $highlight['slug']) }}"
+                                    class="text-cream/70 text-sm font-medium px-3 py-2 rounded-xl hover:bg-white/5 hover:text-lime transition-colors duration-300"
+                                    >{{ $highlight['title'] }}</a
+                                >
+                            @endforeach
+                        @endforeach
+                    </div>
+                </div>
+            </div>
 
             <a
                 href="{{ route('portfolio') }}"
                 class="font-bold text-cream px-4 py-3 rounded-2xl hover:bg-white/5 hover:text-lime transition-colors duration-300"
                 >Work</a
-            >
-
-            <a
-                href="{{ route('home') }}#process"
-                class="font-bold text-cream px-4 py-3 rounded-2xl hover:bg-white/5 hover:text-lime transition-colors duration-300"
-                >Process</a
             >
 
             <a
@@ -371,6 +390,22 @@
                 toggle.addEventListener('click', function () {
                     toggle.getAttribute('aria-expanded') === 'true' ? closeNav() : openNav();
                 });
+
+                // Mobile Services disclosure — separate from closeNav/openNav
+                // above since tapping it should only expand the sublist, not
+                // dismiss the whole mobile panel.
+                const mobileServicesToggle = document.getElementById('mobileServicesToggle');
+                const mobileServicesSublist = document.getElementById('mobileServicesSublist');
+                const mobileServicesIcon = document.getElementById('mobileServicesIcon');
+
+                if (mobileServicesToggle && mobileServicesSublist && mobileServicesIcon) {
+                    mobileServicesToggle.addEventListener('click', function () {
+                        const isOpen = mobileServicesToggle.getAttribute('aria-expanded') === 'true';
+                        mobileServicesToggle.setAttribute('aria-expanded', String(!isOpen));
+                        mobileServicesSublist.classList.toggle('hidden');
+                        mobileServicesIcon.classList.toggle('rotate-180');
+                    });
+                }
 
                 panel.querySelectorAll('a').forEach(function (link) {
                     link.addEventListener('click', closeNav);
